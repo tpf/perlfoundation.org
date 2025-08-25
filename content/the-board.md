@@ -106,23 +106,23 @@ Conference.
 
 Held role since: 2021
 
-### Ruth Holloway
+### Ruth Holloway, Co-Treasurer
 
 ![Picture](images/headshots/ruth.png)
 
-Over the course of her 40-plus year career, Ruth has worked in six different
+Over the course of her 40-plus year career, Ruth worked in six different
 programming languages on nearly a dozen different operating systems; for the
 last 20 of those, she's been doing most of her coding in Perl. She is a Texan,
 transplanted to the tranquil woods of northeast Georgia with her husband and
-the cutest dog around.
+the cutest dog around.  She is now semi-retired from regular work, to spend
+more time with her family, crafting, and on the needs of the Foundation.
 
-"Former Auror, Ministry malcontent, and your new Defense Against The Dark Arts
-teacher."
-
-Ruth joined the board in June of 2024.
+Ruth joined the board in January of 2024, and currently holds the role of
+Co-Treasurer, taking care of many of the day-to-day financial record-keeping
+for the Foundation.
 
 ### Bruce Gray
 
 ![Picture](images/headshots/bruce.png)
 
-Bruce joined the board in June of 2024.
+Bruce joined the board in January of 2024.
