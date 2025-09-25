@@ -17,23 +17,9 @@ url: '/committees.html'
 
 - Matthew Horsfall
 
-## Conferences
-
-- Peter Krawczyk
-- Amber Deuel
-- Bruce Gray
-- Todd Rinaldo
-
-## Marketing
-
-- Dean Hamstead (Chair)
-- Amber Deuel
-- Danielle Wallace
-- Bruce Gray
-
 ## Volunteers and Community Liaisons
 
 - Larry Hixson donor relations
-- Graham Barr CPAN
+- Olaf Alders metacpan
 - Ask Bjorn Hansen, Robert Spier Perl.org
 - Matthias Bloch
