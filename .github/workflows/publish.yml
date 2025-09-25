@@ -54,7 +54,7 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
-          hugo --environment pages --minify --baseURL "https://tpf.github.io/tprf-hugo-site/"
+          hugo --environment pages --minify --baseURL "https://perlandrakufoundation.us/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
