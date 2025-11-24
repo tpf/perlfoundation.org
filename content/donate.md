@@ -6,7 +6,7 @@ url: '/donate.html'
 There are many ways you can donate to The Perl Foundation:
 
 - [Online credit card
-  payment](https://perlfoundation.app.neoncrm.com/np/clients/perlfoundation/donation.jsp)
+  payment](https://perlfoundation.fcsuite.com/erp/donate)
 - [PayPal](https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS)
 - Bank check, payable to Yet Another Society. Please mail to: Yet
   Another Society, d/b/a The Perl Foundation, 340 S Lemon Ave
@@ -22,10 +22,6 @@ There are many ways you can donate to The Perl Foundation:
   can opt to have donations (and possibly employer-matches) made to
   TPRF directly through your pay check. Apple has a similar program,
   which we also participate in.
-- [Shop at Amazon
-  Smile](https://smile.amazon.com/gp/chpf/homepage/ref=smi_chpf_redirect/138-2474394-5588856?ie=UTF8&ein=38-3536536&ref_=smi_ext_ch_38-3536536_cl) -
-  sign up to Amazon Smile and every time you make a purchase, TPRF will
-  receive a small donation through Amazon - at no cost to you.
 
 ### If you require an invoice for your donation, please
 
