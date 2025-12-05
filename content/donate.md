@@ -7,6 +7,7 @@ There are many ways you can donate to The Perl Foundation:
 
 - [Online credit card
   payment](https://perlfoundation.fcsuite.com/erp/donate)
+- [At Open Collective](https://opencollective.org/tprf)
 - [PayPal](https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS)
 - Bank check, payable to Yet Another Society. Please mail to: Yet
   Another Society, d/b/a The Perl Foundation, 340 S Lemon Ave
