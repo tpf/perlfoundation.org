@@ -21,3 +21,9 @@ As this is quite a large group, the venue requests that we advise of our food or
 Full details will be posted here.
 
 
+### QR code
+
+The following QR code links back to this page
+
+![](fosdem-community-dinner-qr.png)
+
