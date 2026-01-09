@@ -23,7 +23,7 @@ Full details will be posted here.
 
 ### QR code
 
-The following QR code links back to this page
+The following QR code links back to this page and can be used for quick reference during FOSDEM.
 
-![](fosdem-community-dinner-qr.png)
+![](fosdem-community-dinner-qr.png){height=20%}
 
