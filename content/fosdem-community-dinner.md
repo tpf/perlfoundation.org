@@ -25,5 +25,6 @@ Full details will be posted here.
 
 The following QR code links back to this page and can be used for quick reference during FOSDEM.
 
-<img src="fosdem-community-dinner-qr.png" alt="FOSDEM Community Dinner QR" height="20%">
+
+<img src="images/fosdem/fosdem-community-dinner-qr.png" alt="FOSDEM Community Dinner QR" height="20%">
 
