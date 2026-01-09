@@ -1,6 +1,6 @@
 ---
 title: 'FOSDEM - Community dinner'
-url: '/fosdem-community-dinner.html'
+url: '/fosdem/community-dinner.html'
 ---
 
 
