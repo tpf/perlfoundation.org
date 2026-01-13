@@ -15,10 +15,19 @@ TPRF sponsor the FOSDEM Perl and Raku community dinner which is is traditionally
 As this is quite a large group, our selected venue requests that we advise of our food order ahead of time so preparations can be made. They generally accommodate minor changes on the evening and will re-confirm our order at the table. 
 
 
-### Full details for 2026
+### 2026 arrangements
 
-Full details and menu will be posted here.:
+Date
+: 31st January 2026 19:00 
 
+Venue
+: To be confirmed
+
+Cost
+: Meal: Paid for by TPRF, drinks paid fr by guests
+
+Booking
+: Link to be added here
 
 ### QR code
 
