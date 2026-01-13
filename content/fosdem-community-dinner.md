@@ -23,6 +23,9 @@ Date
 Venue
 : To be confirmed
 
+Menu
+: To be confirmed
+
 Cost
 : Meal: Paid for by TPRF, drinks paid fr by guests
 
