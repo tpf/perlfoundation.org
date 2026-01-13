@@ -26,8 +26,8 @@ Venue
 Cost
 : Meal: Paid for by TPRF, drinks paid fr by guests
 
-Booking
-: Link to be added here
+Registration
+: Not yet open
 
 ### QR code
 
