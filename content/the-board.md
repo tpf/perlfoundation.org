@@ -24,7 +24,7 @@ get involved](get-involved.html).
 
 ### Stuart Mackintosh, President
 
-![Picture](images/uploads/1/0/6/6/106663517/published/stuart.png%3F1680035988)
+![Stuart Mackintosh photo](images/headshots/stuart-mackintosh.png)
 
 Based in Europe, Stuart has been working with free and open source software
 since the mid-1990s. Many of his early projects were based on Perl and
@@ -59,7 +59,7 @@ Held role since: 2019
 
 ### Peter Krawczyk, Treasurer
 
-![Picture](images/uploads/1/0/6/6/106663517/krawczyk23bw_orig.jpg)
+![Peter Krawczyk photo](images/headshots/peter-krawczyk.jpg)
 
 Peter Krawczyk is a Senior Software Engineer with ZipRecruiter. He has been
 active in the Perl community since the late 1990s, including co-organizing
@@ -72,7 +72,7 @@ Held role since: 2020
 
 ### Todd Rinaldo
 
-![Picture](images/uploads/1/0/6/6/106663517/todd_orig.png)
+![Todd Rinaldo photo](images/headshots/todd-rinaldo.png)
 
 Todd has been programming for 40 years and coding Perl since his first Perl
 programming class in 1995. He's been a resident of Houston, TX most of his
@@ -86,7 +86,7 @@ Held role since: 2022
 
 ### Daniel Sockwell
 
-![Picture](images/uploads/1/0/6/6/106663517/daniel-sockwell-yas-board_orig.jpg)
+![Daniel Sockwell photo](images/headshots/daniel-sockwell.jpg)
 
 Daniel originally planned a career in law before he realised how much he enjoys
 programming.
@@ -108,7 +108,7 @@ Held role since: 2021
 
 ### Ruth Holloway, Co-Treasurer
 
-![Picture](images/headshots/ruth.png)
+![Ruth Holloway photo](images/headshots/ruth-holloway.png)
 
 Over the course of her 40-plus year career, Ruth worked in six different
 programming languages on nearly a dozen different operating systems; for the
@@ -123,6 +123,6 @@ for the Foundation.
 
 ### Bruce Gray
 
-![Picture](images/headshots/bruce.png)
+![Bruce Gray photo](images/headshots/bruce-gray.png)
 
 Bruce joined the board in January of 2024.
