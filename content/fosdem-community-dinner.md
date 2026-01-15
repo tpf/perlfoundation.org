@@ -10,18 +10,15 @@ aliases: '/qr-fd'
 
 TPRF sponsor the FOSDEM Perl and Raku community dinner which is is traditionally held on the Saturday evening. All food is included and guests are free to purchase their own drinks.
 
-### Pre-ordering
-
-As this is quite a large group, our selected venue requests that we advise of our food order ahead of time so preparations can be made. They generally accommodate minor changes on the evening and will re-confirm our order at the table. 
-
 
 ### 2026 arrangements
 
 Date
-: 31st January 2026 19:00 
+: 31st January 2026 19:30
 
 Venue
-: To be confirmed, Brussels
+: [La Porteuse d'Eau](https://laporteuse.eu/en)
+Av. Jean Volders 48, 1060 Saint-Gilles
 
 Menu
 : To be confirmed
