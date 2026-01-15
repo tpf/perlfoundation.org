@@ -1,5 +1,5 @@
 ---
-title: 'The Perl & Raku Foundation'
+title: 'The Perl & Raku Foundation - TPRF'
 url: '/index.html'
 keywords:
   - TPRF
