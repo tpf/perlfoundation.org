@@ -1,16 +1,22 @@
 ---
 title: 'The Perl & Raku Foundation'
 url: '/index.html'
+keywords:
+  - TPRF
+  - Perl
+  - Raku
+  - Open Source
+  - Digital Commons
 ---
 
-> The Perl & Raku Foundation is dedicated to the advancement of the Perl and Raku
+> The Perl & Raku Foundation (TPRF) is dedicated to the advancement of the Perl and Raku
 > programming languages, through open discussion, collaboration, design, and
 > code.
 
 
 ## Funding Perl and Raku development
 
-The Perl Foundation accepts donations from organizations that depend on Perl or
+The Perl and Raku Foundation accepts donations from organizations that depend on Perl or
 Raku, and from individuals who love programming with the Perl or Raku
 languages. Our desire is to build a strong, healthy and sustainable language
 ecosystem and community.
