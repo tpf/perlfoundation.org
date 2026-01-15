@@ -24,7 +24,7 @@ get involved](get-involved.html).
 
 ### Stuart Mackintosh, President
 
-![Stuart Mackintosh photo](images/headshots/stuart-mackintosh.png)
+![Stuart Mackintosh photo](images/headshots/stuart-mackintosh.jpg)
 
 Based in Europe, Stuart has been working with free and open source software
 since the mid-1990s. Many of his early projects were based on Perl and
@@ -72,7 +72,7 @@ Held role since: 2020
 
 ### Todd Rinaldo
 
-![Todd Rinaldo photo](images/headshots/todd-rinaldo.png)
+![Todd Rinaldo photo](images/headshots/todd-rinaldo.jpg)
 
 Todd has been programming for 40 years and coding Perl since his first Perl
 programming class in 1995. He's been a resident of Houston, TX most of his
@@ -108,7 +108,7 @@ Held role since: 2021
 
 ### Ruth Holloway, Co-Treasurer
 
-![Ruth Holloway photo](images/headshots/ruth-holloway.png)
+![Ruth Holloway photo](images/headshots/ruth-holloway.jpg)
 
 Over the course of her 40-plus year career, Ruth worked in six different
 programming languages on nearly a dozen different operating systems; for the
@@ -123,6 +123,6 @@ for the Foundation.
 
 ### Bruce Gray
 
-![Bruce Gray photo](images/headshots/bruce-gray.png)
+![Bruce Gray photo](images/headshots/bruce-gray.jpg)
 
 Bruce joined the board in January of 2024.
