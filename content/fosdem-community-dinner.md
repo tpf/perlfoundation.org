@@ -21,7 +21,7 @@ Date
 : 31st January 2026 19:00 
 
 Venue
-: To be confirmed
+: To be confirmed, Brussels
 
 Menu
 : To be confirmed
@@ -30,7 +30,8 @@ Cost
 : Meal: Paid for by TPRF, drinks paid fr by guests
 
 Registration
-: Not yet open
+: [Click here to register for the Community dinner](https://perlfoundation.fcsuite.com/erp/donate/list/ticket)
+
 
 ### QR code
 
