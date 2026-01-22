@@ -125,4 +125,24 @@ for the Foundation.
 
 ![Bruce Gray photo](images/headshots/bruce-gray.jpg)
 
-Bruce joined the board in January of 2024.
+Bruce is a consultant, business analyst, and contract programmer,
+with a special interest in heath care.
+
+Introduced to Perl in 1995, he became a founding member of Atlanta Perl Mongers,
+and from there joined the wider Perl community.
+
+Active in the Parrot and Rakudo projects since their inception as "Perl 6",
+Bruce represents Raku at the TPRF community meetings, and assists in the
+Raku Study Group.
+
+Since 2022, Bruce has served on the planning committee for the annual
+North American TPRC conference, and has been a regular speaker at the
+conference for over a decade.
+
+Bruce joined the board in January of 2024, currently holds the role of
+TPRF Secretary, and uses the resources of that role to also support the
+A/V recording needs of affiliated groups such as Toronto.pm and the Underbar
+podcast.
+
+Together with his wife Sarah, Bruce enjoys ballroom dancing and Shakespearean
+theatre.
