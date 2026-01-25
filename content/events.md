@@ -13,7 +13,7 @@ Perl and Raku events
 
 
 31st January - 1st February 2026
-: [FOSDEM Stand](https://fosdem.org/2026/stands/) - Bulding K Stands A 9, Campus Solbosch, of the Université Libre de Bruxelles (ULB), Brussels
+: [FOSDEM Stand](https://nav.fosdem.org/l/c:1:118.69:274.88/) - Bulding K Stands A 9, Campus Solbosch, of the Université Libre de Bruxelles (ULB), Brussels
 
 26th June 2026
 : [The Perl and Raku Conference](https://tprc.us/)
