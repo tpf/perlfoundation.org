@@ -1,7 +1,11 @@
 ---
-title: 'How to Write a Proposal'
-url: '/how-to-write-a-proposal.html'
+title: 'Proposing a Community Grant'
+url: '/proposing-a-community-grant.html'
+aliases: '/how-to-write-a-proposal.html'
+
 ---
+
+
 
 Your proposal should include:
 

@@ -123,7 +123,7 @@ weight = 4
 
 [[main]]
 parent = "grants"
-name = "How to Write a Proposal"
+name = "Community grant proposals"
 url = "/how-to-write-a-proposal.html"
 weight = 5
 
