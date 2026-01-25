@@ -5,7 +5,7 @@ url: '/payments.html'
 
 Interested in making a donation or payment to The Perl Foundation? The most
 simple way to do so is by [credit card
-online](https://www.z2systems.com/np/clients/perlfoundation/donation.jsp).
+online](https://perlfoundation.fcsuite.com/erp/donate).
 
 We also accept PayPal. Please direct your payment to
 [billing@yapc.org](mailto:billing@yapc.org).
