@@ -47,7 +47,7 @@ The Foundation helps to sponsor many events, worldwide, each year. Join us at
 
 ### Gold Level Sponsor
 
-<div class="sponsor-logo">
+<div class="sponsor-logo gold">
 <a href="https://duckduckgo.com/"><img src="images/duck-duck-go.svg" alt="DuckDuckGo" title="DuckDuckGo"></a>
 </div>
 
@@ -63,7 +63,7 @@ The Foundation helps to sponsor many events, worldwide, each year. Join us at
 <a href="https://www.proxmox.com/en/"><img src="images/proxmox-full-lockup-color.svg" alt="proxmox" title="proxmox"></a>
 </div>
 
-<div class="sponsor-logo bronze">
+<div class="sponsor-logo bronze large">
 <a href="https://www.suse.com/"><img src="images/SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" title="SUSE"></a>
 </div>
 

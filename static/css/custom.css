@@ -26,3 +26,12 @@
   max-width: 100%;
   object-fit: contain;
 }
+
+/* Size modifiers for logos with different aspect ratios */
+.sponsor-logo.gold img {
+  height: 90px;
+}
+
+.sponsor-logo.large img {
+  height: 90px;
+}
