@@ -47,16 +47,18 @@ The Foundation helps to sponsor many events, worldwide, each year. Join us at
 
 ### Gold Level Sponsor
 
-[<img src="images/duck-duck-go.svg" alt="DuckDuckGo" title="DuckDuckGo" width="400">](https://duckduckgo.com/)
+{{< sponsor-logo url="https://duckduckgo.com/" image="duck-duck-go.svg" alt="DuckDuckGo" class="gold" >}}
 
 ### Silver Level Sponsor
 
-[<img src="images/webpros.svg" alt="WebPros" title="WebPros" width="400">](https://www.webpros.com/)
+{{< sponsor-logo url="https://www.webpros.com/" image="webpros.svg" alt="WebPros" >}}
 
 ### Bronze Level Sponsor
 
-[<img src="images/proxmox-full-lockup-color.svg" alt="proxmox" title="proxmox" width="400">](https://www.proxmox.com/en/)
-[<img src="images/SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" title="SUSE" width="400">](https://www.suse.com/)
-[<img src="images/FM-Logo-RGB.png" alt="fastmail" title="fastmail" width="400">](https://www.fastmail.com/)
-[<img src="images/geizhals_logo_official.svg" alt="geizhals preisvergleich" title="geizhals preisvergleich" width="400">](https://geizhals.at/)
-[<img src="images/ecard-logo.svg" alt="e-card" title="e-card" width="150">](https://www.e-card.bg/)
+{{% sponsor-grid %}}
+{{< sponsor-logo url="https://www.proxmox.com/en/" image="proxmox-full-lockup-color.svg" alt="Proxmox" class="bronze" >}}
+{{< sponsor-logo url="https://www.suse.com/" image="SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" class="bronze large" >}}
+{{< sponsor-logo url="https://www.fastmail.com/" image="FM-Logo-RGB.png" alt="Fastmail" class="bronze" >}}
+{{< sponsor-logo url="https://geizhals.at/" image="geizhals_logo_official.svg" alt="Geizhals Preisvergleich" class="bronze" >}}
+{{< sponsor-logo url="https://www.e-card.bg/" image="ecard-logo.svg" alt="e-card" class="bronze" >}}
+{{% /sponsor-grid %}}

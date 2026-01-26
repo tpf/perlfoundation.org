@@ -1,0 +1,53 @@
+/* Sponsor logo styling */
+.sponsor-logo {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 320px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 280px;
+}
+
+.dark .sponsor-logo {
+  background: white;
+  border: none;
+}
+
+.sponsor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 1rem;
+}
+
+.sponsor-logo.bronze {
+  margin: 0;
+}
+
+.sponsor-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sponsor-logo img {
+  width: auto;
+  height: 60px;
+  max-width: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Size modifiers for logos with different aspect ratios */
+.sponsor-logo.gold img {
+  height: 75px;
+}
+
+.sponsor-logo.large img {
+  height: 75px;
+}
