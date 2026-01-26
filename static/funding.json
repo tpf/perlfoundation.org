@@ -21,8 +21,7 @@
             "wellKnown": ""
         },
         "repositoryUrl": {
-            "url": "https://github.com/Perl/perl5",
-            "wellKnown": "https://github.com/Perl/perl5/.well-known/funding.json"
+            "url": "https://github.com/Perl/perl5"
         },
         "licenses": ["spdx:Artistic-1.0-Perl", "spdx:GPL-1.0-or-later"],
         "tags": ["programming", "perl", "interpreter", "scripting", "open-source", "core", "maintenance"]
