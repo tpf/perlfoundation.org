@@ -25,7 +25,6 @@ Menu
 
 Cost
 : Meal: Paid for by TPRF, drinks paid fr by guests
-> NOTE that drinks must be paid for in cash to simplify the reconcillation at the venue.
 
 Registration
 : [Click here to register for the Community dinner](https://perlfoundation.fcsuite.com/erp/donate/list/ticket)
