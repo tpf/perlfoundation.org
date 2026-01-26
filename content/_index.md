@@ -47,32 +47,18 @@ The Foundation helps to sponsor many events, worldwide, each year. Join us at
 
 ### Gold Level Sponsor
 
-<div class="sponsor-logo gold">
-<a href="https://duckduckgo.com/"><img class="nozoom" src="images/duck-duck-go.svg" alt="DuckDuckGo" title="DuckDuckGo"></a>
-</div>
+{{< sponsor-logo url="https://duckduckgo.com/" image="duck-duck-go.svg" alt="DuckDuckGo" class="gold" >}}
 
 ### Silver Level Sponsor
 
-<div class="sponsor-logo">
-<a href="https://www.webpros.com/"><img class="nozoom" src="images/webpros.svg" alt="WebPros" title="WebPros"></a>
-</div>
+{{< sponsor-logo url="https://www.webpros.com/" image="webpros.svg" alt="WebPros" >}}
 
 ### Bronze Level Sponsor
 
-<div class="sponsor-grid">
-<div class="sponsor-logo bronze">
-<a href="https://www.proxmox.com/en/"><img class="nozoom" src="images/proxmox-full-lockup-color.svg" alt="proxmox" title="proxmox"></a>
-</div>
-<div class="sponsor-logo bronze large">
-<a href="https://www.suse.com/"><img class="nozoom" src="images/SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" title="SUSE"></a>
-</div>
-<div class="sponsor-logo bronze">
-<a href="https://www.fastmail.com/"><img class="nozoom" src="images/FM-Logo-RGB.png" alt="fastmail" title="fastmail"></a>
-</div>
-<div class="sponsor-logo bronze">
-<a href="https://geizhals.at/"><img class="nozoom" src="images/geizhals_logo_official.svg" alt="geizhals preisvergleich" title="geizhals preisvergleich"></a>
-</div>
-<div class="sponsor-logo bronze">
-<a href="https://www.e-card.bg/"><img class="nozoom" src="images/ecard-logo.svg" alt="e-card" title="e-card"></a>
-</div>
-</div>
+{{% sponsor-grid %}}
+{{< sponsor-logo url="https://www.proxmox.com/en/" image="proxmox-full-lockup-color.svg" alt="Proxmox" class="bronze" >}}
+{{< sponsor-logo url="https://www.suse.com/" image="SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" class="bronze large" >}}
+{{< sponsor-logo url="https://www.fastmail.com/" image="FM-Logo-RGB.png" alt="Fastmail" class="bronze" >}}
+{{< sponsor-logo url="https://geizhals.at/" image="geizhals_logo_official.svg" alt="Geizhals Preisvergleich" class="bronze" >}}
+{{< sponsor-logo url="https://www.e-card.bg/" image="ecard-logo.svg" alt="e-card" class="bronze" >}}
+{{% /sponsor-grid %}}
