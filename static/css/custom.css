@@ -1,0 +1,28 @@
+/* Sponsor logo styling */
+.sponsor-logo {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 420px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-logo.bronze {
+  margin: 0.5rem;
+}
+
+.sponsor-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-logo img {
+  width: auto;
+  height: 70px;
+  max-width: 100%;
+  object-fit: contain;
+}

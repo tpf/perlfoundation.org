@@ -47,16 +47,34 @@ The Foundation helps to sponsor many events, worldwide, each year. Join us at
 
 ### Gold Level Sponsor
 
-[<img src="images/duck-duck-go.svg" alt="DuckDuckGo" title="DuckDuckGo" width="400">](https://duckduckgo.com/)
+<div class="sponsor-logo">
+<a href="https://duckduckgo.com/"><img src="images/duck-duck-go.svg" alt="DuckDuckGo" title="DuckDuckGo"></a>
+</div>
 
 ### Silver Level Sponsor
 
-[<img src="images/webpros.svg" alt="WebPros" title="WebPros" width="400">](https://www.webpros.com/)
+<div class="sponsor-logo">
+<a href="https://www.webpros.com/"><img src="images/webpros.svg" alt="WebPros" title="WebPros"></a>
+</div>
 
 ### Bronze Level Sponsor
 
-[<img src="images/proxmox-full-lockup-color.svg" alt="proxmox" title="proxmox" width="400">](https://www.proxmox.com/en/)
-[<img src="images/SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" title="SUSE" width="400">](https://www.suse.com/)
-[<img src="images/FM-Logo-RGB.png" alt="fastmail" title="fastmail" width="400">](https://www.fastmail.com/)
-[<img src="images/geizhals_logo_official.svg" alt="geizhals preisvergleich" title="geizhals preisvergleich" width="400">](https://geizhals.at/)
-[<img src="images/ecard-logo.svg" alt="e-card" title="e-card" width="150">](https://www.e-card.bg/)
+<div class="sponsor-logo bronze">
+<a href="https://www.proxmox.com/en/"><img src="images/proxmox-full-lockup-color.svg" alt="proxmox" title="proxmox"></a>
+</div>
+
+<div class="sponsor-logo bronze">
+<a href="https://www.suse.com/"><img src="images/SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" title="SUSE"></a>
+</div>
+
+<div class="sponsor-logo bronze">
+<a href="https://www.fastmail.com/"><img src="images/FM-Logo-RGB.png" alt="fastmail" title="fastmail"></a>
+</div>
+
+<div class="sponsor-logo bronze">
+<a href="https://geizhals.at/"><img src="images/geizhals_logo_official.svg" alt="geizhals preisvergleich" title="geizhals preisvergleich"></a>
+</div>
+
+<div class="sponsor-logo bronze">
+<a href="https://www.e-card.bg/"><img src="images/ecard-logo.svg" alt="e-card" title="e-card"></a>
+</div>
