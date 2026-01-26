@@ -4,7 +4,8 @@
   border: 1px solid #d1d5db;
   padding: 1rem;
   border-radius: 0.5rem;
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
   height: 140px;
   display: flex;
   align-items: center;
@@ -19,7 +20,7 @@
 .sponsor-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem 1rem;
 }
 
 .sponsor-logo.bronze {
