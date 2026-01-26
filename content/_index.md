@@ -59,22 +59,20 @@ The Foundation helps to sponsor many events, worldwide, each year. Join us at
 
 ### Bronze Level Sponsor
 
+<div class="sponsor-grid">
 <div class="sponsor-logo bronze">
 <a href="https://www.proxmox.com/en/"><img src="images/proxmox-full-lockup-color.svg" alt="proxmox" title="proxmox"></a>
 </div>
-
 <div class="sponsor-logo bronze large">
 <a href="https://www.suse.com/"><img src="images/SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" title="SUSE"></a>
 </div>
-
 <div class="sponsor-logo bronze">
 <a href="https://www.fastmail.com/"><img src="images/FM-Logo-RGB.png" alt="fastmail" title="fastmail"></a>
 </div>
-
 <div class="sponsor-logo bronze">
 <a href="https://geizhals.at/"><img src="images/geizhals_logo_official.svg" alt="geizhals preisvergleich" title="geizhals preisvergleich"></a>
 </div>
-
 <div class="sponsor-logo bronze">
 <a href="https://www.e-card.bg/"><img src="images/ecard-logo.svg" alt="e-card" title="e-card"></a>
+</div>
 </div>

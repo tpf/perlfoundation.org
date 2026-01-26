@@ -16,8 +16,14 @@
   border: none;
 }
 
+.sponsor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .sponsor-logo.bronze {
-  margin: 0.5rem;
+  margin: 0;
 }
 
 .sponsor-logo a {
