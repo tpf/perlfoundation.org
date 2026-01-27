@@ -13,7 +13,7 @@ aliases:
 Created by Mark Lentczner, https://www.ozonehouse.com/mark/periodic/
 
 
-![Raku Periodic Table of the Operators](/images/merch/raku-periodic-table-small.png)
+![Raku Periodic Table of the Operators](/images/merch/table-small-2025.jpg)
 
 Reproduced with the permission of the author.
 
