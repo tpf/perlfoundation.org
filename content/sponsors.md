@@ -28,6 +28,28 @@ url: '/our-donors.html'
 
 ---
 
+## Sponsors in kind
+
+As well as our financial sponsors and donors, the Foundation is supported by many organisations and individuals in many other ways. For example, providing resources, services, infrastructure and supporting members of our volunteering team.
+
+### 2026
+
+Mark Lentczner
+: Creator of the Raku Periodic Table of the Operators, Mark gives permission for proceeds of the sale of the posters and prints to the Foundation
+
+Anonymous
+: Gift of circa 100 books to generate donations at FOSDEM
+
+WebPros
+: Supporting the board seat of Todd Rinaldo
+
+Open Digital
+: Supporting the board seat of Stuart Mackintosh
+
+
+---
+
+
 The Perl Foundation extends our sincere thanks to all our sponsors, large and
 small. If you would like to make a donation, [visit our donation
 page](donate.html).
