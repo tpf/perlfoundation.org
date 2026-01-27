@@ -7,22 +7,22 @@ aliases: '/our-sponsors.html'
 
 ## Financial sponsors
 
-The following organisations provide finacial support to the Foundation:
+The following organisations provide financial support to the Foundation:
 
 ---
-### Gold Level
+### Gold Level ($24,000)
 
 {{< sponsor-logo url="https://duckduckgo.com/" image="duck-duck-go.svg" alt="DuckDuckGo" class="gold" >}}
 
 ---
 
-### Silver Level
+### Silver Level ($12,000)
 
 {{< sponsor-logo url="https://www.webpros.com/" image="webpros.svg" alt="WebPros" >}}
 
 ---
 
-### Bronze Level
+### Bronze Level ($6,000)
 
 {{% sponsor-grid %}}
 {{< sponsor-logo url="https://www.proxmox.com/en/" image="proxmox-full-lockup-color.svg" alt="Proxmox" class="bronze" >}}
