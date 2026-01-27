@@ -7,7 +7,7 @@ aliases: '/our-sponsors.html'
 
 ## Financial sponsors
 
-The following organisations provid finacial support to the Foundation:
+The following organisations provide finacial support to the Foundation:
 
 ---
 ### Gold Level
