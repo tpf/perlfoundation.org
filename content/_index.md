@@ -42,8 +42,7 @@ help support open source developers.
 Open source development is driven by in-person events where developers share
 ideas, code, and have fun.
 
-The Foundation helps to sponsor many events, worldwide, each year. Join us at
-[The Perl and Raku Conference 2025](https://tprc.us).
+The Foundation helps to sponsor many events, worldwide, each year. Find out more on our [events page](/events.html).
 
 ### Gold Level Sponsor
 
