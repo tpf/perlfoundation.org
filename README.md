@@ -22,6 +22,20 @@ Pages are stored in `/content` and can have the perce[ption of being in a subdir
 
 Images should be stored in `static//images` however if there will be a collection of images for a page, a subdirectory should be made under images/ to group the images together.
 
+### OpenGraph image
+
+The site's OpenGraph image (`static/images/og-image.png`) is generated from the HTML template at `assets/social-card.html`. To regenerate it after making changes:
+
+```
+./bin/generate-og-image
+```
+
+This requires Playwright. If you haven't used it before, you may need to install the browser first:
+
+```
+npx playwright install chromium
+```
+
 
 
 ## QR code aliases
