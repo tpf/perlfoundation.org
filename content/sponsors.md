@@ -40,6 +40,12 @@ Mark Lentczner
 Anonymous
 : Gift of circa 100 books to generate donations at FOSDEM
 
+Trans-Formed Media, LLC
+: Supporting the board seat of Ruth Holloway
+
+Gray & Associates
+: Supporting the board seat of Bruce Gray
+
 WebPros
 : Supporting the board seat of Todd Rinaldo
 
