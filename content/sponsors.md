@@ -52,6 +52,8 @@ WebPros
 Open Digital
 : Supporting the board seat of Stuart Mackintosh
 
+Foundant
+: Provision of full instance of FC Suite to the foundation at no cost
 
 ---
 
