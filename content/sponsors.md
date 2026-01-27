@@ -1,22 +1,28 @@
 ---
 title: 'Our Sponsors'
 url: '/our-donors.html'
+aliases: '/our-sponsors.html'
 ---
 
+
+## Financial sponsors
+
+The following organisations provid finacial support to the Foundation:
+
 ---
-## Gold Level
+### Gold Level
 
 {{< sponsor-logo url="https://duckduckgo.com/" image="duck-duck-go.svg" alt="DuckDuckGo" class="gold" >}}
 
 ---
 
-## Silver Level
+### Silver Level
 
 {{< sponsor-logo url="https://www.webpros.com/" image="webpros.svg" alt="WebPros" >}}
 
 ---
 
-## Bronze Level
+### Bronze Level
 
 {{% sponsor-grid %}}
 {{< sponsor-logo url="https://www.proxmox.com/en/" image="proxmox-full-lockup-color.svg" alt="Proxmox" class="bronze" >}}
