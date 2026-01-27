@@ -26,7 +26,6 @@ Find out [how to nominate or join the board here](join-the-board.html).
 
 ![Stuart Mackintosh photo](images/headshots/stuart-mackintosh.jpg)
 
-
 Based in Europe, Stuart has been working with free and open source software since the mid-1990s, with many early projects based on Perl delivering e-commerce, ISP and communications services.
 
 Stuart founded various open source integration and hosting companies and currently consults through Open Digital Consulting. He also founded the industry association OpenUK, works with the European Commission, and serves on the governance working group for the Odoo Community Association.
@@ -38,6 +37,8 @@ In his role as President, Stuart is keen to develop committees and engagement wi
 Appointed: September 2019
 
 [president@perlfoundation.org](mailto:president@perlfoundation.org)
+
+Board seat sponsored by [Open Digiutal Consulting Co](https://opendigital.cc/)
 
 ### Peter Krawczyk, Co-treasurer
 
@@ -53,7 +54,7 @@ Appointed: October 2020
 [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org)
 
 
-### Ruth Holloway, Co-Treasurer
+### Ruth Holloway, Co-treasurer
 
 ![Ruth Holloway photo](images/headshots/ruth-holloway.jpg)
 
@@ -69,6 +70,8 @@ Co-Treasurer, taking care of many of the day-to-day financial record-keeping
 for the Foundation.
 
 Appointed: January 2024
+
+Board seat sponsored byb Trans-Formed Media, LLC
 
 ### Bruce Gray, Secretary
 
@@ -98,6 +101,9 @@ theatre.
 
 Appointed: January 2024
 
+Board seat sponsored by Gray & Associates
+
+
 ### Todd Rinaldo
 
 ![Todd Rinaldo photo](images/headshots/todd-rinaldo.jpg)
@@ -111,6 +117,8 @@ donates significant time to The Boy Scouts of America.
 Appointed: August 2022
 
 [todd@perlfoundation.org](mailto:todd@perlfoundation.org)
+
+Board seat sponsored by WebPros
 
 ### Daniel Sockwell
 
