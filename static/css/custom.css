@@ -51,3 +51,82 @@
 .sponsor-logo.large img {
   height: 75px;
 }
+
+/* In-kind sponsor styling */
+.in-kind-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.in-kind-sponsor {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dark .in-kind-sponsor {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.in-kind-sponsor .sponsor-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 0.375rem;
+}
+
+.dark .in-kind-sponsor .sponsor-logo-container {
+  background: white;
+}
+
+.in-kind-sponsor .sponsor-logo-container img {
+  max-width: 100%;
+  max-height: 60px;
+  height: auto;
+  object-fit: contain;
+}
+
+.in-kind-sponsor .sponsor-info {
+  flex: 1;
+}
+
+.in-kind-sponsor .sponsor-info h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.in-kind-sponsor .sponsor-info h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.in-kind-sponsor .sponsor-info h4 a:hover {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+}
+
+.dark .in-kind-sponsor .sponsor-info h4 a:hover {
+  color: var(--color-primary-400);
+}
+
+.in-kind-sponsor .sponsor-info p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.dark .in-kind-sponsor .sponsor-info p {
+  color: rgba(255, 255, 255, 0.7);
+}

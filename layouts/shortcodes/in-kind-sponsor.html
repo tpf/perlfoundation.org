@@ -1,0 +1,24 @@
+<div class="in-kind-sponsor">
+  {{ if .Get "image" }}
+    <div class="sponsor-logo-container">
+      {{ if .Get "url" }}
+        <a href="{{ .Get "url" }}" target="_blank" rel="noopener noreferrer">
+          <img class="nozoom" src="images/{{ .Get "image" }}" alt="{{ .Get "name" }}" title="{{ .Get "name" }}">
+        </a>
+      {{ else }}
+        <img class="nozoom" src="images/{{ .Get "image" }}" alt="{{ .Get "name" }}" title="{{ .Get "name" }}">
+      {{ end }}
+    </div>
+  {{ end }}
+
+  <div class="sponsor-info">
+    <h4>
+      {{ if .Get "url" }}
+        <a href="{{ .Get "url" }}" target="_blank" rel="noopener noreferrer">{{ .Get "name" }}</a>
+      {{ else }}
+        {{ .Get "name" }}
+      {{ end }}
+    </h4>
+    <p>{{ .Inner }}</p>
+  </div>
+</div>
