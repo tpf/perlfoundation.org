@@ -5,10 +5,10 @@ url: '/committees.html'
 
 ## Grants
 
-- Saif Ahmed Secretary
+- Nicholas R. Secretary
+- Saif Ahmed
 - John SJ Anderson
 - Matthew Horsfall
-- Nicolas R.
 - Peter Krawczyk
 - Thomas Klausner
 - Todd Rinaldo
