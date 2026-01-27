@@ -48,7 +48,7 @@ As well as our financial sponsors and donors, the Foundation is supported by man
 
 {{< in-kind-sponsor name="NetActuate" url="https://www.netactuate.com/" image="netactuate.svg" description="Provide hosting infrastructure to CPAN Testers at no cost" >}}
 
-{{< in-kind-sponsor name="Open Digital" url="https://opendigital.cc/" description="Supporting the board seat of Stuart Mackintosh" >}}
+{{< in-kind-sponsor name="Open Digital" url="https://opendigital.cc/" image="open-digital.svg" description="Supporting the board seat of Stuart Mackintosh" >}}
 
 {{< in-kind-sponsor name="Trans-Formed Media, LLC" description="Supporting the board seat of Ruth Holloway" >}}
 
