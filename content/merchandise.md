@@ -10,7 +10,7 @@ aliases:
 
 ### Raku - Periodic table of the Operators - 2025 edition
 
-Created by Mark Lentczner, https://www.ozonehouse.com/mark/periodic/
+Created by [Mark Lentczner](https://www.ozonehouse.com/mark/periodic/)
 
 
 ![Raku Periodic Table of the Operators](/images/merch/table-small-2025.jpg)
