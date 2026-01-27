@@ -40,7 +40,7 @@ As well as our financial sponsors and donors, the Foundation is supported by man
 
 {{< in-kind-sponsor name="Fastmail" url="https://www.fastmail.com/" image="FM-Logo-RGB.png" description="Provide email hosting services to the foundation at no cost" >}}
 
-{{< in-kind-sponsor name="Foundant" url="https://www.foundant.com/" description="Provision of full instance of FC Suite to the foundation at no cost" >}}
+{{< in-kind-sponsor name="Foundant" url="https://www.foundant.com/" image="foundant.png" description="Provision of full instance of FC Suite to the foundation at no cost" >}}
 
 {{< in-kind-sponsor name="Gray & Associates" description="Supporting the board seat of Bruce Gray" >}}
 
