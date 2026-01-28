@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TPRF Social Card - Classic Elegance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .social-card {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #0f0f3d 0%, #191960 40%, #212178 70%, #2d2d8a 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+    }
+
+    .social-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(45, 45, 138, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(33, 33, 120, 0.3) 0%, transparent 40%);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .tagline {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #8b8bc7;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: #e0e1dd;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: #9d9ddb;
+    }
+
+    .mission {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #b8b8d9;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .onion-container {
+      position: relative;
+      z-index: 2;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .onion-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(45, 45, 138, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .onion {
+      width: 260px;
+      height: 260px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .onion img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.3));
+    }
+
+    .url {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #8b8bc7;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="social-card">
+    <div class="content">
+      <p class="tagline">Funding Perl and Raku development</p>
+      <h1>The Perl <span>&</span> Raku<br>Foundation</h1>
+      <p class="mission">Advancing programming languages through open discussion, collaboration, design, and code.</p>
+    </div>
+    <div class="onion-container">
+      <div class="onion-glow"></div>
+      <div class="onion">
+        <img src="Perl_Onion_Color.svg" alt="Perl Onion">
+      </div>
+    </div>
+    <span class="url">perlfoundation.org</span>
+  </div>
+
+</body>
+</html>

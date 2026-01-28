@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Generate OpenGraph image from social card HTML using Playwright
+# Usage: ./bin/generate-og-image
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(dirname "$SCRIPT_DIR")"
+
+HTML_PATH="$ROOT_DIR/assets/social-card.html"
+OUTPUT_PATH="$ROOT_DIR/static/images/og-image.png"
+
+npx playwright screenshot \
+  --viewport-size "1200,630" \
+  --wait-for-timeout 1500 \
+  "file://$HTML_PATH" \
+  "$OUTPUT_PATH"
+
+echo "OpenGraph image saved to: $OUTPUT_PATH"

@@ -1,5 +1,6 @@
 colorScheme = "default"
 defaultAppearance = "light"
+images = ["images/og-image.png"]
 autoSwitchAppearance = true
 enableSearch = true
 enableCodeCopy = false
