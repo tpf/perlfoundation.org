@@ -20,11 +20,8 @@ Venue
 : [La Porteuse d'Eau](https://laporteuse.eu/en)
 Av. Jean Volders 48, 1060 Saint-Gilles
 
-Menu
-: To be confirmed
-
 Cost
-: Meal: Paid for by TPRF, drinks paid fr by guests
+: Meal: Paid for by TPRF, drinks paid for by guests
 > NOTE that drinks must be paid for in cash to simplify reconciliation at the venue.
 
 Registration
