@@ -51,6 +51,8 @@ to play golf and go on road trips.
 
 Appointed: October 2020
 
+Board seat sponsored by Remora, Inc
+
 [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org)
 
 
@@ -71,7 +73,9 @@ for the Foundation.
 
 Appointed: January 2024
 
-Board seat sponsored byb Trans-Formed Media, LLC
+Board seat sponsored by Trans-Formed Media, LLC
+
+[treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org)
 
 ### Bruce Gray, Secretary
 
