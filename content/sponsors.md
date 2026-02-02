@@ -48,6 +48,15 @@ The following organisations provide financial support to the Foundation at bronz
 
 ---
 
+## Conference sponsors
+
+The following organisations provide financial support for [The Perl and Raku Conference 2026](https://tprc.us/tprc-2026-gsp/):
+
+<!-- Logo added: 2026-02-02 -->
+{{< sponsor-logo url="https://holophrastic.com/" image="holophrastic-black.png" alt="Holophrastic" class="conference" >}}
+
+---
+
 ## Sponsors in kind
 
 As well as our financial sponsors and donors, the Foundation is supported by many organisations and individuals in many other ways. For example, providing resources, services, infrastructure and supporting members of our volunteering team.
