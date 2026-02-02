@@ -13,6 +13,7 @@ keywords:
 > programming languages, through open discussion, collaboration, design, and
 > code.
 
+![The Perl & Raku Foundation](/images/og-image.png)
 
 ## Funding Perl and Raku development
 
