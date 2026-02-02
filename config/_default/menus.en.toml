@@ -7,6 +7,14 @@ url = "/"
 weight = 1
 
 [[main]]
+name = "Donate Now"
+url = "/donate.html"
+weight = 1.5
+identifier = "donate-now"
+[main.params]
+  class = "donate-button"
+
+[[main]]
 name = "About"
 url = "/about.html"
 weight = 2
@@ -65,29 +73,23 @@ url = "/affiliates.html"
 weight = 7
 
 [[main]]
-name = "Donate"
-url = "/donate.html"
+name = "Sponsors"
+url = "/our-donors.html"
 weight = 3
-identifier = "donate"
+identifier = "sponsors"
 hasChildren = true
 
 [[main]]
-parent = "donate"
+parent = "sponsors"
 name = "Our Sponsors"
 url = "/our-donors.html"
 weight = 1
 
 [[main]]
-parent = "donate"
-name = "Payments"
-url = "/payments.html"
-weight = 2
-
-[[main]]
-parent = "donate"
+parent = "sponsors"
 name = "How Do Sponsors Benefit?"
 url = "/how-do-sponsors-benefit.html"
-weight = 3
+weight = 2
 
 [[main]]
 name = "Grants"
