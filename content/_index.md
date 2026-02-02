@@ -44,6 +44,16 @@ ideas, code, and have fun.
 
 The Foundation helps to sponsor many events, worldwide, each year. Find out more on our [events page](/events.html).
 
+## What Our Sponsors Say
+
+> "At SUSE, Perl is a fundamental component and member of our ecosystem. We provide it as part of our Linux offerings by actively supporting Perl packages in SUSE Linux Enterprise and openSUSE. We use it extensively in our toolset, powering among others OpenQA and Open Build Service, this last one is used to build not just Linux packages but also Kubernetes."
+>
+> — Miguel Pérez Colino, Director of Operations, Linux Product Management & Marketing, [SUSE](https://www.perl.com/article/suse-donates-to-tprf/)
+
+> "Perl has been an integral part of our product price comparison platform from the start of the company 25 years ago. Supporting the Perl 5 Core Maintenance Fund means supporting both present and future of a substantial pillar of Modern Open Source Computing, for us and other current or prospective users."
+>
+> — Michael Kröll, CTO, [Geizhals Preisvergleich](https://www.perl.com/article/geizhals-donates-to-tprf/)
+
 ### Gold Level Sponsor
 
 {{< sponsor-logo url="https://duckduckgo.com/" image="duck-duck-go.svg" alt="DuckDuckGo" class="gold" >}}
