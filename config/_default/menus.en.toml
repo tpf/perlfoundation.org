@@ -4,12 +4,12 @@ none = "none"
 [[main]]
 name = "Home"
 url = "/"
-weight = 1
+weight = 2
 
 [[main]]
 name = "Donate Now"
 url = "/donate.html"
-weight = 1.5
+weight = 4
 identifier = "donate-now"
 [main.params]
   class = "donate-button"
@@ -17,7 +17,7 @@ identifier = "donate-now"
 [[main]]
 name = "About"
 url = "/about.html"
-weight = 2
+weight = 6
 identifier = "about"
 hasChildren = true
 
@@ -25,57 +25,63 @@ hasChildren = true
 parent = "about"
 name = "News"
 url = "http://news.perlfoundation.org/"
-weight = 1
+weight = 2
 target = "_blank"
+
+[[main]]
+parent = "about"
+name = "Events"
+url = "/events.html"
+weight = 4
 
 [[main]]
 parent = "about"
 name = "The Perl and Raku Conference NA"
 url = "https://tprc.us"
-weight = 1.5
+weight = 6
 target = "_blank"
 
 [[main]]
 parent = "about"
 name = "The Board"
 url = "/the-board.html"
-weight = 2
+weight = 8
 
 [[main]]
 parent = "about"
 name = "Advisory Board"
 url = "/advisory_board.html"
-weight = 3
+weight = 10
 
 [[main]]
 parent = "about"
 name = "Committees"
 url = "/committees.html"
-weight = 4
+weight = 12
 
 [[main]]
 parent = "about"
 name = "Get Involved"
 url = "/get-involved.html"
-weight = 5
+weight = 14
 
 [[main]]
 parent = "about"
 name = "Perl Merchandise"
 url = "https://the-perl-store.creator-spring.com/"
-weight = 6
+weight = 16
 target = "_blank"
 
 [[main]]
 parent = "about"
 name = "Affiliates"
 url = "/affiliates.html"
-weight = 7
+weight = 18
 
 [[main]]
 name = "Sponsors"
 url = "/our-donors.html"
-weight = 3
+weight = 8
 identifier = "sponsors"
 hasChildren = true
 
@@ -83,18 +89,18 @@ hasChildren = true
 parent = "sponsors"
 name = "Our Sponsors"
 url = "/our-donors.html"
-weight = 1
+weight = 2
 
 [[main]]
 parent = "sponsors"
 name = "How Do Sponsors Benefit?"
 url = "/how-do-sponsors-benefit.html"
-weight = 2
+weight = 4
 
 [[main]]
 name = "Grants"
 url = "/grants.html"
-weight = 4
+weight = 10
 identifier = "grants"
 hasChildren = true
 
@@ -102,55 +108,55 @@ hasChildren = true
 parent = "grants"
 name = "Running Grants"
 url = "/running-grants.html"
-weight = 1
+weight = 2
 
 [[main]]
 parent = "grants"
 name = "Grants Committee"
 url = "/grants-committee1.html"
-weight = 2
+weight = 4
 
 [[main]]
 parent = "grants"
 name = "Grant Benefits"
 url = "/grant-benefits.html"
-weight = 3
+weight = 6
 
 [[main]]
 parent = "grants"
 name = "Grant Ideas"
 url = "https://grants.perlfoundation.org/"
 target = "_blank"
-weight = 4
+weight = 8
 
 [[main]]
 parent = "grants"
 name = "Community grant proposals"
 url = "/how-to-write-a-proposal.html"
-weight = 5
+weight = 10
 
 [[main]]
 parent = "grants"
 name = "Perl Core Development Fund"
 url = "/perl-core-development-fund.html"
-weight = 6
+weight = 12
 
 [[main]]
 parent = "grants"
 name = "Raku Development Fund"
 url = "/raku-development-fund.html"
-weight = 7
+weight = 14
 
 [[main]]
 parent = "grants"
 name = "Project Support"
 url = "/project-support.html"
-weight = 8
+weight = 16
 
 [[main]]
 name = "Legal"
 url = "/legal.html"
-weight = 6
+weight = 12
 identifier = "legal"
 hasChildren = true
 
@@ -158,65 +164,65 @@ hasChildren = true
 parent = "legal"
 name = "Articles"
 url = "/articles.html"
-weight = 1
+weight = 2
 
 [[main]]
 parent = "legal"
 name = "Trademarks"
 url = "/trademarks.html"
-weight = 2
+weight = 4
 
 [[main]]
 parent = "legal"
 name = "License FAQ"
 url = "/license-faq.html"
-weight = 3
+weight = 6
 
 [[main]]
 parent = "legal"
 name = "Artistic License 2.0"
 url = "/artistic-license-20.html"
-weight = 4
+weight = 8
 
 [[main]]
 parent = "legal"
 name = "Artistic Notes 2.0"
 url = "/artistic-notes-20.html"
-weight = 5
+weight = 10
 
 [[main]]
 parent = "legal"
 name = "Artistic License 1.0"
 url = "/artistic-license-10.html"
-weight = 6
+weight = 12
 
 [[main]]
 parent = "legal"
 name = "CPAN Licensing Guidelines"
 url = "/cpan-licensing-guidelines.html"
-weight = 7
+weight = 14
 
 [[main]]
 parent = "legal"
 name = "Contributor License Agreement"
 url = "/contributor-license-agreement.html"
-weight = 8
+weight = 16
 
 [[main]]
 parent = "legal"
 name = "Conflict of Interest Policy"
 url = "/conflict-of-interest-policy.html"
-weight = 9
+weight = 18
 
 [[main]]
 parent = "legal"
 name = "IRS Filings"
 url = "/irs-filings.html"
-weight = 10
+weight = 20
 
 [[main]]
 name = "Charters"
-weight = 11
+weight = 22
 identifier = "charters"
 parent = "legal"
 url = "/charters/"
@@ -226,25 +232,25 @@ hasChildren = true
 parent = "charters"
 name = "Marketing Committee"
 url = "/marketing-committee.html"
-weight = 1
+weight = 2
 
 [[main]]
 parent = "charters"
 name = "Grants Committee"
 url = "/grants-committee.html"
-weight = 2
+weight = 4
 
 [[main]]
 parent = "charters"
 name = "Community Advocacy Committee"
 url = "/community-advocacy-committee.html"
-weight = 3
+weight = 6
 
 [[main]]
 parent = "charters"
 name = "Bylaws"
 url = "/bylaws.html"
-weight = 4
+weight = 8
 
 [[footer]]
 none = "none"
@@ -253,10 +259,10 @@ none = "none"
 name = "Contact"
 url = "mailto:hello@perlfoundation.org"
 identifier = "contact-footer"
-weight = 1
+weight = 2
 
 [[footer]]
 name = "Donate"
 pageRef = "donate"
 identifier = "donate-footer"
-weight = 2
+weight = 4
