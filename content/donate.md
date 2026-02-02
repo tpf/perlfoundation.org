@@ -3,39 +3,51 @@ title: 'Donate'
 url: '/donate.html'
 ---
 
-There are many ways you can donate to The Perl Foundation:
+## Quick Donation Options
 
-- [Online credit card
-  payment](https://perlfoundation.fcsuite.com/erp/donate)
-- [At Open Collective](https://opencollective.com/tprf)
-- [PayPal](https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS)
-- Bank check, payable to Yet Another Society. Please mail to: Yet
-  Another Society, d/b/a The Perl Foundation, 340 S Lemon Ave
-  #6055, Walnut, CA 91789
-- Wire Transfer -
-  contact [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org) for
-  assistance.
-- [Employer pay check
-  deductions](https://causes.benevity.org/causes/840-383536536) - If
-  your employer uses [Benevity for charitable
-  giving](https://causes.benevity.org/causes/840-383536536) (Google,
-  Microsoft, and hundreds of other businesses use Benevity), then you
-  can opt to have donations (and possibly employer-matches) made to
-  TPRF directly through your pay check. Apple has a similar program,
-  which we also participate in.
+The easiest ways to support The Perl & Raku Foundation:
 
-### If you require an invoice for your donation, please
+- **[Donate Now](https://perlfoundation.fcsuite.com/erp/donate)** - Give via credit card
+- **[Open Collective](https://opencollective.com/tprf)** - Support us through Open Collective
 
-contact [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org).
+## Other Ways to Donate
 
-If any members of the Perl or Raku communities wish to ask their employers or
-other associates if they would be willing to donate to TPRF, please share [our
-prospectus](https://drive.google.com/file/d/1pQJfIW0u-4gKw1o-f18GyyPdT3YlwrUv/view)
+- **[PayPal](https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS)** - We also accept
+  PayPal at [billing@yapc.org](mailto:billing@yapc.org)
+- **Bank Check** - Payable to Yet Another Society, mailed to:
+  ```
+  YET ANOTHER SOCIETY
+  (DBA) THE PERL AND RAKU FOUNDATION
+  440 N BARRANCA AVE
+  #6055 COVINA, CA
+  91723
+  UNITED STATES
+  ```
+- **Wire Transfer** - Contact
+  [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org) for wire transfer
+  details. Please provide:
+  - Your name and address (must match the account receiving the money)
+  - Name and address of your bank
+  - Either an IBAN #, or a Swift code with routing and account numbers
+- **[Employer Paycheck Deductions](https://causes.benevity.org/causes/840-383536536)** - If
+  your employer uses Benevity for charitable giving (Google, Microsoft, and hundreds of other
+  businesses use Benevity), you can have donations (and possibly employer-matches) made to TPRF
+  directly through your paycheck. Apple has a similar program, which we also participate in.
 
-Perl is part of the technology stack running many of today’s businesses. Our
-donors and sponsors use Perl and Raku to power their businesses. That’s one
-reason they contribute back to our community. But there is so much more that
-sponsorship can bring to the community.
+## Invoices & Payment Requests
+
+If you require an invoice for your donation, contact
+[treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org).
+
+For bills, reimbursements, or accounts payable requests, email
+[payments@perlfoundation.org](mailto:payments@perlfoundation.org). Invoices may also be mailed to
+the address above.
+
+## How Your Donation Helps
+
+Perl is part of the technology stack running many of today's businesses. Our donors and sponsors use
+Perl and Raku to power their businesses. That's one reason they contribute back to our community.
+Here's how your support makes a difference:
 
 - TPRF holds [conferences](https://tprc.us) that bring together the Perl and
   Raku community. Speakers give technical talks and the community gets together
@@ -55,3 +67,8 @@ sponsorship can bring to the community.
   groups as well as re-invigorate existing groups.
 - Through online efforts and open-source conferences, TPRF will continue to
   advocate Perl and Raku to the world.
+
+---
+
+**Want to ask your employer to donate?** Share [our
+prospectus](https://drive.google.com/file/d/1pQJfIW0u-4gKw1o-f18GyyPdT3YlwrUv/view) with them.
