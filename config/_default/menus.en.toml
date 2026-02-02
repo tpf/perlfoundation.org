@@ -67,10 +67,9 @@ weight = 14
 
 [[main]]
 parent = "about"
-name = "Perl Merchandise"
-url = "https://the-perl-store.creator-spring.com/"
+name = "Merchandise"
+url = "/merch.html"
 weight = 16
-target = "_blank"
 
 [[main]]
 parent = "about"
