@@ -15,35 +15,23 @@ keywords:
 
 ![The Perl & Raku Foundation](/images/og-image.png)
 
-## Funding Perl and Raku development
+## Keeping Critical Infrastructure Alive
 
-The Perl and Raku Foundation accepts donations from organizations that depend on Perl or
-Raku, and from individuals who love programming with the Perl or Raku
-languages. Our desire is to build a strong, healthy and sustainable language
-ecosystem and community.
+Perl powers SUSE's OpenQA testing framework, builds Kubernetes packages, and runs price comparison platforms that started 25 years ago and are still going strong.
 
-If you use Perl or Raku to support your business, or as a hobby, your donation
-will help fund projects and events that support continued development. Check out [our
-prospectus](https://drive.google.com/file/d/1pQJfIW0u-4gKw1o-f18GyyPdT3YlwrUv/view).
+We fund the developers who fix critical bugs, modernize core features, and keep Perl and Raku competitive. Companies, contractors, and hobbyists who depend on them can keep building. Whether these languages run your business or fuel your passion projects, your donation directly supports the people actually doing the work.
 
+Check out [our prospectus](https://drive.google.com/file/d/1pQJfIW0u-4gKw1o-f18GyyPdT3YlwrUv/view) to see how we've invested in the ecosystem. [Join companies](donate.html) like [DuckDuckGo](https://www.perl.com/article/duckduckgo-donates-25-000-to-the-perl-and-raku-foundation-v2025/), SUSE, and Fastmail in sustaining the Perl and Raku ecosystem.
 
-## Donate
+## Our Grants in Action
 
-Your generous donations help to fund TPRF grant programs. Thinking of [becoming
-a donor](donate.html)?
+Our [grant programs](grants.html) fund development of projects to benefit Perl, Raku and the broader Community. These grants are funded by donations and support open source developers.
 
-## TPRF Grants
+## Community Happens Face-to-Face
 
-Our [grant programs](grants.html) help fund development of open source projects to benefit
-Perl, Raku and the broader Community. These grants are funded by donations and
-help support open source developers.
+The Perl and Raku Conference is the annual North American gathering where developers share code, solve problems together, and build the relationships that keep open source thriving. In 2025, we also supported the [London Perl Workshop](https://www.londonperlworkshop.com/) and the [Perl Toolchain Summit](https://perltoolchainsummit.org/pts2025/), where maintainers collaborate on the infrastructure that powers CPAN and the tools that thousands depend on.
 
-## Events
-
-Open source development is driven by in-person events where developers share
-ideas, code, and have fun.
-
-The Foundation helps to sponsor many events, worldwide, each year. Find out more on our [events page](/events.html).
+[See upcoming events](/events.html) and find your people.
 
 ## What Our Sponsors Say
 
