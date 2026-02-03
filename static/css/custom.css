@@ -11,6 +11,13 @@ body {
   max-width: 1600px !important;
 }
 
+/* Override narrow prose widths for single pages */
+#single_header.max-w-prose,
+.article-content.max-w-prose,
+footer.max-w-prose {
+  max-width: 100% !important;
+}
+
 /* Switch to hamburger menu at 1200px instead of default 768px */
 @media (min-width: 768px) and (max-width: 1200px) {
   /* Hide desktop menu except donate button */
