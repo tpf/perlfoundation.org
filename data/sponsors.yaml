@@ -1,0 +1,40 @@
+gold:
+  - url: "https://duckduckgo.com/"
+    image: "duck-duck-go.svg"
+    alt: "DuckDuckGo"
+    date_added: "2025-10-23"
+
+silver:
+  - url: "https://www.webpros.com/"
+    image: "webpros.svg"
+    alt: "WebPros"
+    date_added: "2025-10-23"
+
+bronze:
+  - url: "https://www.proxmox.com/en/"
+    image: "proxmox-full-lockup-color.svg"
+    alt: "Proxmox"
+    date_added: "2025-10-23"
+  - url: "https://www.suse.com/"
+    image: "SUSE_Logo-hor_L_Green-pos_sRGB.svg"
+    alt: "SUSE"
+    class: "large"
+    date_added: "2025-10-23"
+  - url: "https://www.fastmail.com/"
+    image: "FM-Logo-RGB.png"
+    alt: "Fastmail"
+    date_added: "2025-10-23"
+  - url: "https://geizhals.at/"
+    image: "geizhals_logo_official.svg"
+    alt: "Geizhals Preisvergleich"
+    date_added: "2025-10-23"
+  - url: "https://www.e-card.bg/"
+    image: "ecard-logo.svg"
+    alt: "e-card"
+    date_added: "2025-10-23"
+
+conference:
+  - url: "https://holophrastic.com/"
+    image: "holophrastic-black.png"
+    alt: "Holophrastic"
+    date_added: "2026-02-02"
