@@ -142,6 +142,17 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Dropdown menu background fix for readability in light mode */
+.nested-menu + .absolute > div {
+  background: white !important;
+  backdrop-filter: none !important;
+}
+
+.dark .nested-menu + .absolute > div {
+  background: rgba(17, 24, 39, 0.9) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
 /* Donate Now button styling - uses Perl onion logo blue (#212178) */
 .donate-button {
   background: linear-gradient(135deg, #2d2da8 0%, #212178 100%) !important;
