@@ -1,3 +1,11 @@
+/* CSS Custom Properties */
+:root {
+  --dropdown-bg-light: rgb(255, 255, 255);
+  --dropdown-bg-dark: rgba(17, 24, 39, 0.9);
+  --dropdown-blur: blur(8px);
+  --dropdown-transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
 /* Sponsor logo styling */
 .sponsor-logo {
   background: transparent;
@@ -140,6 +148,37 @@
 
 .dark .in-kind-sponsor .sponsor-info p.sponsor-description {
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* Dropdown menu background fix for readability in light mode */
+.nested-menu + .absolute > div {
+  background-color: var(--dropdown-bg-light);
+  backdrop-filter: none;
+  transition: var(--dropdown-transition);
+}
+
+.dark .nested-menu + .absolute > div {
+  background-color: var(--dropdown-bg-dark);
+  backdrop-filter: var(--dropdown-blur);
+}
+
+/* Dropdown menu accessibility - show on hover, focus, or when toggled open */
+.nested-menu:hover + .menuhide,
+.nested-menu:focus-within + .menuhide,
+.nested-menu.is-open + .menuhide,
+.nested-menu.dropdown-hover + .menuhide {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Mobile touch target improvements - ensure 44x44px minimum for WCAG 2.5.5 */
+@media (max-width: 768px) {
+  .nested-menu + .absolute > div a {
+    padding: 0.75rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
 }
 
 /* Donate Now button styling - uses Perl onion logo blue (#212178) */
