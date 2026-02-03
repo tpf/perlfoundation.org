@@ -1,1 +1,7 @@
 <link rel="stylesheet" href="/css/custom.css">
+
+{{/* Custom JavaScript for dropdown accessibility */}}
+{{ $jsDropdown := resources.Get "js/dropdown.js" }}
+{{ $jsDropdown = $jsDropdown | resources.Minify | resources.Fingerprint "sha512" }}
+<script defer type="text/javascript" src="{{ $jsDropdown.RelPermalink }}"
+  integrity="{{ $jsDropdown.Data.Integrity }}"></script>

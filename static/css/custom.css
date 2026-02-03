@@ -144,13 +144,23 @@
 
 /* Dropdown menu background fix for readability in light mode */
 .nested-menu + .absolute > div {
-  background: white !important;
-  backdrop-filter: none !important;
+  background-color: rgb(255, 255, 255);
+  backdrop-filter: none;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .dark .nested-menu + .absolute > div {
-  background: rgba(17, 24, 39, 0.9) !important;
-  backdrop-filter: blur(8px) !important;
+  background-color: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+/* Dropdown menu accessibility - show on hover, focus, or when toggled open */
+.nested-menu:hover + .menuhide,
+.nested-menu:focus-within + .menuhide,
+.nested-menu.is-open + .menuhide,
+.nested-menu.dropdown-hover + .menuhide {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Donate Now button styling - uses Perl onion logo blue (#212178) */
