@@ -6,6 +6,11 @@
   --dropdown-transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
+/* Wider content container for website (not blog) layout */
+body {
+  max-width: 1600px !important;
+}
+
 /* Sponsor logo styling */
 .sponsor-logo {
   background: transparent;

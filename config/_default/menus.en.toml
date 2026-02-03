@@ -2,12 +2,13 @@
 none = "none"
 
 [[main]]
-name = "Home"
+name = ""
 url = "/"
 weight = 2
+pre = "home"
 
 [[main]]
-name = "Donate Now"
+name = "Donate"
 url = "/donate.html"
 weight = 4
 identifier = "donate-now"
