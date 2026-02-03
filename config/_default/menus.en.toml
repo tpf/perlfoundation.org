@@ -61,6 +61,13 @@ weight = 12
 
 [[main]]
 parent = "about"
+name = "Join us on Slack"
+url = "https://join.slack.com/t/perlfoundation/shared_invite/zt-3ocbigsn5-Cj7aslwG5gtbj8PDrBbeOA"
+weight = 13
+target = "_blank"
+
+[[main]]
+parent = "about"
 name = "Get Involved"
 url = "/get-involved.html"
 weight = 14
