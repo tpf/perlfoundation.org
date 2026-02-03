@@ -9,10 +9,15 @@ The Perl & Raku Foundation exists to promote and support community efforts
 around the Perl and Raku programming languages. We encourage you to contribute to our ecosystem
 by:
 
-- Joining your local [Perl Mongers](http://www.pm.org/) group
+### Join the Conversation
+
+Join the [TPRF Slack workspace](https://join.slack.com/t/perlfoundation/shared_invite/zt-3ocbigsn5-Cj7aslwG5gtbj8PDrBbeOA) to connect with the community, get help, share your projects, and stay updated on what's happening in the Perl and Raku ecosystem.
+
+### Connect with the Community
+
+- Join your local [Perl Mongers](http://www.pm.org/) group
 - Visit [PerlMonks](http://perlmonks.org/)
 - Attend a [YAPC](http://www.yapc.org/) in your region of the world
-- Join the [TPRF Slack workspace](https://join.slack.com/t/perlfoundation/shared_invite/zt-3ocbigsn5-Cj7aslwG5gtbj8PDrBbeOA)
 - See how to [join the TPRF Board](/join-the-board.html)
 
 There are many other ways you can contribute to Perl and Raku including:
