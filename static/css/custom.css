@@ -13,8 +13,12 @@ body {
 
 /* Switch to hamburger menu at 1200px instead of default 768px */
 @media (min-width: 768px) and (max-width: 1200px) {
-  /* Hide desktop menu */
+  /* Hide desktop menu except donate button */
   nav.hidden.md\:flex {
+    display: flex !important;
+  }
+
+  nav.hidden.md\:flex > *:not([href*="donate"]) {
     display: none !important;
   }
 
