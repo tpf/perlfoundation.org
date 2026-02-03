@@ -19,7 +19,9 @@ keywords:
 
 Perl powers SUSE's OpenQA testing framework, builds Kubernetes packages, and runs price comparison platforms that started 25 years ago and are still going strong.
 
-We fund the developers who fix critical bugs, modernize core features, and keep Perl and Raku competitive. Companies, contractors, and hobbyists who depend on them can keep building. Whether these languages run your business or fuel your passion projects, your donation directly supports the people actually doing the work.
+We fund the developers who fix critical bugs, modernize core features, and keep Perl and Raku competitive so that the companies, contractors, and hobbyists who depend on them can keep building. Whether these languages run your business or fuel your passion projects, your donation directly supports the people actually doing the work.
+
+New to Perl or Raku? [Download and get started](/download.html) with these powerful languages today.
 
 Check out [our prospectus](https://drive.google.com/file/d/1pQJfIW0u-4gKw1o-f18GyyPdT3YlwrUv/view) to see how we've invested in the ecosystem. [Join companies](donate.html) like [DuckDuckGo](https://www.perl.com/article/duckduckgo-donates-25-000-to-the-perl-and-raku-foundation-v2025/), SUSE, and Fastmail in sustaining the Perl and Raku ecosystem.
 

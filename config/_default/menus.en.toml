@@ -61,16 +61,22 @@ weight = 12
 
 [[main]]
 parent = "about"
+name = "Download Perl & Raku"
+url = "/download.html"
+weight = 13
+
+[[main]]
+parent = "about"
 name = "Join us on Slack"
 url = "https://join.slack.com/t/perlfoundation/shared_invite/zt-3ocbigsn5-Cj7aslwG5gtbj8PDrBbeOA"
-weight = 13
+weight = 14
 target = "_blank"
 
 [[main]]
 parent = "about"
 name = "Get Involved"
 url = "/get-involved.html"
-weight = 14
+weight = 15
 
 [[main]]
 parent = "about"
