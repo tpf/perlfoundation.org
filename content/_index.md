@@ -13,8 +13,6 @@ keywords:
 > programming languages, through open discussion, collaboration, design, and
 > code.
 
-![The Perl & Raku Foundation](/images/og-image.png)
-
 ## Keeping Critical Infrastructure Alive
 
 Perl powers SUSE's OpenQA testing framework, builds Kubernetes packages, and runs price comparison platforms that started 25 years ago and are still going strong.
