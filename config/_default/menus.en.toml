@@ -262,13 +262,32 @@ weight = 8
 none = "none"
 
 [[footer]]
-name = "Contact"
-url = "mailto:hello@perlfoundation.org"
-identifier = "contact-footer"
+name = "News"
+url = "http://news.perlfoundation.org/"
+identifier = "news-footer"
 weight = 2
+target = "_blank"
+
+[[footer]]
+name = "Events"
+url = "/events.html"
+identifier = "events-footer"
+weight = 4
+
+[[footer]]
+name = "Get Involved"
+url = "/get-involved.html"
+identifier = "get-involved-footer"
+weight = 6
 
 [[footer]]
 name = "Donate"
 pageRef = "donate"
 identifier = "donate-footer"
-weight = 4
+weight = 8
+
+[[footer]]
+name = "Contact"
+url = "/contact.html"
+identifier = "contact-footer"
+weight = 10
