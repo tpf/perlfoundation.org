@@ -7,7 +7,7 @@ url = "/"
 weight = 2
 
 [[main]]
-name = "Donate Now"
+name = "Donate"
 url = "/donate.html"
 weight = 4
 identifier = "donate-now"

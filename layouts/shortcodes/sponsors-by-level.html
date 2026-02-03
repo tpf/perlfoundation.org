@@ -1,0 +1,21 @@
+{{- $level := .Get "level" -}}
+{{- $sponsors := index .Site.Data.sponsors $level -}}
+{{- $useGrid := .Get "grid" | default false -}}
+
+{{- if $useGrid -}}
+<div class="sponsor-grid">
+{{- end -}}
+
+{{- range $sponsors -}}
+  {{- $class := printf "%s" $level -}}
+  {{- if .class -}}
+    {{- $class = printf "%s %s" $level .class -}}
+  {{- end -}}
+  <div class="sponsor-logo {{ $class }}">
+    <a href="{{ .url }}"><img class="nozoom" src="images/{{ .image }}" alt="{{ .alt }}" title="{{ .title | default .alt }}"></a>
+  </div>
+{{- end -}}
+
+{{- if $useGrid -}}
+</div>
+{{- end -}}

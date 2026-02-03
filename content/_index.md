@@ -13,8 +13,6 @@ keywords:
 > programming languages, through open discussion, collaboration, design, and
 > code.
 
-![The Perl & Raku Foundation](/images/og-image.png)
-
 ## Keeping Critical Infrastructure Alive
 
 Perl powers SUSE's OpenQA testing framework, builds Kubernetes packages, and runs price comparison platforms that started 25 years ago and are still going strong.
@@ -51,18 +49,12 @@ The Perl and Raku Conference is the annual North American gathering where develo
 
 ### Gold Level Sponsor
 
-{{< sponsor-logo url="https://duckduckgo.com/" image="duck-duck-go.svg" alt="DuckDuckGo" class="gold" >}}
+{{< sponsors-by-level level="gold" >}}
 
 ### Silver Level Sponsor
 
-{{< sponsor-logo url="https://www.webpros.com/" image="webpros.svg" alt="WebPros" >}}
+{{< sponsors-by-level level="silver" >}}
 
 ### Bronze Level Sponsor
 
-{{% sponsor-grid %}}
-{{< sponsor-logo url="https://www.proxmox.com/en/" image="proxmox-full-lockup-color.svg" alt="Proxmox" class="bronze" >}}
-{{< sponsor-logo url="https://www.suse.com/" image="SUSE_Logo-hor_L_Green-pos_sRGB.svg" alt="SUSE" class="bronze large" >}}
-{{< sponsor-logo url="https://www.fastmail.com/" image="FM-Logo-RGB.png" alt="Fastmail" class="bronze" >}}
-{{< sponsor-logo url="https://geizhals.at/" image="geizhals_logo_official.svg" alt="Geizhals Preisvergleich" class="bronze" >}}
-{{< sponsor-logo url="https://www.e-card.bg/" image="ecard-logo.svg" alt="e-card" class="bronze" >}}
-{{% /sponsor-grid %}}
+{{< sponsors-by-level level="bronze" grid="true" >}}

@@ -6,6 +6,57 @@
   --dropdown-transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
+/* Wider content container for website (not blog) layout */
+body {
+  max-width: 1600px !important;
+}
+
+/* Override narrow prose widths for single pages */
+#single_header.max-w-prose,
+.article-content.max-w-prose,
+footer.max-w-prose {
+  max-width: 100% !important;
+}
+
+/* Switch to hamburger menu at 1200px instead of default 768px */
+@media (min-width: 768px) and (max-width: 1200px) {
+  /* Hide desktop menu except donate button */
+  nav.hidden.md\:flex {
+    display: flex !important;
+  }
+
+  nav.hidden.md\:flex > *:not([href*="donate"]) {
+    display: none !important;
+  }
+
+  /* Show mobile menu items */
+  div.flex.md\:hidden {
+    display: flex !important;
+  }
+
+  /* Show hamburger button */
+  div.-my-2.md\:hidden {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Show desktop menu */
+  nav.hidden.md\:flex {
+    display: flex !important;
+  }
+
+  /* Hide mobile menu items */
+  div.flex.md\:hidden {
+    display: none !important;
+  }
+
+  /* Hide hamburger button */
+  div.-my-2.md\:hidden {
+    display: none !important;
+  }
+}
+
 /* Sponsor logo styling */
 .sponsor-logo {
   background: transparent;
