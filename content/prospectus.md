@@ -1,6 +1,6 @@
 ---
 title: Sponsorship prospectus
-url: sponsorship-prospectus.html
+url: /sponsorship-prospectus.html
 ---
 
 
