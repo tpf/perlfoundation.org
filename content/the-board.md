@@ -38,7 +38,7 @@ Appointed: September 2019
 
 [president@perlfoundation.org](mailto:president@perlfoundation.org)
 
-Board seat sponsored by [Open Digiutal Consulting Co](https://opendigital.cc/)
+Board seat sponsored by [Open Digital Consulting Co](https://opendigital.cc/)
 
 ### Peter Krawczyk, Co-treasurer
 
