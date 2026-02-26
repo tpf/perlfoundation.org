@@ -1,55 +1,139 @@
 {
-    "version": "v1.0.0",
+    "$schema": "https://fundingjson.org/schema/v1.1.0.json",
+    "version": "v1.1.0",
     "entity": {
         "type": "organisation",
-        "role": "other",
+        "role": "steward",
         "name": "Yet Another Society d/b/a The Perl and Raku Foundation",
         "email": "board@perlfoundation.org",
-        "phone": "",
-        "description": "The Perl & Raku Foundation is dedicated to the advancement of the Perl and Raku programming languages, through open discussion, collaboration, design, and code.",
+        "description": "The Perl & Raku Foundation (TPRF) is a US 501(c)(3) non-profit dedicated to the advancement of the Perl and Raku programming languages through open discussion, collaboration, design, and code. TPRF acts as legal steward for the Perl and Raku trademarks and the Artistic License. The foundation funds core language development and community projects through its grants programmes, organises The Perl and Raku Conference, supports community infrastructure including CPAN, MetaCPAN, perl.org, and PerlMonks, and participates in outreach programmes such as Outreachy.",
         "webpageUrl": {
-            "url": "https://perlfoundation.org",
-            "wellKnown": ""
+            "url": "https://perlfoundation.org"
         }
     },
-    "projects": [{
-        "guid": "perl5-core-maintenance",
-        "name": "Perl 5 Core Maintenance Fund",
-        "description": "We support development and maintenance of the Perl core through grants to core developers, who are guided by the decisions of the Perl Steering Council",
-        "webpageUrl": {
-            "url": "https://perlfoundation.org/perl-core-development-fund.html",
-            "wellKnown": ""
+    "projects": [
+        {
+            "guid": "perl5-core-maintenance",
+            "name": "Perl Core Development Fund",
+            "description": "Funding for development and maintenance of the Perl core through grants to core developers, guided by the Perl Steering Council. Originally established in 2008 with support from Booking.com as the Perl 5 Core Maintenance Fund, relaunched in 2020 as the Perl Core Development Fund. Grants are awarded to contributors endorsed by core committers, with monthly progress reporting and open source release requirements.",
+            "webpageUrl": {
+                "url": "https://perlfoundation.org/perl-core-development-fund.html"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/Perl/perl5",
+                "wellKnown": "https://github.com/Perl/perl5/blob/main/.well-known/funding-manifest-urls"
+            },
+            "licenses": ["spdx:Artistic-1.0-Perl", "spdx:GPL-1.0-or-later"],
+            "tags": ["programming-language", "perl", "interpreter", "scripting", "developer-tools", "text-processing"]
         },
-        "repositoryUrl": {
-            "url": "https://github.com/Perl/perl5"
+        {
+            "guid": "raku-development",
+            "name": "Raku Development Fund",
+            "description": "Funding for development and improvement of the Raku language specification and implementations. Originally created in 2015 as the Perl 6 Development Fund, relaunched in 2020 as the Raku Development Fund. Grants are awarded to contributors endorsed by the Raku Steering Council. All funded work is released under the Artistic License 2.0.",
+            "webpageUrl": {
+                "url": "https://perlfoundation.org/raku-development-fund.html"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/rakudo/rakudo",
+                "wellKnown": "https://github.com/rakudo/rakudo/blob/main/.well-known/funding-manifest-urls"
+            },
+            "licenses": ["spdx:Artistic-2.0"],
+            "tags": ["programming-language", "raku", "interpreter", "developer-tools"]
         },
-        "licenses": ["spdx:Artistic-1.0-Perl", "spdx:GPL-1.0-or-later"],
-        "tags": ["programming", "perl", "interpreter", "scripting", "open-source", "core", "maintenance"]
-    }],
+        {
+            "guid": "community-grants",
+            "name": "Community Grants Programme",
+            "description": "General grants programme funding projects that benefit the wider Perl and Raku communities. Covers core language improvements, documentation, tutorials, libraries, and tooling. The Grants Committee opens a call for proposals every two months, with public feedback and committee evaluation. Grant recipients provide monthly progress reports and release all work as open source.",
+            "webpageUrl": {
+                "url": "https://perlfoundation.org/grants.html"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/tpf/grants-perlfoundation-org"
+            },
+            "licenses": ["spdx:Artistic-2.0"],
+            "tags": ["perl", "raku", "open-source", "community", "grants", "developer-tools"]
+        }
+    ],
     "funding": {
-        "channels": [{
-            "guid": "perl5-pinnacle-bank",
-            "type": "bank",
-            "address": "ABA Routing: 061101294, Account: 100248624, Address:  Pinnacle Bank, 100 Pinnacle Pl, Elberton, GA 30635, Phone: 706-283-2854",
-            "description": "International and domestic wire transfer channel"
-        }],
-        "plans": [{
-            "guid": "perl5-core-maintenance-fund",
-            "status": "active",
-            "name": "Perl 5 Core Maintenance Fund",
-            "description": "Ongoing funding for Perl 5 core development and maintenance grants. Donations support grants awarded to core developers who contribute to the improvement and maintenance of the Perl programming language.",
-            "amount": 0,
-            "currency": "USD",
-            "frequency": "one-time",
-            "channels": ["perl5-pinnacle-bank"]
-        }],
-        "history": [{
-            "year": 2024,
-            "income": 0,
-            "expenses": 0,
-            "taxes": 0,
-            "currency": "USD",
-            "description": "Perl 5 Core Maintenance Fund"
-        }]
+        "channels": [
+            {
+                "guid": "credit-card",
+                "type": "payment-provider",
+                "address": "https://perlfoundation.fcsuite.com/erp/donate",
+                "description": "Donate via credit card through our online payment portal."
+            },
+            {
+                "guid": "open-collective",
+                "type": "payment-provider",
+                "address": "https://opencollective.com/tprf",
+                "description": "Support us through Open Collective with transparent tracking of contributions."
+            },
+            {
+                "guid": "paypal",
+                "type": "payment-provider",
+                "address": "https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS",
+                "description": "PayPal donations also accepted at billing@yapc.org."
+            },
+            {
+                "guid": "bank-wire",
+                "type": "bank",
+                "address": "Contact treasurer@perlfoundation.org for wire transfer details.",
+                "description": "International and domestic wire transfers. Please provide your name, address, bank details, and IBAN or Swift code with routing and account numbers."
+            },
+            {
+                "guid": "benevity",
+                "type": "other",
+                "address": "https://causes.benevity.org/causes/840-383536536",
+                "description": "Employer paycheck deductions via Benevity. Used by Google, Microsoft, Apple, and hundreds of other companies for charitable giving with possible employer matching."
+            },
+            {
+                "guid": "cheque",
+                "type": "cheque",
+                "address": "Yet Another Society, 440 N Barranca Ave, #6055, Covina, CA 91723, United States",
+                "description": "Bank cheque payable to Yet Another Society."
+            }
+        ],
+        "plans": [
+            {
+                "guid": "perl-core-ongoing",
+                "status": "active",
+                "name": "Perl Core Development Fund",
+                "description": "Ongoing funding for Perl core development grants. Supports grants to core developers working on bug fixes, feature development, and maintenance of the Perl interpreter.",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": ["credit-card", "open-collective", "paypal", "bank-wire", "benevity", "cheque"]
+            },
+            {
+                "guid": "raku-dev-ongoing",
+                "status": "active",
+                "name": "Raku Development Fund",
+                "description": "Ongoing funding for Raku language specification and implementation grants. Supports developers working on the Raku language and its ecosystem.",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": ["credit-card", "open-collective", "paypal", "bank-wire", "benevity", "cheque"]
+            },
+            {
+                "guid": "community-grants-ongoing",
+                "status": "active",
+                "name": "Community Grants Programme",
+                "description": "Funding for community grants covering documentation, libraries, tooling, and other projects benefiting the Perl and Raku ecosystems.",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": ["credit-card", "open-collective", "paypal", "bank-wire", "benevity", "cheque"]
+            },
+            {
+                "guid": "general-donation",
+                "status": "active",
+                "name": "General donation",
+                "description": "Unrestricted donation to support TPRF operations including conferences, community infrastructure, outreach programmes, and administrative costs.",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": ["credit-card", "open-collective", "paypal", "bank-wire", "benevity", "cheque"]
+            }
+        ]
     }
 }
