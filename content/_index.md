@@ -21,7 +21,7 @@ We fund the developers who fix critical bugs, modernize core features, and keep 
 
 New to Perl or Raku? [Download and get started](/download.html) with these powerful languages today.
 
-Check out [our prospectus](https://drive.google.com/file/d/1pQJfIW0u-4gKw1o-f18GyyPdT3YlwrUv/view) to see how we've invested in the ecosystem. [Join companies](donate.html) like [DuckDuckGo](https://www.perl.com/article/duckduckgo-donates-25-000-to-the-perl-and-raku-foundation-v2025/), SUSE, and Fastmail in sustaining the Perl and Raku ecosystem.
+Check out [our latest annual report](/documents/The_Perl_and_Raku_Foundation_Annual_report_2025.pdf) to see how we've invested in the ecosystem. [Join companies](donate.html) like [DuckDuckGo](https://www.perl.com/article/duckduckgo-donates-25-000-to-the-perl-and-raku-foundation-v2025/), SUSE, and Fastmail in sustaining the Perl and Raku ecosystem.
 
 ## Our Grants in Action
 
