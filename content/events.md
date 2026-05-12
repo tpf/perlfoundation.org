@@ -21,7 +21,7 @@ Perl and Raku events
 
 ## 2025
 
-27th June 2025
+27th June - 29th June 2025
 : [The Perl and Raku Conference 2025](https://tprc.us/tprc-2025-gsp/) - Greenville, South Carolina, USA 
 
 1st February - 2nd February 2025
