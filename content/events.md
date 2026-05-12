@@ -9,7 +9,7 @@ Perl and Raku events
 ## 2026
 
 26th June 2026
-: [The Perl and Raku Conference](https://tprc.us/)
+: [The Perl and Raku Conference 2026](https://tprc.us/tprc-2026-gsp/) - Greenville, South Carolina, USA
 
 31st January - 1st February 2026
 : [FOSDEM Stand](https://nav.fosdem.org/l/c:1:118.69:274.88/) - Bulding K Stands A 9, Campus Solbosch, of the Université Libre de Bruxelles (ULB), Brussels
@@ -22,7 +22,7 @@ Perl and Raku events
 ## 2025
 
 27th June 2025
-: [The Perl and Raku Conference 2025 in Greenville, SC](https://tprc.us/tprc-2025-gsp/)
+: [The Perl and Raku Conference 2025](https://tprc.us/tprc-2025-gsp/) - Greenville, South Carolina, USA 
 
 1st February - 2nd February 2025
 : [FOSDEM Stand](https://archive.fosdem.org/2025/stands/) - Bulding F Stand 2, Campus Solbosch, of the Université Libre de Bruxelles (ULB), Brussels
