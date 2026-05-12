@@ -8,7 +8,7 @@ Perl and Raku events
 
 ## 2026
 
-26th June 2026
+26th June - 29th June 2026
 : [The Perl and Raku Conference 2026](https://tprc.us/tprc-2026-gsp/) - Greenville, South Carolina, USA
 
 31st January - 1st February 2026
