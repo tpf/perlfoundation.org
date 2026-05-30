@@ -3,17 +3,23 @@ title: 'Donate'
 url: '/donate.html'
 ---
 
-## Quick Donation Options
+## Quick Donations
 
-The easiest ways to support The Perl & Raku Foundation:
+The quickest and easiest way is to visit our [general fund direct donation page](https://perlfoundation.fcsuite.com/erp/donate/create/fund?funit_id=1004) and use your bank card. 
 
-- **[Donate Now](https://perlfoundation.fcsuite.com/erp/donate)** - Give via credit card
-- **[Open Collective](https://opencollective.com/tprf)** - Support us through Open Collective
+You can also use one of these quick ways to donate:
+
+- [Donate directly and choose which fund](https://perlfoundation.fcsuite.com/erp/donate)
+- [Open Collective](https://opencollective.com/tprf)
+- [Github Sponsors](https://github.com/sponsors/tpf)
+- [Paypal web](https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS)
+- [Paypal by Email - billing@yapc.org](mailto:billing@yapc.org)
+
 
 ## Other Ways to Donate
 
-- **[PayPal](https://www.paypal.com/donate/?hosted_button_id=N5B8KS7PS4SUS)** - We also accept
-  PayPal at [billing@yapc.org](mailto:billing@yapc.org)
+For larger and corporate donations, the following ways may be more suitable:
+
 - **Bank Check** - Payable to Yet Another Society, mailed to:
   ```
   YET ANOTHER SOCIETY
