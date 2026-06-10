@@ -25,7 +25,7 @@ Check out [our latest annual report](/documents/The_Perl_and_Raku_Foundation_Ann
 
 ## Our Grants in Action
 
-Our [grant programs](grants.html) fund development of projects to benefit Perl, Raku and the broader Community. These grants are funded by donations and support open source developers.
+Our [grant programs](grants.html) fund development of projects to benefit Perl, Raku and the broader Community. These grants are funded by donations and support open source developers. Find out more in our [annual reports](/annual-reports.md)
 
 ## Join Our Community
 
@@ -36,6 +36,7 @@ Connect with fellow Perl and Raku developers in the [TPRF Slack workspace](https
 The Perl and Raku Conference is the annual North American gathering where developers share code, solve problems together, and build the relationships that keep open source thriving. In 2025, we also supported the [London Perl Workshop](https://www.londonperlworkshop.com/) and the [Perl Toolchain Summit](https://perltoolchainsummit.org/pts2025/), where maintainers collaborate on the infrastructure that powers CPAN and the tools that thousands depend on.
 
 [See upcoming events](/events.html) and find your people.
+
 
 ## What Our Sponsors Say
 
