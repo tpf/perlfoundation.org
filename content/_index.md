@@ -25,7 +25,7 @@ Check out [our latest annual report](/documents/The_Perl_and_Raku_Foundation_Ann
 
 ## Our Grants in Action
 
-Our [grant programs](grants.html) fund development of projects to benefit Perl, Raku and the broader Community. These grants are funded by donations and support open source developers. Find out more in our [annual reports](/annual-reports.md)
+Our [grant programs](grants.html) fund development of projects to benefit Perl, Raku and the broader Community. These grants are funded by donations and support open source developers. Find out more in our [annual reports](/annual-reports.html)
 
 ## Join Our Community
 
