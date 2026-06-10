@@ -1,18 +1,13 @@
 ---
 title: 'Our Sponsors'
-url: '/our-donors.html'
-aliases: '/our-sponsors.html'
+url: '/our-sponsors.html'
+aliases: '/our-donors.html'
 ---
 
 
 ## Financial sponsors
 
-The Foundation appreciates all of our sponsors at every value. We recieve many small donations from loose change to 10's of thousands. Of the donors who do not wish to remain anonymous, they are allocated to our sponsorship levels as follows:
-
-1. Bronze - $6,000 or more
-2. Silver - $12,000 or more
-3. Gold - $24,000 or more
-4. Platinum - $48,000 or more
+The Foundation appreciates all of our sponsors at every value. Sponsors who contribute at bronze level or above, and who do not wish to remain anonymous, are recognised here according to their level. For the sponsorship levels and what each offers in return, see [How Do Sponsors Benefit?](how-do-sponsors-benefit.html).
 
 The following organisations provide financial support to the Foundation at bronze or above:
 
@@ -78,7 +73,7 @@ The Perl Foundation extends our sincere thanks to all our sponsors, large and
 small. If you would like to make a donation, [visit our donation
 page](donate.html).
 
-Our donors use Perl or Raku to power their businesses and that's one reason
+Our sponsors use Perl or Raku to power their businesses and that's one reason
 they contribute back to the community. In addition to supporting Perl with
 donations, these companies are great options for programmers looking for good
 jobs at companies that use Perl extensively.
