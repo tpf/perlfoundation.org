@@ -18,7 +18,6 @@ bronze:
   - url: "https://www.suse.com/"
     image: "SUSE_Logo-hor_L_Green-pos_sRGB.svg"
     alt: "SUSE"
-    class: "large"
     date_added: "2025-10-23"
   - url: "https://www.fastmail.com/"
     image: "FM-Logo-RGB.png"
@@ -32,6 +31,10 @@ bronze:
     image: "ecard-logo.svg"
     alt: "e-card"
     date_added: "2025-10-23"
+  - url: "https://www.herodevs.com/"
+    image: "herodevs-logo.png"
+    alt: "HeroDevs"
+    date_added: "2026-09-14"
 
 conference:
   - url: "https://holophrastic.com/"
