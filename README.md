@@ -11,6 +11,17 @@ git clone --recurse-submodules --shallow-submodules https://github.com/tpf/tprf-
 hugo serve
 ```
 
+## Using the Makefile
+
+A `Makefile` provides convenience targets:
+
+- `make init` — ensures the blowfish theme submodule is checked out (handy if
+  you cloned without `--recurse-submodules`).
+- `make serve` — runs `hugo serve` (after `make init`). If the `tailscale` CLI
+  is available it binds to your tailnet IP so the dev server is reachable from
+  other machines on your tailnet; otherwise it serves on localhost. Hugo picks
+  an open port automatically if the default is in use.
+
 # Site structure
 
 ## Page locations
