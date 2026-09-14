@@ -85,6 +85,20 @@ footer.max-w-prose {
 
 .sponsor-logo.bronze {
   margin: 0;
+  /* Fixed footprint so every bronze logo occupies the same box */
+  flex: 0 0 280px;
+  max-width: 280px;
+}
+
+/* Bronze logos share one bounding box; contain keeps each aspect ratio */
+.sponsor-logo.bronze a {
+  width: 100%;
+}
+
+.sponsor-logo.bronze img {
+  width: 100%;
+  height: 60px;
+  object-fit: contain;
 }
 
 .sponsor-logo a {
