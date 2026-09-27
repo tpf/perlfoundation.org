@@ -1,0 +1,147 @@
+{{ define "main" }}
+{{- /*
+  Fund template (design: FundPage.dc.html). Covers the grant/fund pages under
+  the Grants section (Perl Core Development Fund, Raku Development Fund,
+  Community Project Support, Grant Benefits).
+
+  CONTENT RULE: all copy stays in Markdown. This template never hard-codes page
+  text — it slices the *rendered* `.Content` into zones by structure and styles
+  each. The zones (design):
+
+    1. Lede    — the paragraph(s) before the first <h2> (opening blurb).
+    2. Intro box — the run of <h2> sections before the first <h3>. The design
+       frames these (Description of Fund + Applicant Eligibility) in a bordered
+       box, with any list inside rendered as violet-topped cards. Rendered only
+       when there are 2+ such <h2> (the two grant funds); other fund pages have
+       at most one leading <h2>, so they skip the box and read as a plain doc.
+    3. Body    — from the first <h3> (or first <h2> when there's no box) up to
+       the Application section: normal `.doc` typography (uppercase <h2>,
+       mono-violet <h3> labels).
+    4. Application band — the trailing <h2> section, shown as a light band with
+       a numbered field grid. Opt-in per page via `application_form: true` in
+       front matter (only the two grant funds have one). We do NOT sniff it from
+       the markup, because other fund pages (e.g. Grant Benefits) legitimately
+       use colon-terminated `### Heading:` sections that are prose, not fields.
+
+  The left rail is the Grants menu (navigation chrome), current page active.
+*/ -}}
+{{- $content := .Content -}}
+
+{{- /* Zone 4: peel off the Application band (last <h2>) when opted in. */ -}}
+{{- $hasForm := and .Params.application_form (findRE `<h3[^>]*>[^<]+:</h3>` $content 1) -}}
+{{- $main := $content -}}
+{{- $app := "" -}}
+{{- if $hasForm -}}
+  {{- /* $app = from the LAST <h2 to the end (greedy .* backtracks to it); $main
+         is then the remainder, i.e. $content with that suffix trimmed. RE2 has
+         no lookahead, so we can't match "up to the last <h2" directly. */ -}}
+  {{- $app = replaceRE `(?s)^.*(<h2)` "$1" $content -}}
+  {{- $main = strings.TrimSuffix $app $content -}}
+{{- end -}}
+
+{{- /* Zone 1: lede = everything before the first <h2>. */ -}}
+{{- $lede := "" -}}
+{{- $rest := $main -}}
+{{- if findRE `<h2` $main 1 -}}
+  {{- $lede = replaceRE `(?s)<h2.*$` "" $main -}}
+  {{- $rest = replaceRE `(?s)^.*?(<h2)` "$1" $main -}}
+{{- end -}}
+
+{{- /* Zone 2: intro box = the leading <h2> sections before the first <h3>,
+       but only when there are 2 or more of them. */ -}}
+{{- $preH3 := $rest -}}
+{{- if findRE `<h3` $rest 1 -}}
+  {{- $preH3 = replaceRE `(?s)<h3.*$` "" $rest -}}
+{{- end -}}
+{{- $box := "" -}}
+{{- $body := $rest -}}
+{{- if ge (len (findRE `<h2` $preH3)) 2 -}}
+  {{- $box = $preH3 -}}
+  {{- $body = replaceRE `(?s)^.*?(<h3)` "$1" $rest -}}
+{{- end -}}
+
+<header class="page-hero fund-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ "/grants.html" | relURL }}">/grants</a> / {{ with .File }}{{ .ContentBaseName }}{{ else }}{{ path.Base .RelPermalink | replaceRE "\\.html$" "" }}{{ end }}
+  </nav>
+  <h1 class="display-h1">{{ .Title }}</h1>
+</header>
+
+<div class="doc-layout">
+  {{- $cur := .RelPermalink -}}
+  {{- $grants := index (where .Site.Menus.main "Identifier" "grants") 0 -}}
+  <aside class="doc-toc fund-nav" aria-label="Grants">
+    <div class="doc-toc__inner">
+      <div class="doc-toc__label">/grants</div>
+      <nav>
+        <a href="{{ $grants.URL | relURL }}"{{ if eq ($grants.URL | relURL) $cur }} class="is-active"{{ end }}>{{ $grants.Name }}</a>
+        {{- range $grants.Children }}
+        <a href="{{ .URL | relURL }}"{{ if eq (.URL | relURL) $cur }} class="is-active"{{ end }}{{ with .Params.target }} target="{{ . }}"{{ end }}>{{ .Name }}</a>
+        {{- end }}
+      </nav>
+    </div>
+  </aside>
+
+  <article class="doc fund-doc">
+    {{- with $lede }}
+    <div class="fund-lede">{{ . | safeHTML }}</div>
+    {{- end }}
+
+    {{- with $box }}
+    {{- /* Split the box into one cell per <h2> section. */ -}}
+    <div class="fund-introbox">
+      {{- range after 1 (split . "<h2") }}
+      <div class="fund-introbox__cell">{{ printf "<h2%s" . | safeHTML }}</div>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- with $body }}
+    <div class="fund-body">{{ . | safeHTML }}</div>
+    {{- end }}
+
+    {{- if $hasForm -}}
+    {{- /* Application band. Split the trailing section on <h3 boundaries: chunk
+           0 holds the <h2 heading + the intro paragraph(s); each later chunk is
+           one heading + its following content. A heading ending in ":" is a
+           form field (numbered card); a non-colon heading is the form-title
+           block and its paragraph is the submission note. */ -}}
+    {{- $chunks := split $app "<h3" -}}
+    {{- $head := index $chunks 0 -}}
+    {{- $items := after 1 $chunks -}}
+    {{- $h2 := replaceRE `(?s)^.*?<h2[^>]*>(.*?)</h2>.*$` "$1" $head -}}
+    {{- $intro := replaceRE `(?s)^.*?</h2>` "" $head -}}
+    <section class="fund-apply">
+      <h2 class="fund-apply__title">{{ $h2 | safeHTML }}</h2>
+      <div class="fund-apply__intro">{{ $intro | safeHTML }}</div>
+      {{- /* form-title block(s): the non-colon heading + its note paragraph */ -}}
+      {{- range $items -}}
+        {{- $label := replaceRE `(?s)^[^>]*>(.*?)</h3>.*$` "$1" . -}}
+        {{- if not (hasSuffix (trim ($label | plainify) " ") ":") -}}
+          {{- $note := replaceRE `(?s)^[^>]*>.*?</h3>` "" . -}}
+          <div class="fund-apply__formtitle">
+            <div class="fund-apply__formname">{{ $label | safeHTML }}</div>
+            {{- with trim ($note | plainify) " " }}<div class="fund-apply__formnote">{{ $note | safeHTML }}</div>{{ end }}
+          </div>
+        {{- end -}}
+      {{- end -}}
+      {{- /* the numbered field grid */ -}}
+      {{- $.Scratch.Set "fieldNo" 0 -}}
+      <div class="fund-apply__fields">
+        {{- range $items -}}
+          {{- $label := replaceRE `(?s)^[^>]*>(.*?)</h3>.*$` "$1" . -}}
+          {{- if hasSuffix (trim ($label | plainify) " ") ":" -}}
+            {{- $hint := replaceRE `(?s)^[^>]*>.*?</h3>` "" . -}}
+            {{- $.Scratch.Add "fieldNo" 1 -}}
+            <div class="fund-field">
+              <div class="fund-field__head"><span class="fund-field__n">{{ printf "%02d" ($.Scratch.Get "fieldNo") }}</span><span class="fund-field__name">{{ $label | safeHTML }}</span></div>
+              {{- with trim ($hint | plainify) " " }}<span class="fund-field__hint">{{ $hint | safeHTML }}</span>{{ end }}
+            </div>
+          {{- end -}}
+        {{- end -}}
+      </div>
+    </section>
+    {{- end -}}
+  </article>
+</div>
+{{ end }}

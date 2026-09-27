@@ -1,6 +1,7 @@
 ---
 title: 'The Board'
 url: '/the-board.html'
+layout: 'board'
 ---
 
 The board of directors is the decision making body of the Foundation. It meets

@@ -1,0 +1,63 @@
+{{ define "main" }}
+{{- /*
+  Legal index / "/legal" landing template (design: LegalIndexPage.dc.html). This
+  is the section landing page, distinct from the per-document `legal` template.
+
+  CONTENT RULE: all copy stays in Markdown (content/legal.md). This template
+  never hard-codes page text — it slices the *rendered* `.Content` into the
+  design's three zones by structure and styles each:
+
+    1. Hero    — the lede paragraph before the first <h2> (the "DBA" blurb),
+       shown beside the big LEGAL headline.
+    2. How TPRF Works — the first <h2> section. The design frames the heading +
+       Allison's blockquote in a left column and the explanatory paragraphs in a
+       wide right column. We split this section at </blockquote>; the trailing
+       "Trademarks" link paragraph is peeled off and moved into the links zone
+       (where the design places it, as a bordered button).
+    3. Links   — the remaining two <h2> sections ("TPRF and Perl",
+       "Establishing the Foundation") as two columns of bordered link rows, with
+       the Trademarks button above the first list.
+*/ -}}
+{{- $content := .Content -}}
+{{- $chunks := split $content "<h2" -}}
+{{- $lede := index $chunks 0 -}}
+
+{{- /* Zone 2: How TPRF Works = chunk 1, split into quote aside + body. */ -}}
+{{- $hw := printf "<h2%s" (index $chunks 1) -}}
+{{- $hwParts := split $hw "</blockquote>" -}}
+{{- $hwQuote := printf "%s</blockquote>" (index $hwParts 0) -}}
+{{- $hwRest := index $hwParts 1 -}}
+{{- /* Peel the trailing Trademarks link paragraph (the last <p>) off the body. */ -}}
+{{- $ps := split $hwRest "<p>" -}}
+{{- $tmBtn := printf "<p>%s" (index $ps (sub (len $ps) 1)) -}}
+{{- $body := delimit (first (sub (len $ps) 1) $ps) "<p>" -}}
+
+{{- /* Zone 3: the two remaining <h2> sections. */ -}}
+{{- $tprfPerl := printf "<h2%s" (index $chunks 2) -}}
+{{- $establishing := printf "<h2%s" (index $chunks 3) -}}
+
+<header class="page-hero legalindex-hero">
+  <div class="legalindex-hero__head">
+    <div class="legalindex-hero__label">/legal</div>
+    <h1 class="display-h1">{{ .Title }}</h1>
+  </div>
+  {{- with $lede }}
+  <div class="legalindex-hero__intro">{{ . | safeHTML }}</div>
+  {{- end }}
+</header>
+
+<section class="legalindex-how">
+  <div class="legalindex-how__aside">{{ $hwQuote | safeHTML }}</div>
+  <div class="legalindex-how__body">{{ $body | safeHTML }}</div>
+</section>
+
+<section class="legalindex-links">
+  <div class="legalindex-links__col">
+    <div class="legalindex-btn">{{ $tmBtn | safeHTML }}</div>
+    <div class="legalindex-group">{{ $tprfPerl | safeHTML }}</div>
+  </div>
+  <div class="legalindex-links__col">
+    <div class="legalindex-group">{{ $establishing | safeHTML }}</div>
+  </div>
+</section>
+{{ end }}

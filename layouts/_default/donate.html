@@ -1,0 +1,129 @@
+{{ define "main" }}
+{{- /*
+  Donate template (design: DonatePage.dc.html). Content is content/donate.md:
+    ## Quick Donations          -> lead + reused CTA button + quick-link rows
+    ## Other Ways to Donate     -> 01/02/03 hairline cards (check / wire / employer)
+    ## Invoices & Payment ...    -> two-column label + paragraphs
+    ## How Your Donation Helps   -> light band, numbered help list, then coral band
+
+  CONTENT RULE: all copy stays in Markdown; this template slices the *rendered*
+  `.Content` and supplies chrome only. Two presentation transforms (flagged in
+  the PR), mirroring the design and the SponsorLevels price split:
+   - the coral CTA button reuses the first donation link's href + label;
+   - each "**Label** - body" method item is shown as a heading + body, with the
+     inline " - " separator dropped in presentation (the Markdown is unchanged).
+*/ -}}
+{{- $secs := after 1 (split .Content "<h2") -}}
+
+<header class="page-hero donate-hero">
+  <div class="mono donate-hero__k">/donate</div>
+  <h1 class="display-h1 display-h1--short">{{ .Title }}</h1>
+</header>
+
+{{- /* 1 — Quick Donations. */ -}}
+{{- $q := printf "<h2%s" (index $secs 0) -}}
+{{- $qTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $q -}}
+{{- $qBody := replaceRE `(?s)^.*?</h2>` "" $q -}}
+{{- $lead := replaceRE `(?s)^.*?(<p>.*?</p>).*$` "$1" $qBody -}}
+{{- $qMono := replaceRE `(?s)^.*?</p>\s*<p>(.*?)</p>.*$` "$1" $qBody -}}
+{{- $qUl := replaceRE `(?s)^.*(<ul>.*</ul>).*$` "$1" $qBody -}}
+{{- $ctaHref := replaceRE `(?s)^.*?<a href="([^"]*)".*$` "$1" $lead -}}
+{{- $ctaLabel := replaceRE `(?s)^.*?<a[^>]*>(.*?)</a>.*$` "$1" $lead -}}
+<section class="donate-quick">
+  <div class="donate-quick__lead">
+    <h2 class="donate-quick__h">{{ $qTitle | safeHTML }}</h2>
+    <p class="donate-quick__p">{{ $lead | replaceRE `(?s)^<p>(.*)</p>$` "$1" | safeHTML }}</p>
+    <a class="donate-cta" href="{{ $ctaHref }}">{{ $ctaLabel | safeHTML }} <span class="donate-cta__i mono">&#8594;</span></a>
+  </div>
+  <div class="donate-quick__alt">
+    <div class="donate-quick__altlabel mono">{{ $qMono | safeHTML }}</div>
+    <div class="donate-quicklinks">
+      {{- range after 1 (split $qUl "<li>") }}
+      {{- $li := replaceRE `(?s)</li>.*$` "" . -}}
+      {{- $href := replaceRE `(?s)^.*?<a href="([^"]*)".*$` "$1" $li -}}
+      {{- $label := replaceRE `(?s)^.*?<a[^>]*>(.*?)</a>.*$` "$1" $li -}}
+      {{- $arrow := cond (hasPrefix $href "mailto:") "@" "&#8599;" -}}
+      <a class="donate-quicklink" href="{{ $href }}"><span>{{ $label | safeHTML }}</span><span class="donate-quicklink__i mono">{{ $arrow | safeHTML }}</span></a>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+{{- /* 2 — Other Ways to Donate: 01/02/03 hairline cards. */ -}}
+{{- $o := printf "<h2%s" (index $secs 1) -}}
+{{- $oTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $o -}}
+{{- $oIntro := replaceRE `(?s)^.*?</h2>\s*<p>(.*?)</p>.*$` "$1" $o -}}
+{{- $oUl := replaceRE `(?s)^.*?(<ul>.*</ul>).*$` "$1" $o -}}
+{{- /* Inner content of the outer list (the three top-level items, one of which
+     carries a nested <ul>). Isolate that nested list lazily so its closing tag
+     is the nested one's, not the outer list's. */ -}}
+{{- $oInner := replaceRE `(?s)^\s*<ul>(.*)</ul>\s*$` "$1" $oUl -}}
+{{- $sub := replaceRE `(?s)^.*?(<ul>.*?</ul>).*$` "$1" $oInner -}}
+{{- $flat := replace $oInner $sub "<!--SUB-->" -}}
+<section class="donate-other">
+  <div class="donate-other__head">
+    <h2 class="section-h2">{{ $oTitle | safeHTML }}</h2>
+    <p class="donate-other__intro">{{ $oIntro | safeHTML }}</p>
+  </div>
+  <div class="donate-cards">
+    {{- range $i, $item := (after 1 (split $flat "<li>")) }}
+    {{- $li := replaceRE `(?s)</li>\s*$` "" (trim $item " \n\t") -}}
+    {{- $hasSub := in $li "<!--SUB-->" -}}
+    {{- $li = replace $li "<!--SUB-->" "" -}}
+    {{- $strong := replaceRE `(?s)^\s*<strong>(.*?)</strong>.*$` "$1" $li -}}
+    {{- $rest := trim (replaceRE `(?s)^\s*<strong>.*?</strong>` "" $li) " \n\t" -}}
+    {{- $rest = replaceRE `(?s)^[-\x{2013}\x{2014}]\s*` "" $rest -}}
+    {{- $ext := in $strong "<a href=\"http" -}}
+    {{- $pre := "" -}}
+    {{- if in $rest "<pre" -}}
+      {{- $pre = replaceRE `(?s)^.*(<pre.*</pre>).*$` "$1" $rest -}}
+      {{- $rest = trim (replaceRE `(?s)<pre.*$` "" $rest) " \n\t" -}}
+    {{- end -}}
+    <div class="donate-card">
+      <div class="donate-card__n mono">{{ printf "%02d" (add $i 1) }}</div>
+      <h3 class="donate-card__h">{{ $strong | safeHTML }}{{ if $ext }} <span class="donate-card__ext mono">&#8599;</span>{{ end }}</h3>
+      {{- with $rest }}<p class="donate-card__b">{{ . | safeHTML }}</p>{{ end }}
+      {{- with $pre }}{{ . | safeHTML }}{{ end }}
+      {{- if $hasSub }}<div class="donate-card__sub">{{ $sub | safeHTML }}</div>{{ end }}
+    </div>
+    {{- end }}
+  </div>
+</section>
+
+{{- /* 3 — Invoices & Payment Requests. */ -}}
+{{- $inv := printf "<h2%s" (index $secs 2) -}}
+{{- $invTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $inv -}}
+{{- $invBody := replaceRE `(?s)^.*?</h2>` "" $inv -}}
+<section class="donate-invoices">
+  <h2 class="donate-invoices__h">{{ $invTitle | safeHTML }}</h2>
+  <div class="donate-invoices__body">{{ $invBody | safeHTML }}</div>
+</section>
+
+{{- /* 4 — How Your Donation Helps (light band) + coral employer band. */ -}}
+{{- $h := printf "<h2%s" (index $secs 3) -}}
+{{- $hParts := split $h "<hr" -}}
+{{- $hMain := index $hParts 0 -}}
+{{- $coral := replaceRE `(?s)^[^>]*>` "" (index (after 1 $hParts) 0) -}}
+{{- $hTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $hMain -}}
+{{- $hLead := replaceRE `(?s)^.*?</h2>\s*<p>(.*?)</p>.*$` "$1" $hMain -}}
+{{- $hSub := replaceRE `(?s)^.*?</h2>\s*<p>.*?</p>\s*<p>(.*?)</p>.*$` "$1" $hMain -}}
+{{- $hUl := replaceRE `(?s)^.*(<ul>.*</ul>).*$` "$1" $hMain -}}
+<section class="donate-helps">
+  <h2 class="donate-helps__h">{{ $hTitle | safeHTML }}</h2>
+  <p class="donate-helps__lead">{{ $hLead | safeHTML }}</p>
+  <p class="donate-helps__sub">{{ $hSub | safeHTML }}</p>
+  <ol class="donate-helps__list">
+    {{- range $i, $item := (after 1 (split $hUl "<li>")) }}
+    {{- $li := trim (replaceRE `(?s)</li>\s*$` "" (trim $item " \n\t")) " \n\t" -}}
+    <li class="donate-help">
+      <span class="donate-help__n mono">{{ printf "%02d" (add $i 1) }}</span>
+      <span class="donate-help__t">{{ $li | safeHTML }}</span>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+
+<section class="donate-employer">
+  <p class="donate-employer__p">{{ $coral | replaceRE `(?s)^\s*<p>(.*)</p>\s*$` "$1" | safeHTML }}</p>
+</section>
+{{ end }}

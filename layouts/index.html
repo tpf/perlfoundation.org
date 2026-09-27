@@ -1,0 +1,99 @@
+{{ define "main" }}
+{{- /*
+  Bespoke home layout (2026 redesign, HomePage.dc.html).
+
+  CONTENT RULE: all copy stays in content/_index.md — this template never
+  hard-codes page text. It reproduces the design's bespoke multi-section
+  layout by splitting the *rendered* `.Content` on its <h2> boundaries and
+  dropping each section into the matching design slot. The mapping below is
+  therefore coupled to the heading ORDER in _index.md; if that file's <h2>
+  sequence changes, update the slot indices here to match. Copy edits within
+  a section need no template change.
+
+  Section order in _index.md:
+    [0] pre-heading blockquote ............ mission lede (hero left)
+    [1] "Keeping Critical Infrastructure Alive"
+          para 1 .......................... hero right
+          paras 2..n ...................... photo section (left col)
+    [2] "Our Grants in Action" ............ strip card 01 / grants
+    [3] "Join Our Community" .............. strip card 02 / community
+    [4] "Community Happens Face-to-Face" .. strip card 03 / events
+    [5] "What Our Sponsors Say" ........... light sponsors band
+          (2 blockquotes + Gold/Silver/Bronze sponsor shortcodes)
+
+  The hero CTA buttons (Donate / Download Perl & Raku) are navigational
+  chrome from the design, not body copy — see PR notes.
+*/ -}}
+
+{{- $parts := split .Content "<h2" -}}
+{{- $mission := index $parts 0 -}}
+{{- $sections := after 1 $parts -}}
+
+{{- /* helpers: strip the leading `...>Heading</h2>` off a section chunk */ -}}
+{{- $headOf := "" -}}
+
+<section class="home-hero">
+  <div class="kicker">#!/usr/bin/env perl · raku</div>
+  {{- with (index $sections 0) -}}
+    {{- $heading := replaceRE `(?s)^.*?>(.*?)</h2>.*$` "$1" . -}}
+    {{- $body := replaceRE `(?s)^.*?</h2>` "" . -}}
+    {{- $words := split (trim $heading " ") " " -}}
+    {{- $last := index $words (sub (len $words) 1) -}}
+    {{- $head := trim (replaceRE (printf `%s$` $last) "" $heading) " " -}}
+    <h1 class="home-hero__title display-h1">{{ $head }} <span class="accent-coral">{{ $last }}</span></h1>
+    <div class="home-hero__grid">
+      <div class="home-hero__lede lede">
+        {{- $mission | replaceRE `</?blockquote>` "" | safeHTML -}}
+      </div>
+      <div class="home-hero__aside">
+        {{- $first := index (findRE `(?s)<p>.*?</p>` $body 1) 0 -}}
+        {{ $first | safeHTML }}
+        <div class="home-hero__cta">
+          <a class="btn btn--coral" href="{{ "donate.html" | relURL }}">Donate</a>
+          <a class="btn btn--outline" href="{{ "download.html" | relURL }}">Download Perl &amp; Raku</a>
+        </div>
+      </div>
+    </div>
+    {{- /* stash the remaining paragraphs (after para 1) for the photo section */ -}}
+    {{- $rest := replace $body $first "" 1 -}}
+    {{- $.Scratch.Set "photoBody" $rest -}}
+  {{- end -}}
+</section>
+
+<section class="home-photo">
+  <div class="home-photo__text">
+    {{ $.Scratch.Get "photoBody" | safeHTML }}
+  </div>
+  <figure class="home-photo__figure">
+    <img src="{{ "images/pts-2026-group-photo.jpg" | relURL }}" alt="Perl Toolchain Summit 2026 group photo">
+    <figcaption>Perl Toolchain Summit 2026</figcaption>
+  </figure>
+</section>
+
+<section class="home-strip">
+  {{- range $i, $sec := (first 3 (after 1 $sections)) -}}
+    {{- $heading := replaceRE `(?s)^.*?>(.*?)</h2>.*$` "$1" $sec -}}
+    {{- $body := replaceRE `(?s)^.*?</h2>` "" $sec -}}
+    {{- $labels := slice "01 / grants" "02 / community" "03 / events" -}}
+    <div class="home-strip__card{{ if eq $i 2 }} home-strip__card--accent{{ end }}">
+      <div class="kicker">{{ index $labels $i }}</div>
+      <h2 class="home-strip__title">{{ $heading }}</h2>
+      <div class="home-strip__body">{{ $body | safeHTML }}</div>
+    </div>
+  {{- end -}}
+</section>
+
+<section class="home-sponsors light-band">
+  {{- with (index $sections 4) -}}
+    {{- $heading := replaceRE `(?s)^.*?>(.*?)</h2>.*$` "$1" . -}}
+    {{- $body := replaceRE `(?s)^.*?</h2>` "" . -}}
+    {{- /* everything before the first <h3 is the sponsor quotes; the rest is
+           the labelled logo tiers (h3 + sponsor shortcode output). */ -}}
+    {{- $quotes := index (split $body "<h3") 0 -}}
+    {{- $logos := replaceRE `(?s)^.*?(<h3)` "$1" $body -}}
+    <h2 class="home-sponsors__title">{{ $heading }}</h2>
+    <div class="home-sponsors__quotes">{{ $quotes | safeHTML }}</div>
+    <div class="home-sponsors__logos">{{ $logos | safeHTML }}</div>
+  {{- end -}}
+</section>
+{{ end }}
