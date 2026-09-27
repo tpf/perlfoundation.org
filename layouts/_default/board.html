@@ -1,0 +1,79 @@
+{{ define "main" }}
+{{- /*
+  Board template (design: BoardPage.dc.html). Content is content/the-board.md:
+  an intro, then `## Board members`, then one `### Name, Role` per member with a
+  headshot image, bio paragraphs, and meta paragraphs ("Appointed: …", a mailto
+  link, "Board seat sponsored by …") in a member-specific order.
+
+  CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
+  `.Content` into member cards and classifies each rendered <p> by its content
+  (never by position, since the order varies) — it hard-codes no member text.
+  The role badge is derived from the "Name, Role" heading (chrome, not new copy);
+  the President's badge is coral, others violet, per the design. Bios past the
+  first collapse behind a "Read more" toggle (see assets/js/tprf.js).
+*/ -}}
+{{- $content := .Content -}}
+{{- $intro := replaceRE `(?s)<h2.*$` "" $content -}}
+{{- $membersLabel := replaceRE `(?s)^.*?<h2[^>]*>(.*?)</h2>.*$` "$1" $content -}}
+{{- $membersHtml := replaceRE `(?s)^.*?<h2[^>]*>.*?</h2>` "" $content -}}
+{{- $members := after 1 (split $membersHtml "<h3") -}}
+
+<header class="page-hero board-hero">
+  <div class="board-hero__head">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/about.html" | relURL }}">/about</a> / the-board</nav>
+    <h1 class="display-h1">{{ .Title }}</h1>
+  </div>
+  {{- with $intro }}
+  <div class="board-intro">{{ . | safeHTML }}</div>
+  {{- end }}
+</header>
+
+<section class="board-section">
+  <h2 class="board-section__label">{{ $membersLabel | safeHTML }}</h2>
+  <div class="board-grid">
+    {{- range $members }}
+    {{- $chunk := printf "<h3%s" . -}}
+    {{- $heading := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $chunk -}}
+    {{- $img := index (findRE `(?s)<img[^>]*>` $chunk 1) 0 -}}
+    {{- $role := "" -}}
+    {{- if in $heading ", " -}}{{- $role = replaceRE `(?s)^.*, (.*)$` "$1" $heading -}}{{- end -}}
+    {{- /* Classify each rendered <p> into bio / appointed / email / seat. */ -}}
+    {{- $sc := newScratch -}}
+    {{- range $p := findRE `(?s)<p>.*?</p>` $chunk -}}
+      {{- $inner := replaceRE `(?s)^<p>(.*)</p>$` "$1" $p -}}
+      {{- if in $p "<img" -}}{{- /* headshot paragraph handled separately as $img */ -}}
+      {{- else if in $p "Appointed:" -}}{{- $sc.Set "appointed" $inner -}}
+      {{- else if findRE `<p><a href="mailto:` $p 1 -}}{{- $sc.Set "email" $inner -}}
+      {{- else if in $p "Board seat sponsored by" -}}{{- $sc.Set "seat" $inner -}}
+      {{- else -}}{{- $sc.Add "bios" (slice $p) -}}{{- end -}}
+    {{- end -}}
+    {{- $bios := $sc.Get "bios" -}}
+    <article class="board-card">
+      <div class="board-card__photo{{ if eq $role "President" }} is-president{{ end }}">
+        {{ $img | safeHTML }}
+        {{- with $role }}<span class="board-card__role">{{ . | safeHTML }}</span>{{ end }}
+      </div>
+      <div class="board-card__body">
+        <h3 class="board-card__name">{{ $heading | safeHTML }}</h3>
+        {{- with $bios }}
+        <div class="board-card__bio">
+          {{ index . 0 | safeHTML }}
+          {{- if gt (len .) 1 }}
+          <div class="board-card__more" hidden>
+            {{- range after 1 . }}{{ . | safeHTML }}{{ end }}
+          </div>
+          <button type="button" class="board-toggle" aria-expanded="false">+ Read more</button>
+          {{- end }}
+        </div>
+        {{- end }}
+        <div class="board-card__meta">
+          {{- with $sc.Get "appointed" }}<span class="board-card__appointed">{{ . | safeHTML }}</span>{{ end }}
+          {{- with $sc.Get "seat" }}<span class="board-card__seat">{{ . | safeHTML }}</span>{{ end }}
+          {{- with $sc.Get "email" }}<span class="board-card__email">{{ . | safeHTML }}</span>{{ end }}
+        </div>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

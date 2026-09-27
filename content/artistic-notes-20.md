@@ -1,6 +1,7 @@
 ---
 title: 'Artistic Notes 2.0'
 url: '/artistic-notes-20.html'
+layout: 'legal'
 ---
 
 (The heart of the Artistic license is the idea that

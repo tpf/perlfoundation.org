@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{- /* Content template (design: ContentPage.dc.html). Covers the plain
+       prose pages (about, download, contact, grants, affiliates, …). The
+       rendered Markdown is styled via the `.doc` class — the template never
+       hard-codes page text. An optional sticky "On this page" list is built
+       from the page's own H2/H3 headings when there are more than two. */ -}}
+{{- $showToc := and (gt (len (findRE "<h[23]" .Content)) 2) (ne .Params.toc false) -}}
+<header class="page-hero">
+  {{ partial "breadcrumb.html" . }}
+  <h1 class="display-h1">{{ .Title }}</h1>
+</header>
+<div class="doc-layout{{ if $showToc }} doc-layout--toc{{ end }}">
+  {{- if $showToc }}
+  <aside class="doc-toc" aria-label="On this page">
+    <div class="doc-toc__inner">
+      <div class="doc-toc__label">On this page</div>
+      {{ .TableOfContents }}
+    </div>
+  </aside>
+  {{- end }}
+  <article class="doc">
+    {{ .Content }}
+  </article>
+</div>
+{{ end }}

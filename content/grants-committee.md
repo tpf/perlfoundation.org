@@ -1,6 +1,7 @@
 ---
 title: 'Grants Committee Charter'
 url: '/grants-committee.html'
+layout: 'legal'
 ---
 1. Purpose
    The Grants Committee shall manage all Yet Another Society

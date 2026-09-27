@@ -1,0 +1,104 @@
+{{- /* Header driven by the `main` menu in config/_default/menus.en.toml.
+       The four top-level parents (about, sponsors, grants, legal) become the
+       mega-menu columns; a child that itself has children (charters) becomes a
+       titled sub-list. Active section is derived from the current page URL. */ -}}
+{{- $cur := .RelPermalink -}}
+{{- $groups := where .Site.Menus.main "HasChildren" true -}}
+{{- $active := "" -}}
+{{- range $groups -}}
+  {{- if eq (.URL | relURL) $cur }}{{ $active = .Identifier }}{{ end -}}
+  {{- range .Children -}}
+    {{- if eq (.URL | relURL) $cur }}{{ $active = .Parent }}{{ end -}}
+    {{- range .Children -}}
+      {{- if eq (.URL | relURL) $cur }}{{ $active = "legal" }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $twoCol := slice "about" "legal" -}}
+<header class="site-header{{ with $active }} is-section-{{ . }}{{ end }}" data-active="{{ $active }}">
+  {{- /* ---------- Desktop bar ---------- */ -}}
+  <div class="site-header__bar">
+    <a class="site-header__brand" href="/">
+      <img src="{{ "images/Perl_Onion_Color.svg" | relURL }}" alt="The Perl &amp; Raku Foundation" width="38" height="38">
+      <span class="site-header__wordmark">The Perl &amp; Raku<br>Foundation</span>
+    </a>
+    <nav class="site-header__nav" aria-label="Primary">
+      {{- range $groups }}
+      <button type="button" class="site-header__navitem{{ if eq $active .Identifier }} is-active{{ end }}"
+              aria-haspopup="true" aria-expanded="false" aria-controls="megamenu">/{{ .Identifier }}</button>
+      {{- end }}
+      <a class="site-header__donate" href="/donate.html">Donate</a>
+    </nav>
+
+    {{- /* ---------- Mega-menu panel (single, four columns) ---------- */ -}}
+    <div class="megamenu" id="megamenu">
+      {{- range $groups }}
+      {{- $gid := .Identifier }}
+      <div class="megamenu__col{{ if in $twoCol $gid }} megamenu__col--2{{ end }}{{ if eq $active $gid }} is-active{{ end }}">
+        <div class="megamenu__label">/{{ $gid }}</div>
+        <div class="megamenu__links{{ if in $twoCol $gid }} megamenu__links--2{{ end }}">
+          {{- /* section landing link, unless a child already points at it */ -}}
+          {{- $landing := .URL | relURL -}}
+          {{- $dupe := false -}}
+          {{- range .Children }}{{ if eq (.URL | relURL) $landing }}{{ $dupe = true }}{{ end }}{{ end -}}
+          {{- if and (not $dupe) (hasPrefix .URL "/") }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+          {{- end }}
+          {{- range .Children }}
+            {{- if not .HasChildren }}
+          <a href="{{ .URL }}"{{ with .Params.target }} target="{{ . }}" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+            {{- end }}
+          {{- end }}
+        </div>
+        {{- range .Children }}
+          {{- if .HasChildren }}
+        <div class="megamenu__label megamenu__label--sub">/{{ $gid }}/{{ .Identifier }}</div>
+        <div class="megamenu__links megamenu__links--2">
+          {{- range .Children }}
+          <a href="{{ .URL }}"{{ with .Params.target }} target="{{ . }}" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+          {{- end }}
+        </div>
+          {{- end }}
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- /* ---------- Mobile bar ---------- */ -}}
+  <div class="site-header__mbar">
+    <a class="site-header__brand site-header__brand--m" href="/">
+      <img src="{{ "images/Perl_Onion_Color.svg" | relURL }}" alt="The Perl &amp; Raku Foundation" width="34" height="34">
+      <span class="site-header__wordmark">The Perl &amp; Raku<br>Foundation</span>
+    </a>
+    <div class="site-header__mactions">
+      <a class="site-header__donate" href="/donate.html">Donate</a>
+      <button type="button" class="site-header__toggle" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {{- range $groups }}
+    {{- $gid := .Identifier }}
+    <div class="mobile-menu__group">
+      <div class="megamenu__label">/{{ $gid }}</div>
+      <div class="mobile-menu__links">
+        {{- $landing := .URL | relURL -}}
+        {{- $dupe := false -}}
+        {{- range .Children }}{{ if eq (.URL | relURL) $landing }}{{ $dupe = true }}{{ end }}{{ end -}}
+        {{- if and (not $dupe) (hasPrefix .URL "/") }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- end }}
+        {{- range .Children }}
+          {{- if .HasChildren }}
+            {{- range .Children }}
+        <a href="{{ .URL }}"{{ with .Params.target }} target="{{ . }}" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+            {{- end }}
+          {{- else }}
+        <a href="{{ .URL }}"{{ with .Params.target }} target="{{ . }}" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+          {{- end }}
+        {{- end }}
+      </div>
+    </div>
+    {{- end }}
+  </div>
+</header>

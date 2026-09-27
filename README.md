@@ -1,13 +1,13 @@
 # Deploy locally
 
-This site is a Hugo site which uses the blowfish theme as a git submodule. Make
-sure you have a recent version of `hugo` installed.
-
-The themes are installed as sub-modules, so make sure to use the following command:
-
+This is a [Hugo](https://gohugo.io/) site. It ships its own standalone layouts
+under `layouts/` — there is **no theme and no git submodule**. Make sure you
+have a recent version of `hugo` **extended** installed (CI pins the version in
+`.github/workflows/publish.yml`).
 
 ```
-git clone --recurse-submodules --shallow-submodules https://github.com/tpf/tprf-hugo-site
+git clone https://github.com/tpf/tprf-hugo-site
+cd tprf-hugo-site
 hugo serve
 ```
 
@@ -15,12 +15,26 @@ hugo serve
 
 A `Makefile` provides convenience targets:
 
-- `make init` — ensures the blowfish theme submodule is checked out (handy if
-  you cloned without `--recurse-submodules`).
-- `make serve` — runs `hugo serve` (after `make init`). If the `tailscale` CLI
-  is available it binds to your tailnet IP so the dev server is reachable from
-  other machines on your tailnet; otherwise it serves on localhost. Hugo picks
-  an open port automatically if the default is in use.
+- `make serve` — runs `hugo serve`. If the `tailscale` CLI is available it binds
+  to your tailnet IP so the dev server is reachable from other machines on your
+  tailnet; otherwise it serves on localhost. Hugo picks an open port
+  automatically if the default is in use.
+- `make build` — builds the static site into `public/`.
+
+## Layouts
+
+The site is fully self-contained. Templates live under `layouts/`:
+
+- `layouts/_default/baseof.html` — the page shell (header/footer partials,
+  `<head>`).
+- `layouts/_default/<name>.html` — one template per page style. A content file
+  selects its template with `layout: '<name>'` in its front matter (e.g.
+  `board`, `committees`, `getinvolved`, `sponsorlevels`, `oursponsors`,
+  `donate`, `legal`, `fund`, `events`). Content with no `layout` falls back to
+  `single.html`.
+- `layouts/partials/` — shared `header.html`, `footer.html`, `head.html`.
+- `layouts/shortcodes/` — the sponsor shortcodes used by the sponsor pages.
+- `static/css/custom.css` — all styling (dark theme, design tokens at `:root`).
 
 # Site structure
 

@@ -1,0 +1,20 @@
+{{- /* JSON content feed / search index for perlfoundation.org */ -}}
+{{- $pages := where .Site.RegularPages "Params.private" "!=" true -}}
+{{- $items := slice -}}
+{{- range $pages -}}
+  {{- $items = $items | append (dict
+      "title" .Title
+      "url" .Permalink
+      "relURL" .RelPermalink
+      "date" (.Date.Format "2006-01-02")
+      "summary" (.Summary | plainify | htmlUnescape | chomp)
+      "content" (.Content | plainify | htmlUnescape | chomp)
+  ) -}}
+{{- end -}}
+{{- dict
+    "site" .Site.Title
+    "url" .Site.BaseURL
+    "generated" (now.Format "2006-01-02T15:04:05Z07:00")
+    "count" (len $items)
+    "pages" $items
+  | jsonify (dict "prefix" "" "indent" "  ") -}}

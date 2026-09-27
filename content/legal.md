@@ -1,6 +1,7 @@
 ---
 title: 'Legal'
 url: '/legal.html'
+layout: 'legalindex'
 ---
 
 The Perl Foundation is a legally registered DBA (Doing
@@ -10,14 +11,14 @@ you'll see in the earlier documents. We now use the name
 The Perl Foundation, because it does a better job of
 explaining what we do.
 
-How TPRF Works
+## How TPRF Works
 
 > I often get asked about my role in TPRF and how TPRF works, in the sense of
 > "Who's in charge?" So, instead of pointing people to the legalese in the
 > bylaws and committee charters, this is an explanation of TPRF's structure in
 > plain English.
-
---Allison
+>
+> --Allison
 
 The top level of TPRF is the board of directors.
 It holds the ultimate authority in the organization, but in
@@ -90,7 +91,7 @@ invited to step up.
 
 [Trademarks](trademarks.html)
 
-TPRF and Perl
+## TPRF and Perl
 
 - [Contributor License Agreement](contributor-license-agreement.html)
 - [License FAQ](license-faq.html)
@@ -104,7 +105,7 @@ John Sullivan, and [Charles E. Gotlieb](http://www.i-plaw.com/) for their work
 in drafting and refining the Artistic License 2.0, as well as TPRF's contributor
 license agreement and trademark policies.
 
-Establishing the Foundation
+## Establishing the Foundation
 
 - [Articles of Incorporation](articles.html)
 - [Bylaws](bylaws.html)

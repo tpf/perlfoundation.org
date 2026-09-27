@@ -1,6 +1,7 @@
 ---
 title: 'Bylaws of Yet Another Society'
 url: '/bylaws.html'
+layout: 'legal'
 ---
 ### ARTICLE I
 

@@ -1,6 +1,7 @@
 ---
 title: 'Articles of Incorporation'
 url: '/articles.html'
+layout: 'legal'
 ---
 
 ### ARTICLES OF INCORPORATION OF YET ANOTHER SOCIETY

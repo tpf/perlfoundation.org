@@ -1,6 +1,8 @@
 ---
 title: 'Perl Core Development Fund'
 url: '/perl-core-development-fund.html'
+layout: 'fund'
+application_form: true
 ---
 
 In 2008 a generous contribution from Booking.com enabled
@@ -19,7 +21,8 @@ how this has been spent will be published in
 [a public accessible location](https://docs.google.com/spreadsheets/d/1BVas4wi-q0uHc59BBW5A6T0fBQtkpqvDzoDOMoTxFRQ/edit#gid=0)
 for the both funds.
 
-Description of Fund
+## Description of Fund
+
 The donations made to this fund will be used for the
 development and improvement of the Perl core. Funds will
 be disbursed via grants awarded by the Grants Committee in
@@ -28,15 +31,15 @@ community. The grants will be awarded to the most
 appropriate applicant and managed in association with the
 Perl Core Team.
 
-Applicant Eligibility
+## Applicant Eligibility
+
 Due to the nature of this fund, and its targeted focus,
 eligibility to apply has two initial requirements:
 
-The applicant must be a contributor to the Perl
-core.
-
-The application must be endorsed by one or more
-people with commit rights to the Perl core.
+- The applicant must be a contributor to the Perl
+  core.
+- The application must be endorsed by one or more
+  people with commit rights to the Perl core.
 
 ### Approval Process
 
@@ -100,7 +103,7 @@ grants, payment will be for hours worked. For milestone
 based grants, payment will be made up to the last
 completed milestone.
 
-Management of Fund
+## Management of Fund
 
 ### Administration Costs
 
@@ -124,11 +127,13 @@ progress and no new applications, the remaining funds will
 be transferred to The Perl Foundation’s general
 fund.
 
-Application
+## Application
+
 In order to apply for a grant under this fund the
 following Grant Application form must be completed.
 
-Perl Core Development Grant Application Form
+### Perl Core Development Grant Application Form
+
 (Please submit all areas of the completed form to
 tpf-grants-secretary(at)perlfoundation.org.)
 

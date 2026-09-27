@@ -1,5 +1,5 @@
 {{- $level := .Get "level" -}}
-{{- $sponsors := index .Site.Data.sponsors $level -}}
+{{- $sponsors := index hugo.Data.sponsors $level -}}
 {{- $useGrid := .Get "grid" | default false -}}
 
 {{- if $useGrid -}}

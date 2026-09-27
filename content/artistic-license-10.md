@@ -1,6 +1,7 @@
 ---
 title: 'Artistic License 1.0'
 url: '/artistic-license-10.html'
+layout: 'legal'
 ---
 
 ### Preamble

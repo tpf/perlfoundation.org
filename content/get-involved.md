@@ -1,6 +1,7 @@
 ---
 title: 'Get Involved'
 url: '/get-involved.html'
+layout: 'getinvolved'
 ---
 
 ## Want to get involved?

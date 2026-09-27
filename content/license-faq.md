@@ -1,6 +1,7 @@
 ---
 title: 'License FAQ'
 url: '/license-faq.html'
+layout: 'legal'
 ---
 
 ### Why has TPRF adopted a CLA process?
