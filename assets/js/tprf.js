@@ -16,6 +16,7 @@
     // ---- Desktop mega-menu: click/tap toggles; hover & focus handled by CSS ----
     if (header) {
       var navItems = header.querySelectorAll('.site-header__navitem');
+      var nav = header.querySelector('.site-header__nav');
       var mega = header.querySelector('#megamenu');
 
       function setExpanded(state) {
@@ -29,6 +30,20 @@
           e.preventDefault();
           if (header.classList.contains('is-open')) { closeMenu(); } else { openMenu(); }
         });
+      });
+
+      // The panel is also revealed by CSS :focus-within, so keep aria-expanded
+      // truthful when keyboard focus (not just a click) opens it.
+      function inMenu(node) {
+        return !!node && ((nav && nav.contains(node)) || (mega && mega.contains(node)));
+      }
+      header.addEventListener('focusin', function (e) {
+        if (inMenu(e.target)) { setExpanded(true); }
+      });
+      header.addEventListener('focusout', function (e) {
+        if (!inMenu(e.relatedTarget) && !header.classList.contains('is-open')) {
+          setExpanded(false);
+        }
       });
 
       document.addEventListener('keydown', function (e) {
