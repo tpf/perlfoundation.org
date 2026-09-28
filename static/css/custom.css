@@ -59,6 +59,24 @@ a:hover { opacity: .85; }
   outline: 2px solid var(--coral);
   outline-offset: 2px;
 }
+main:focus-visible { outline: none; }
+
+/* Skip link: hidden until focused, then pinned top-left. */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -100px;
+  z-index: 100;
+  background: var(--coral);
+  color: #121114;
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-link:focus { top: 8px; }
+/* Coral outline would vanish on the coral pill, so use an ink ring. */
+.skip-link:focus-visible { outline-color: #121114; }
 
 /* -------------------------------------------------------------------------- */
 /* Typography helpers                                                         */
@@ -844,6 +862,8 @@ a:hover { opacity: .85; }
 .board-card__more[hidden] { display: none; }
 .board-toggle { all: unset; cursor: pointer; align-self: flex-start; min-height: 40px; display: flex; align-items: center; font-family: var(--mono); font-size: 13px; color: var(--coral); }
 .board-toggle:hover { opacity: .8; }
+/* `all: unset` clears the shared focus ring, so restore it here. */
+.board-toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 .board-card__meta { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; color: var(--text-4); }
 .board-card__seat a { color: var(--text); text-underline-offset: 3px; }
 .board-card__email a { color: var(--coral); text-underline-offset: 3px; }
