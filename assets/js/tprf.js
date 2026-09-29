@@ -109,5 +109,76 @@
         }
       });
     }
+
+    // ---- Site search (Pagefind, lazy-loaded into a modal on first open) ----
+    var searchTriggers = document.querySelectorAll('.site-header__search');
+    var searchModal = document.getElementById('site-search');
+    if (searchTriggers.length && searchModal) {
+      var searchLoaded = false;
+      var lastTrigger = null;
+
+      function focusSearchInput() {
+        var input = searchModal.querySelector('input');
+        if (input) { input.focus(); }
+      }
+
+      function loadPagefind() {
+        if (searchLoaded) { focusSearchInput(); return; }
+        searchLoaded = true;
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = '/pagefind/pagefind-ui.css';
+        document.head.appendChild(css);
+        var js = document.createElement('script');
+        js.src = '/pagefind/pagefind-ui.js';
+        js.onload = function () {
+          /* global PagefindUI */
+          new PagefindUI({ element: '#search', showSubResults: true, showImages: false });
+          focusSearchInput();
+        };
+        js.onerror = function () {
+          document.getElementById('search').innerHTML =
+            '<p class="site-search__error">Search isn’t available on this build yet.</p>';
+        };
+        document.body.appendChild(js);
+      }
+
+      function openSearch(trigger) {
+        lastTrigger = trigger || null;
+        searchModal.classList.add('is-open');
+        searchModal.setAttribute('aria-hidden', 'false');
+        searchTriggers.forEach(function (b) { b.setAttribute('aria-expanded', 'true'); });
+        document.documentElement.style.overflow = 'hidden';
+        loadPagefind();
+      }
+
+      function closeSearch() {
+        searchModal.classList.remove('is-open');
+        searchModal.setAttribute('aria-hidden', 'true');
+        searchTriggers.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+        document.documentElement.style.overflow = '';
+        if (lastTrigger) { lastTrigger.focus(); }
+      }
+
+      searchTriggers.forEach(function (btn) {
+        btn.addEventListener('click', function () { openSearch(btn); });
+      });
+      searchModal.querySelectorAll('[data-search-close]').forEach(function (el) {
+        el.addEventListener('click', closeSearch);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && searchModal.classList.contains('is-open')) { closeSearch(); }
+      });
+      // Keep keyboard focus inside the dialog while it is open.
+      searchModal.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') { return; }
+        var nodes = searchModal.querySelectorAll('a[href], button, input, [tabindex]:not([tabindex="-1"])');
+        var list = Array.prototype.filter.call(nodes, function (el) { return el.offsetParent !== null; });
+        if (!list.length) { return; }
+        var first = list[0], last = list[list.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+    }
   });
 })();

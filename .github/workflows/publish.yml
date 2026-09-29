@@ -53,6 +53,8 @@ jobs:
           HUGO_ENVIRONMENT: production
         run: |
           hugo --environment pages --minify --baseURL "https://perlfoundation.org/"
+      - name: Index with Pagefind
+        run: npx -y pagefind@1.5.2 --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
