@@ -13,44 +13,63 @@
   ready(function () {
     var header = document.querySelector('.site-header');
 
-    // ---- Desktop mega-menu: click/tap toggles; hover & focus handled by CSS ----
+    // ---- Desktop nav: each button opens ONLY its own section, dropped under
+    // that button. Hover, keyboard focus, and click all engage a section so
+    // pressing a different button visibly changes what's shown. ----
     if (header) {
-      var navItems = header.querySelectorAll('.site-header__navitem');
-      var nav = header.querySelector('.site-header__nav');
+      var bar = header.querySelector('.site-header__bar');
       var mega = header.querySelector('#megamenu');
+      var navItems = header.querySelectorAll('.site-header__navitem');
+      var cols = mega ? mega.querySelectorAll('.megamenu__col') : [];
 
-      function setExpanded(state) {
-        navItems.forEach(function (b) { b.setAttribute('aria-expanded', String(state)); });
+      function closeMenu() {
+        header.classList.remove('is-open');
+        navItems.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+        cols.forEach(function (c) { c.classList.remove('is-shown'); });
       }
-      function openMenu() { header.classList.add('is-open'); setExpanded(true); }
-      function closeMenu() { header.classList.remove('is-open'); setExpanded(false); }
+
+      function openSection(section) {
+        var btn = header.querySelector('.site-header__navitem[data-section="' + section + '"]');
+        var col = mega && mega.querySelector('.megamenu__col[data-section="' + section + '"]');
+        if (!btn || !col) { return; }
+        cols.forEach(function (c) { c.classList.toggle('is-shown', c === col); });
+        navItems.forEach(function (b) { b.setAttribute('aria-expanded', String(b === btn)); });
+        header.classList.add('is-open');
+        // Drop the panel under the engaged button, clamped to the header width.
+        var maxLeft = header.offsetWidth - mega.offsetWidth;
+        mega.style.left = Math.max(0, Math.min(btn.offsetLeft, maxLeft)) + 'px';
+      }
 
       navItems.forEach(function (btn) {
+        var section = btn.getAttribute('data-section');
+        // Pointer and keyboard focus preview the section; click pins/toggles it.
+        btn.addEventListener('mouseenter', function () { openSection(section); });
+        btn.addEventListener('focus', function () { openSection(section); });
         btn.addEventListener('click', function (e) {
           e.preventDefault();
-          if (header.classList.contains('is-open')) { closeMenu(); } else { openMenu(); }
+          if (header.classList.contains('is-open') && btn.getAttribute('aria-expanded') === 'true') {
+            closeMenu();
+          } else {
+            openSection(section);
+          }
         });
       });
 
-      // The panel is also revealed by CSS :focus-within, so keep aria-expanded
-      // truthful when keyboard focus (not just a click) opens it.
-      function inMenu(node) {
-        return !!node && ((nav && nav.contains(node)) || (mega && mega.contains(node)));
+      // The panel lives inside the bar, so leaving the whole cluster closes it;
+      // moving from a button down into the panel does not.
+      if (bar) {
+        bar.addEventListener('mouseleave', function () {
+          if (!header.contains(document.activeElement)) { closeMenu(); }
+        });
       }
-      header.addEventListener('focusin', function (e) {
-        if (inMenu(e.target)) { setExpanded(true); }
-      });
       header.addEventListener('focusout', function (e) {
-        if (!inMenu(e.relatedTarget) && !header.classList.contains('is-open')) {
-          setExpanded(false);
-        }
+        if (!header.contains(e.relatedTarget)) { closeMenu(); }
       });
-
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { closeMenu(); }
       });
       document.addEventListener('click', function (e) {
-        if (mega && !header.contains(e.target)) { closeMenu(); }
+        if (!header.contains(e.target)) { closeMenu(); }
       });
     }
 
