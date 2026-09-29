@@ -213,6 +213,54 @@ main:focus-visible { outline: none; }
 .megamenu__links a { text-decoration: none; color: var(--text); }
 .megamenu__links a:hover { color: var(--coral); opacity: 1; }
 
+/* Search trigger (header) */
+.site-header__search {
+  cursor: pointer;
+  border: 0;
+  border-left: 1px solid var(--rule);
+  background: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+.site-header__search:hover { background: var(--bg-inset); color: var(--coral); }
+.site-header__search .icon-search { width: 18px; height: 18px; display: block; }
+.site-header__search--m { border-left: 0; padding: 0 10px; min-height: 44px; min-width: 44px; justify-content: center; }
+
+/* Search overlay + Pagefind UI (themed to the dark palette) */
+.site-search { position: fixed; inset: 0; z-index: 200; display: none; align-items: flex-start; justify-content: center; }
+.site-search.is-open { display: flex; }
+.site-search__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.62); backdrop-filter: blur(2px); }
+.site-search__panel {
+  position: relative;
+  margin: 12vh 16px 16px;
+  width: min(640px, 92vw);
+  max-height: 76vh;
+  overflow-y: auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,.7);
+  padding: 22px 22px 8px;
+}
+.site-search__close {
+  position: absolute; top: 6px; right: 12px;
+  background: none; border: 0; cursor: pointer;
+  color: var(--text); font-size: 28px; line-height: 1;
+}
+.site-search__close:hover { color: var(--coral); }
+.site-search__error { color: var(--text); font-family: var(--sans); margin: 8px 2px 18px; }
+#search {
+  --pagefind-ui-primary: var(--coral);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--bg-raised);
+  --pagefind-ui-border: var(--rule);
+  --pagefind-ui-tag: var(--bg-inset);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 4px;
+  --pagefind-ui-font: var(--sans);
+}
+
 /* Mobile header */
 .site-header__mbar { display: none; align-items: center; justify-content: space-between; padding: 12px 16px; gap: 10px; }
 .site-header__brand--m { padding: 0; border: 0; gap: 10px; }
