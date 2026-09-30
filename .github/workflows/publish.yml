@@ -54,7 +54,10 @@ jobs:
         run: |
           hugo --environment pages --minify --baseURL "https://perlfoundation.org/"
       - name: Index with Pagefind
-        run: npx -y pagefind@1.5.2 --site public
+        # Single source of truth for the Pagefind version: the Makefile.
+        run: |
+          PAGEFIND_VERSION="$(sed -n 's/^PAGEFIND_VERSION ?= //p' Makefile)"
+          npx -y pagefind@"${PAGEFIND_VERSION:?missing PAGEFIND_VERSION in Makefile}" --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

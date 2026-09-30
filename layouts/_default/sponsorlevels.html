@@ -14,6 +14,13 @@
   matching the design's theme cycle.
 */ -}}
 {{- $sections := after 1 (split .Content "<h2") -}}
+{{- /* Guard: this template's positional slicing assumes exactly 8 <h2>
+       sections (1 hero + 6 tiers + 1 "How to donate" band). Fail loudly and
+       point at the content file if that drifts, instead of shipping silently
+       mis-sliced output or hard-panicking on an out-of-range index. */ -}}
+{{- if ne (len $sections) 8 -}}
+  {{- errorf "sponsorlevels.html: expected 8 <h2> sections in %s (1 hero + 6 tiers + 1 donate band), got %d" .File.Path (len $sections) -}}
+{{- end -}}
 {{- $hero := index $sections 0 -}}
 {{- $band := index $sections 7 -}}
 {{- $tiers := first 6 (after 1 $sections) -}}
