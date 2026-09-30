@@ -10,7 +10,8 @@
   (never by position, since the order varies) — it hard-codes no member text.
   The role badge is derived from the "Name, Role" heading (chrome, not new copy);
   the President's badge is coral, others violet, per the design. Bios past the
-  first collapse behind a "Read more" toggle (see assets/js/tprf.js).
+  first collapse behind a native <details>/<summary> "Read more" disclosure, so
+  they work with JavaScript disabled; assets/js/tprf.js only relabels the summary.
 */ -}}
 {{- $content := .Content -}}
 {{- $intro := replaceRE `(?s)<h2.*$` "" $content -}}
@@ -62,10 +63,12 @@
         <div class="board-card__bio">
           {{ index . 0 | safeHTML }}
           {{- if gt (len .) 1 }}
-          <div class="board-card__more" hidden>
-            {{- range after 1 . }}{{ . | safeHTML }}{{ end }}
-          </div>
-          <button type="button" class="board-toggle" aria-expanded="false">+ Read more</button>
+          <details class="board-card__moredetails">
+            <summary class="board-toggle">Read more</summary>
+            <div class="board-card__more">
+              {{- range after 1 . }}{{ . | safeHTML }}{{ end }}
+            </div>
+          </details>
           {{- end }}
         </div>
         {{- end }}
