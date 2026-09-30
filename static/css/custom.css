@@ -164,6 +164,7 @@ main:focus-visible { outline: none; }
   border-left: 1px solid var(--rule);
   background: none;
   color: var(--text);
+  text-decoration: none;
   font-family: var(--mono);
   font-size: 14px;
 }
@@ -910,9 +911,12 @@ main:focus-visible { outline: none; }
 .board-card__name { margin: 0; font-weight: 800; font-stretch: 112%; font-size: 24px; line-height: 1.05; text-transform: uppercase; }
 .board-card__bio { display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.6; color: var(--text-2); }
 .board-card__bio p { margin: 0; text-wrap: pretty; }
-.board-card__more { display: flex; flex-direction: column; gap: 12px; }
-.board-card__more[hidden] { display: none; }
-.board-toggle { all: unset; cursor: pointer; align-self: flex-start; min-height: 40px; display: flex; align-items: center; font-family: var(--mono); font-size: 13px; color: var(--coral); }
+.board-card__more { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.board-card__moredetails { margin-top: 8px; }
+.board-toggle { all: unset; cursor: pointer; align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; font-family: var(--mono); font-size: 13px; color: var(--coral); list-style: none; }
+.board-toggle::-webkit-details-marker { display: none; }
+.board-toggle::before { content: "+ "; }
+.board-card__moredetails[open] > .board-toggle::before { content: "− "; }
 .board-toggle:hover { opacity: .8; }
 /* `all: unset` clears the shared focus ring, so restore it here. */
 .board-toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }

@@ -23,10 +23,12 @@
       <span class="site-header__wordmark">The Perl &amp; Raku<br>Foundation</span>
     </a>
     <nav class="site-header__nav" aria-label="Primary">
+      {{- /* Real links to each section landing page: they work with no JS.
+             tprf.js progressively enhances them into disclosure controls. */ -}}
       {{- range $groups }}
-      <button type="button" class="site-header__navitem{{ if eq $active .Identifier }} is-active{{ end }}"
-              data-section="{{ .Identifier }}"
-              aria-haspopup="true" aria-expanded="false" aria-controls="megamenu">/{{ .Identifier }}</button>
+      <a href="{{ .URL }}" class="site-header__navitem{{ if eq $active .Identifier }} is-active{{ end }}"
+         data-section="{{ .Identifier }}"
+         aria-expanded="false" aria-controls="megamenu-{{ .Identifier }}">/{{ .Identifier }}</a>
       {{- end }}
       <button type="button" class="site-header__search" aria-label="Search"
               aria-haspopup="dialog" aria-controls="site-search" aria-expanded="false">
@@ -39,7 +41,7 @@
     <div class="megamenu" id="megamenu">
       {{- range $groups }}
       {{- $gid := .Identifier }}
-      <div class="megamenu__col{{ if in $twoCol $gid }} megamenu__col--2{{ end }}{{ if eq $active $gid }} is-active{{ end }}" data-section="{{ $gid }}">
+      <div class="megamenu__col{{ if in $twoCol $gid }} megamenu__col--2{{ end }}{{ if eq $active $gid }} is-active{{ end }}" id="megamenu-{{ $gid }}" data-section="{{ $gid }}">
         <div class="megamenu__label">/{{ $gid }}</div>
         <div class="megamenu__links{{ if in $twoCol $gid }} megamenu__links--2{{ end }}">
           {{- /* section landing link, unless a child already points at it */ -}}

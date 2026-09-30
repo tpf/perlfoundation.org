@@ -13,19 +13,24 @@
   ready(function () {
     var header = document.querySelector('.site-header');
 
-    // ---- Desktop nav: each button opens ONLY its own section, dropped under
-    // that button. Hover, keyboard focus, and click all engage a section so
-    // pressing a different button visibly changes what's shown. ----
+    // ---- Desktop nav: each item is a real link to its section landing page
+    // (works with no JS). We enhance it into a disclosure: hover previews the
+    // section; activating (click / Enter / Space) opens it and moves focus into
+    // the panel. We do NOT open on plain focus, so keyboard users can Tab across
+    // all nav items and reach every control. ----
     if (header) {
       var bar = header.querySelector('.site-header__bar');
       var mega = header.querySelector('#megamenu');
       var navItems = header.querySelectorAll('.site-header__navitem');
       var cols = mega ? mega.querySelectorAll('.megamenu__col') : [];
+      var activeNavItem = null;
 
-      function closeMenu() {
+      function closeMenu(restoreFocus) {
         header.classList.remove('is-open');
         navItems.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
         cols.forEach(function (c) { c.classList.remove('is-shown'); });
+        if (restoreFocus && activeNavItem) { activeNavItem.focus(); }
+        activeNavItem = null;
       }
 
       function openSection(section) {
@@ -35,22 +40,28 @@
         cols.forEach(function (c) { c.classList.toggle('is-shown', c === col); });
         navItems.forEach(function (b) { b.setAttribute('aria-expanded', String(b === btn)); });
         header.classList.add('is-open');
+        activeNavItem = btn;
         // Drop the panel under the engaged button, clamped to the header width.
         var maxLeft = header.offsetWidth - mega.offsetWidth;
         mega.style.left = Math.max(0, Math.min(btn.offsetLeft, maxLeft)) + 'px';
       }
 
-      navItems.forEach(function (btn) {
-        var section = btn.getAttribute('data-section');
-        // Pointer and keyboard focus preview the section; click pins/toggles it.
-        btn.addEventListener('mouseenter', function () { openSection(section); });
-        btn.addEventListener('focus', function () { openSection(section); });
-        btn.addEventListener('click', function (e) {
+      function focusFirstInColumn(section) {
+        var col = mega && mega.querySelector('.megamenu__col[data-section="' + section + '"]');
+        var link = col && col.querySelector('a[href]');
+        if (link) { link.focus(); }
+      }
+
+      navItems.forEach(function (item) {
+        var section = item.getAttribute('data-section');
+        item.addEventListener('mouseenter', function () { openSection(section); });
+        item.addEventListener('click', function (e) {
           e.preventDefault();
-          if (header.classList.contains('is-open') && btn.getAttribute('aria-expanded') === 'true') {
-            closeMenu();
+          if (header.classList.contains('is-open') && item.getAttribute('aria-expanded') === 'true') {
+            closeMenu(false);
           } else {
             openSection(section);
+            focusFirstInColumn(section);
           }
         });
       });
@@ -59,36 +70,32 @@
       // moving from a button down into the panel does not.
       if (bar) {
         bar.addEventListener('mouseleave', function () {
-          if (!header.contains(document.activeElement)) { closeMenu(); }
+          if (!header.contains(document.activeElement)) { closeMenu(false); }
         });
       }
       header.addEventListener('focusout', function (e) {
-        if (!header.contains(e.relatedTarget)) { closeMenu(); }
+        if (!header.contains(e.relatedTarget)) { closeMenu(false); }
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { closeMenu(); }
+        // Escape closes; if focus is inside the panel, return it to the trigger.
+        if (e.key === 'Escape' && header.classList.contains('is-open')) {
+          closeMenu(header.contains(document.activeElement));
+        }
       });
       document.addEventListener('click', function (e) {
-        if (!header.contains(e.target)) { closeMenu(); }
+        if (!header.contains(e.target)) { closeMenu(false); }
       });
     }
 
-    // ---- Board member "Read more" toggles ----
-    var bioToggles = document.querySelectorAll('.board-toggle');
-    bioToggles.forEach(function (btn) {
-      var more = btn.parentNode.querySelector('.board-card__more');
-      if (!more) { return; }
-      btn.addEventListener('click', function () {
-        var isOpen = !more.hasAttribute('hidden');
-        if (isOpen) {
-          more.setAttribute('hidden', '');
-          btn.setAttribute('aria-expanded', 'false');
-          btn.textContent = '+ Read more';
-        } else {
-          more.removeAttribute('hidden');
-          btn.setAttribute('aria-expanded', 'true');
-          btn.textContent = '− Show less';
-        }
+    // ---- Board member "Read more" bios ----
+    // The <details>/<summary> shows and hides natively (works with no JS); we
+    // only relabel the summary as it toggles. The +/− marker is CSS.
+    var bioDetails = document.querySelectorAll('.board-card__moredetails');
+    bioDetails.forEach(function (d) {
+      var summary = d.querySelector('summary');
+      if (!summary) { return; }
+      d.addEventListener('toggle', function () {
+        summary.textContent = d.open ? 'Show less' : 'Read more';
       });
     });
 
@@ -96,17 +103,26 @@
     var toggle = document.querySelector('.site-header__toggle');
     var mobileMenu = document.querySelector('#mobile-menu');
     if (toggle && mobileMenu) {
+      function closeMobile(restoreFocus) {
+        mobileMenu.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = 'Menu';
+        if (restoreFocus) { toggle.focus(); }
+      }
+      function openMobile() {
+        mobileMenu.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.textContent = 'Close';
+      }
       toggle.addEventListener('click', function () {
-        var isOpen = !mobileMenu.hasAttribute('hidden');
-        if (isOpen) {
-          mobileMenu.setAttribute('hidden', '');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.textContent = 'Menu';
-        } else {
-          mobileMenu.removeAttribute('hidden');
-          toggle.setAttribute('aria-expanded', 'true');
-          toggle.textContent = 'Close';
-        }
+        if (mobileMenu.hasAttribute('hidden')) { openMobile(); } else { closeMobile(false); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !mobileMenu.hasAttribute('hidden')) { closeMobile(true); }
+      });
+      document.addEventListener('click', function (e) {
+        if (mobileMenu.hasAttribute('hidden') || toggle.contains(e.target)) { return; }
+        if (!mobileMenu.contains(e.target)) { closeMobile(false); }
       });
     }
 
@@ -149,6 +165,11 @@
         searchModal.setAttribute('aria-hidden', 'false');
         searchTriggers.forEach(function (b) { b.setAttribute('aria-expanded', 'true'); });
         document.documentElement.style.overflow = 'hidden';
+        // Move focus into the dialog synchronously (the panel is tabindex="-1"),
+        // so focus is trapped from the outset; Pagefind moves it to the input
+        // once its async script finishes loading.
+        var panel = searchModal.querySelector('.site-search__panel');
+        if (panel) { panel.focus(); }
         loadPagefind();
       }
 
