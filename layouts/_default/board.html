@@ -34,6 +34,9 @@
     {{- range $members }}
     {{- $chunk := printf "<h3%s" . -}}
     {{- $heading := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $chunk -}}
+    {{- if not (findRE `(?s)<img[^>]*>` $chunk 1) -}}
+      {{- errorf "board.html: board member %q in %s has no headshot <img> — every member entry needs one." $heading .File.Path -}}
+    {{- end -}}
     {{- $img := index (findRE `(?s)<img[^>]*>` $chunk 1) 0 -}}
     {{- $role := "" -}}
     {{- if in $heading ", " -}}{{- $role = replaceRE `(?s)^.*, (.*)$` "$1" $heading -}}{{- end -}}
