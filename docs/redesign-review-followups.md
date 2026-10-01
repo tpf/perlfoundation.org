@@ -57,5 +57,6 @@ This file tracks what is **done** and what is **still open**.
 - [ ] `header.html` hardcodes `"legal"` for third-level active-section detection
 - [ ] No `prefers-reduced-motion` handling
 - [ ] Scroll-lock via inline style rather than a CSS class
-- [ ] Unreferenced `index.json` full-content feed generated every build
+- [x] Unreferenced `index.json` full-content feed removed (dropped the `JSON`
+      home output + the `index.json` template; Pagefind supplies search)
 - [ ] No `robots.txt` / `llms.txt` — AI crawler policy *(maintainer decision)*

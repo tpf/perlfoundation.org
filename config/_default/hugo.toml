@@ -33,7 +33,7 @@ disableKinds = ["taxonomy", "term"]
   priority = 0.5
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
 
 [related]
   threshold = 0
