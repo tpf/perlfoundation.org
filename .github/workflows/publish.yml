@@ -54,10 +54,11 @@ jobs:
         run: |
           hugo --environment pages --minify --baseURL "https://perlfoundation.org/"
       - name: Index with Pagefind
-        # Single source of truth for the Pagefind version: the Makefile.
-        run: |
-          PAGEFIND_VERSION="$(sed -n 's/^PAGEFIND_VERSION ?= //p' Makefile)"
-          npx -y pagefind@"${PAGEFIND_VERSION:?missing PAGEFIND_VERSION in Makefile}" --site public
+        # Pagefind is pinned in package-lock.json and installed with integrity
+        # checks by the "Install Node.js dependencies" step above (npm ci). Run
+        # the locally installed binary rather than fetching it fresh at build
+        # time, so the build is reproducible and not a supply-chain surprise.
+        run: ./node_modules/.bin/pagefind --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
