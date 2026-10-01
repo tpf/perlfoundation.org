@@ -1,0 +1,21 @@
+{{- /* Site-wide JSON-LD: an Organization entity and the WebSite it publishes,
+       emitted on every page. This is the entity signal both the SEO and GEO
+       reviewers flagged as missing. Values come from config, not hard-coded
+       copy; the logo and URLs resolve against the build's baseURL. */ -}}
+{{- $home := .Site.Home.Permalink -}}
+{{- $orgId := printf "%s#organization" $home -}}
+{{- $org := dict
+      "@type" "Organization"
+      "@id" $orgId
+      "name" .Site.Title
+      "url" $home
+      "logo" (absURL "images/Perl_Onion_Color.png")
+      "description" .Site.Params.description -}}
+{{- $site := dict
+      "@type" "WebSite"
+      "@id" (printf "%s#website" $home)
+      "name" .Site.Title
+      "url" $home
+      "publisher" (dict "@id" $orgId) -}}
+{{- $ld := dict "@context" "https://schema.org" "@graph" (slice $org $site) -}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
