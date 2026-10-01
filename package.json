@@ -4,7 +4,13 @@
   "private": true,
   "description": "Build tooling for the perlfoundation.org Hugo site.",
   "license": "MIT",
-  "devDependencies": {
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
     "pagefind": "1.5.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0"
   }
 }

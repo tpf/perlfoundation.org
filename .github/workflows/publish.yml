@@ -46,7 +46,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        # --omit=dev installs only runtime deps (Pagefind) and skips devDeps
+        # (Playwright + its browsers), which the Pages build never needs.
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci --omit=dev || true"
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
