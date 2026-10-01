@@ -37,10 +37,11 @@ This file tracks what is **done** and what is **still open**.
 - [x] **Per-page meta description** — `head.html` derives a unique description
       from each page's rendered content; home / empty pages keep the site default
 - [ ] **E2e coverage** — no committed Playwright suite for nav / search / mobile / board
-- [ ] **Security headers** — no CSP; Donate page framable (clickjacking).
-      GitHub Pages can't set headers → `<meta>` CSP or Cloudflare fronting.
-      *(maintainer decision)*
-- [ ] **Pagefind supply-chain** — `npx -y pagefind@…` has no lockfile / integrity pin
+- [x] ~~**Security headers**~~ — N/A: deployed on GitHub Pages, which can't set
+      response headers. Closed as won't-fix (maintainer decision).
+- [x] **Pagefind supply-chain** — pinned in `package.json` + `package-lock.json`
+      (sha512 integrity); Makefile & CI now `npm ci` and run the local binary
+      instead of `npx -y pagefind@…`
 
 ### Minor
 - [ ] Site `title` defined twice with different values (`hugo.toml` vs `languages.en.toml`)

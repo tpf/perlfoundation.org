@@ -1,9 +1,10 @@
 # Makefile for perlfoundation.org (Hugo site)
 
 HUGO ?= hugo
-PAGEFIND_VERSION ?= 1.5.2
 # SEARCH=1 (default) builds the Pagefind search index after Hugo; SEARCH=0 skips
-# it for a faster Hugo-only build.
+# it for a faster Hugo-only build. The Pagefind version is pinned in package.json
+# / package-lock.json (installed with integrity checks via `npm ci`), so there is
+# no version string to keep in sync here.
 SEARCH ?= 1
 
 .PHONY: serve
@@ -23,5 +24,6 @@ serve:
 build:
 	$(HUGO) --gc --minify
 ifeq ($(SEARCH),1)
-	npx -y pagefind@$(PAGEFIND_VERSION) --site public
+	npm ci
+	./node_modules/.bin/pagefind --site public
 endif
