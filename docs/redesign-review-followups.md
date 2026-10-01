@@ -36,7 +36,12 @@ This file tracks what is **done** and what is **still open**.
       emits an `Organization` + `WebSite` `@graph` on every page (SEO + GEO)
 - [x] **Per-page meta description** — `head.html` derives a unique description
       from each page's rendered content; home / empty pages keep the site default
-- [ ] **E2e coverage** — no committed Playwright suite for nav / search / mobile / board
+- [x] **E2e coverage** — Playwright suite under `tests/e2e/` covers mega-menu
+      (keyboard reachability, focus-into-column, Escape/outside-click focus
+      restore), search modal (synchronous focus, Pagefind load, Escape restore),
+      board `<details>` toggle, and the mobile menu (toggle/Escape/outside-click
+      + focus restore). Runs against a built site via `playwright.config.js`'s
+      webServer; CI in `.github/workflows/e2e.yml`
 - [x] ~~**Security headers**~~ — N/A: deployed on GitHub Pages, which can't set
       response headers. Closed as won't-fix (maintainer decision).
 - [x] **Pagefind supply-chain** — pinned in `package.json` + `package-lock.json`
