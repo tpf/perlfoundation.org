@@ -1,123 +1,92 @@
 {{ define "main" }}
 {{- /*
-  Board template (design: BoardPage.dc.html). Content is content/the-board.md:
-  an intro, then `## Board members`, then one `### Name, Role` per member with a
-  headshot image, bio paragraphs, and meta paragraphs ("Appointed: …", a mailto
-  link, "Board seat sponsored by …", an optional paragraph of public profile
-  links, an optional "Companies:" paragraph of links) in a member-specific order.
+  Board template (design: BoardPage.dc.html). content/the-board.md holds the
+  intro as its Markdown body and the board as a `members:` list in its front
+  matter (name, role, photo, appointed, email, seat_sponsor, profiles,
+  companies, bio). Bios are Markdown, paragraphs separated by a blank line.
 
-  CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
-  `.Content` into member cards and classifies each rendered <p> by its content
-  (never by position, since the order varies) — it hard-codes no member text.
-  The role badge is derived from the "Name, Role" heading (chrome, not new copy);
-  the President's badge is coral, others violet, per the design. Bios past the
-  first collapse behind a native <details>/<summary> "Read more" disclosure, so
-  they work with JavaScript disabled; assets/js/tprf.js only relabels the summary.
+  The President's badge is coral, others violet, per the design. Bios past the
+  first paragraph collapse behind a native <details>/<summary> "Read more"
+  disclosure, so they work with JavaScript disabled; assets/js/tprf.js only
+  relabels the summary.
 
-  The same parsed cards also feed a JSON-LD schema.org `Person` per member
-  (name, jobTitle, image, sameAs from the profile links, worksFor from the
-  "Companies:" links), each `memberOf` the
-  site-wide Organization emitted by partials/structured-data.html.
+  The same data feeds a JSON-LD schema.org `Person` per member (profiles →
+  sameAs, companies → worksFor), each `memberOf` the site-wide Organization
+  emitted by partials/structured-data.html.
 */ -}}
-{{- $content := .Content -}}
-{{- $intro := replaceRE `(?s)<h2.*$` "" $content -}}
-{{- $membersLabel := replaceRE `(?s)^.*?<h2[^>]*>(.*?)</h2>.*$` "$1" $content -}}
-{{- $membersHtml := replaceRE `(?s)^.*?<h2[^>]*>.*?</h2>` "" $content -}}
-{{- $members := after 1 (split $membersHtml "<h3") -}}
+{{- $page := . -}}
 {{- $orgId := printf "%s#organization" .Site.Home.Permalink -}}
-{{- $people := newScratch -}}
+{{- $people := slice -}}
 
 <header class="page-hero board-hero">
   <div class="board-hero__head">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/about.html" | relURL }}">/about</a> / the-board</nav>
     <h1 class="display-h1">{{ .Title }}</h1>
   </div>
-  {{- with $intro }}
-  <div class="board-intro">{{ . | safeHTML }}</div>
+  {{- with .Content }}
+  <div class="board-intro">{{ . }}</div>
   {{- end }}
 </header>
 
 <section class="board-section">
-  <h2 class="board-section__label">{{ $membersLabel | safeHTML }}</h2>
+  <h2 class="board-section__label">{{ .Params.members_heading }}</h2>
   <div class="board-grid">
-    {{- range $members }}
-    {{- $chunk := printf "<h3%s" . -}}
-    {{- $heading := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $chunk -}}
-    {{- if not (findRE `(?s)<img[^>]*>` $chunk 1) -}}
-      {{- errorf "board.html: board member %q in %s has no headshot <img> — every member entry needs one." $heading .File.Path -}}
+    {{- range .Params.members }}
+    {{- if not .photo -}}
+      {{- errorf "board.html: board member %q in %s has no photo — every member entry needs one." .name $page.File.Path -}}
     {{- end -}}
-    {{- $img := index (findRE `(?s)<img[^>]*>` $chunk 1) 0 -}}
-    {{- $role := "" -}}
-    {{- if in $heading ", " -}}{{- $role = replaceRE `(?s)^.*, (.*)$` "$1" $heading -}}{{- end -}}
-    {{- /* Classify each rendered <p> into bio / appointed / email / seat / links / companies. */ -}}
-    {{- $sc := newScratch -}}
-    {{- range $p := findRE `(?s)<p>.*?</p>` $chunk -}}
-      {{- $inner := replaceRE `(?s)^<p>(.*)</p>$` "$1" $p -}}
-      {{- if in $p "<img" -}}{{- /* headshot paragraph handled separately as $img */ -}}
-      {{- else if in $p "Appointed:" -}}{{- $sc.Set "appointed" $inner -}}
-      {{- else if findRE `<p><a href="mailto:` $p 1 -}}{{- $sc.Set "email" $inner -}}
-      {{- else if in $p "Board seat sponsored by" -}}{{- $sc.Set "seat" $inner -}}
-      {{- else if hasPrefix $inner "Companies:" -}}
-        {{- $sc.Set "companiesLabel" (replaceRE `(?s)^(.*?)<a .*$` "$1" $inner | strings.TrimSpace) -}}
-        {{- $sc.Set "companies" (findRE `<a [^>]*>.*?</a>` $inner) -}}
-      {{- else if findRE `^<p><a href="https?://` $p 1 -}}{{- $sc.Set "links" (findRE `<a [^>]*>.*?</a>` $inner) -}}
-      {{- else -}}{{- $sc.Add "bios" (slice $p) -}}{{- end -}}
+    {{- $bios := slice -}}
+    {{- range split (trim (.bio | default "") "\n") "\n\n" -}}
+      {{- $bios = $bios | append ($page.RenderString (dict "display" "block") .) -}}
     {{- end -}}
-    {{- $bios := $sc.Get "bios" -}}
-    {{- $name := $heading | plainify | htmlUnescape -}}
-    {{- if $role }}{{ $name = replaceRE `^(.*), .*$` "$1" $name }}{{ end -}}
-    {{- $person := dict "@type" "Person" "name" $name "memberOf" (dict "@id" $orgId) -}}
-    {{- with $role }}{{ $person = merge $person (dict "jobTitle" (. | plainify | htmlUnescape)) }}{{ end -}}
-    {{- with replaceRE `(?s)^.*?src="([^"]*)".*$` "$1" $img }}{{ $person = merge $person (dict "image" (absURL .)) }}{{ end -}}
-    {{- with $sc.Get "links" -}}
+
+    {{- $person := dict "@type" "Person" "name" .name "image" (absURL .photo) "memberOf" (dict "@id" $orgId) -}}
+    {{- with .role }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
+    {{- with .profiles -}}
       {{- $sameAs := slice -}}
-      {{- range . }}{{ $sameAs = $sameAs | append (replaceRE `^<a href="([^"]*)".*$` "$1" . | htmlUnescape) }}{{ end -}}
+      {{- range . }}{{ $sameAs = $sameAs | append .url }}{{ end -}}
       {{- $person = merge $person (dict "sameAs" $sameAs) -}}
     {{- end -}}
-    {{- with $sc.Get "companies" -}}
+    {{- with .companies -}}
       {{- $orgs := slice -}}
-      {{- range . -}}
-        {{- $orgs = $orgs | append (dict
-              "@type" "Organization"
-              "name" (. | plainify | htmlUnescape)
-              "url" (replaceRE `^<a href="([^"]*)".*$` "$1" . | htmlUnescape)) -}}
-      {{- end -}}
+      {{- range . }}{{ $orgs = $orgs | append (dict "@type" "Organization" "name" .label "url" .url) }}{{ end -}}
       {{- $person = merge $person (dict "worksFor" $orgs) -}}
     {{- end -}}
-    {{- $people.Add "list" (slice $person) -}}
+    {{- $people = $people | append $person -}}
+
     <article class="board-card">
-      <div class="board-card__photo{{ if eq $role "President" }} is-president{{ end }}">
-        {{ $img | safeHTML }}
-        {{- with $role }}<span class="board-card__role">{{ . | safeHTML }}</span>{{ end }}
+      <div class="board-card__photo{{ if eq .role "President" }} is-president{{ end }}">
+        <img src="{{ .photo }}" alt="{{ .name }} photo">
+        {{- with .role }}<span class="board-card__role">{{ . }}</span>{{ end }}
       </div>
       <div class="board-card__body">
-        <h3 class="board-card__name">{{ $heading | safeHTML }}</h3>
+        <h3 class="board-card__name">{{ .name }}{{ with .role }}, {{ . }}{{ end }}</h3>
         {{- with $bios }}
         <div class="board-card__bio">
-          {{ index . 0 | safeHTML }}
+          {{ index . 0 }}
           {{- if gt (len .) 1 }}
           <details class="board-card__moredetails">
             <summary class="board-toggle">Read more</summary>
             <div class="board-card__more">
-              {{- range after 1 . }}{{ . | safeHTML }}{{ end }}
+              {{- range after 1 . }}{{ . }}{{ end }}
             </div>
           </details>
           {{- end }}
         </div>
         {{- end }}
         <div class="board-card__meta">
-          {{- with $sc.Get "appointed" }}<span class="board-card__appointed">{{ . | safeHTML }}</span>{{ end }}
-          {{- with $sc.Get "seat" }}<span class="board-card__seat">{{ . | safeHTML }}</span>{{ end }}
-          {{- with $sc.Get "email" }}<span class="board-card__email">{{ . | safeHTML }}</span>{{ end }}
-          {{- with $sc.Get "links" }}<span class="board-card__links">{{ delimit . " · " | safeHTML }}</span>{{ end }}
-          {{- with $sc.Get "companies" }}<span class="board-card__links">{{ $sc.Get "companiesLabel" | safeHTML }} {{ delimit . " · " | safeHTML }}</span>{{ end }}
+          {{- with .appointed }}<span class="board-card__appointed">Appointed: {{ . }}</span>{{ end }}
+          {{- with .seat_sponsor }}<span class="board-card__seat">Board seat sponsored by {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</span>{{ end }}
+          {{- with .email }}<span class="board-card__email"><a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
+          {{- with .profiles }}<span class="board-card__links">{{ range $i, $l := . }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}</span>{{ end }}
+          {{- with .companies }}<span class="board-card__links">Companies: {{ range $i, $l := . }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}</span>{{ end }}
         </div>
       </div>
     </article>
     {{- end }}
   </div>
 </section>
-{{- with $people.Get "list" }}
+{{- with $people }}
 <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
 {{- end }}
 {{ end }}
