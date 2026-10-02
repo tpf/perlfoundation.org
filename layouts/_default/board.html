@@ -10,13 +10,13 @@
   disclosure, so they work with JavaScript disabled; assets/js/tprf.js only
   relabels the summary.
 
-  The same data feeds a JSON-LD schema.org `Person` per member (profiles →
-  sameAs, companies → worksFor), each `memberOf` the site-wide Organization
-  emitted by partials/structured-data.html.
+  Each card's id is the anchor of that member's schema.org `Person` @id, built
+  from the same data by partials/board-people.html. Profile links carry
+  rel="me" (identity verification, e.g. Mastodon); link lists are <ul>s whose
+  " · " separators are CSS, and each link has a visually-hidden member name so
+  it still makes sense in a screen reader's links list.
 */ -}}
 {{- $page := . -}}
-{{- $orgId := printf "%s#organization" .Site.Home.Permalink -}}
-{{- $people := slice -}}
 
 <header class="page-hero board-hero">
   <div class="board-hero__head">
@@ -39,22 +39,9 @@
     {{- range split (trim (.bio | default "") "\n") "\n\n" -}}
       {{- $bios = $bios | append ($page.RenderString (dict "display" "block") .) -}}
     {{- end -}}
-
-    {{- $person := dict "@type" "Person" "name" .name "image" (absURL .photo) "memberOf" (dict "@id" $orgId) -}}
-    {{- with .role }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
-    {{- with .profiles -}}
-      {{- $sameAs := slice -}}
-      {{- range . }}{{ $sameAs = $sameAs | append .url }}{{ end -}}
-      {{- $person = merge $person (dict "sameAs" $sameAs) -}}
-    {{- end -}}
-    {{- with .companies -}}
-      {{- $orgs := slice -}}
-      {{- range . }}{{ $orgs = $orgs | append (dict "@type" "Organization" "name" .label "url" .url) }}{{ end -}}
-      {{- $person = merge $person (dict "worksFor" $orgs) -}}
-    {{- end -}}
-    {{- $people = $people | append $person -}}
-
-    <article class="board-card">
+    {{- $id := anchorize .name -}}
+    {{- $who := printf "%s: " .name -}}
+    <article class="board-card" id="{{ $id }}">
       <div class="board-card__photo{{ if eq .role "President" }} is-president{{ end }}">
         <img src="{{ .photo }}" alt="{{ .name }} photo">
         {{- with .role }}<span class="board-card__role">{{ . }}</span>{{ end }}
@@ -78,15 +65,23 @@
           {{- with .appointed }}<span class="board-card__appointed">Appointed: {{ . }}</span>{{ end }}
           {{- with .seat_sponsor }}<span class="board-card__seat">Board seat sponsored by {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</span>{{ end }}
           {{- with .email }}<span class="board-card__email"><a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
-          {{- with .profiles }}<span class="board-card__links">{{ range $i, $l := . }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}</span>{{ end }}
-          {{- with .companies }}<span class="board-card__links">Companies: {{ range $i, $l := . }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}</span>{{ end }}
+          {{- with .profiles }}
+          <ul class="board-card__links" aria-label="{{ $who }}profiles">
+            {{- range . }}<li><a href="{{ .url }}" rel="me"><span class="visually-hidden">{{ $who }}</span>{{ .label }}</a></li>{{ end }}
+          </ul>
+          {{- end }}
+          {{- with .companies }}
+          <div class="board-card__companies">
+            <span id="{{ $id }}-companies">Companies:</span>
+            <ul class="board-card__links" aria-labelledby="{{ $id }}-companies">
+              {{- range . }}<li><a href="{{ .url }}"><span class="visually-hidden">{{ $who }}</span>{{ .label }}</a></li>{{ end }}
+            </ul>
+          </div>
+          {{- end }}
         </div>
       </div>
     </article>
     {{- end }}
   </div>
 </section>
-{{- with $people }}
-<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
-{{- end }}
 {{ end }}

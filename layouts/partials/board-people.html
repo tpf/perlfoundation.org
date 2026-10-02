@@ -1,0 +1,27 @@
+{{- /* Returns a schema.org `Person` per board member in the page's `members:`
+       front matter (see content/the-board.md), for structured-data.html to add
+       to the site-wide @graph. Each Person's @id is the member's card anchor on
+       the board page; profiles → sameAs, companies → worksFor. */ -}}
+{{- $orgId := printf "%s#organization" site.Home.Permalink -}}
+{{- $people := slice -}}
+{{- range .Params.members -}}
+  {{- $person := dict
+        "@type" "Person"
+        "@id" (printf "%s#%s" $.Permalink (anchorize .name))
+        "name" .name
+        "image" (absURL .photo)
+        "memberOf" (dict "@id" $orgId) -}}
+  {{- with .role }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
+  {{- with .profiles -}}
+    {{- $sameAs := slice -}}
+    {{- range . }}{{ $sameAs = $sameAs | append .url }}{{ end -}}
+    {{- $person = merge $person (dict "sameAs" $sameAs) -}}
+  {{- end -}}
+  {{- with .companies -}}
+    {{- $orgs := slice -}}
+    {{- range . }}{{ $orgs = $orgs | append (dict "@type" "Organization" "name" .label "url" .url) }}{{ end -}}
+    {{- $person = merge $person (dict "worksFor" $orgs) -}}
+  {{- end -}}
+  {{- $people = $people | append $person -}}
+{{- end -}}
+{{- return $people -}}

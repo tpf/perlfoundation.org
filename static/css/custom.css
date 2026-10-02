@@ -81,6 +81,19 @@ main:focus-visible { outline: none; }
 /* Coral outline would vanish on the coral pill, so use an ink ring. */
 .skip-link:focus-visible { outline-color: var(--bg); }
 
+/* Text for screen readers only (e.g. disambiguating repeated link labels). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Typography helpers                                                         */
 /* -------------------------------------------------------------------------- */
@@ -923,7 +936,13 @@ main:focus-visible { outline: none; }
 .board-card__meta { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; color: var(--text-4); }
 .board-card__seat a { color: var(--text); text-underline-offset: 3px; }
 .board-card__email a { color: var(--coral); text-underline-offset: 3px; }
+.board-card { scroll-margin-top: 24px; }
+.board-card__links { list-style: none; margin: 0; padding: 0; display: inline; }
+.board-card__links li { display: inline; }
+/* Separator is decoration: the alt text after "/" keeps it out of the a11y tree. */
+.board-card__links li + li::before { content: " · " / ""; }
 .board-card__links a { color: var(--text); text-underline-offset: 3px; }
+.board-card__companies .board-card__links { margin-left: 0.5ch; }
 
 /* --------------------------------------------------------------------------
    Committees (layout: committees) — design: CommitteesPage.dc.html
