@@ -307,6 +307,11 @@ main:focus-visible { outline: none; }
   .site-header__mbar { display: flex; }
   .mobile-menu:not([hidden]) { display: block; }
 }
+/* Below 375px the wordmark + three header actions (~383px) overflow; keep the
+   onion logo, whose alt text still names the home link. */
+@media (max-width: 374px) {
+  .site-header__brand--m .site-header__wordmark { display: none; }
+}
 
 /* ==========================================================================
    FOOTER
