@@ -38,12 +38,37 @@ test.describe('Board page', () => {
     }
   });
 
-  test('profile links are rel="me" and name their member for screen readers', async ({ page }) => {
+  test('profile and company links match the JSON-LD and name their member', async ({ page }) => {
     await page.goto('/the-board.html');
 
-    const card = page.locator('#ruth-holloway');
-    const link = card.getByRole('link', { name: 'Ruth Holloway: Mastodon' });
-    await expect(link).toHaveAttribute('rel', 'me');
-    await expect(card.getByRole('list', { name: 'Ruth Holloway: profiles' }).getByRole('listitem')).toHaveCount(5);
+    const graph = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())['@graph'];
+    const people = graph.filter((n) => n['@type'] === 'Person');
+    // Guard against a vacuous pass if no member has profile links.
+    expect(people.some((p) => p.sameAs?.length)).toBe(true);
+
+    for (const person of people) {
+      const card = page.locator(new URL(person['@id']).hash);
+      const prefix = new RegExp(`^${person.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}: `);
+
+      // Profiles: one rel="me" link per sameAs URL, in a list named for the member.
+      const profiles = card.locator('a[rel~="me"]');
+      await expect(profiles).toHaveCount(person.sameAs?.length ?? 0);
+      if (person.sameAs) {
+        await expect(card.getByRole('list', { name: `${person.name}: profiles` }).getByRole('listitem'))
+          .toHaveCount(person.sameAs.length);
+      }
+
+      // Companies: one link per worksFor org, never rel="me" (not the person).
+      const companies = card.locator('.board-card__companies a');
+      await expect(companies).toHaveCount(person.worksFor?.length ?? 0);
+      await expect(card.locator('.board-card__companies a[rel~="me"]')).toHaveCount(0);
+      if (person.worksFor) {
+        await expect(card.locator('.board-card__companies').getByRole('list', { name: 'Companies:' })).toBeVisible();
+      }
+
+      for (const link of [...await profiles.all(), ...await companies.all()]) {
+        await expect(link).toHaveAccessibleName(prefix);
+      }
+    }
   });
 });
