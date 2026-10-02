@@ -17,8 +17,9 @@ the layout/template structure, the OpenGraph image, and QR code aliases.
   template (see each template's header comment).
 - For a new page of repeated records, prefer a YAML list in front matter, as
   `content/the-board.md` does with `members:` (format in `README.md`).
-  Templates that already slice rendered Markdown (donate, committees, sponsor
-  levels) follow the pattern described in their header comment.
+  Templates that already slice rendered Markdown (`donate.html`,
+  `committees.html`, `sponsorlevels.html`) follow the pattern described in
+  their header comment.
 - All styling lives in `static/css/custom.css` (dark theme; design tokens are the
   `:root` custom properties at the top of that file). Use those tokens rather
   than repeating raw hex values.
