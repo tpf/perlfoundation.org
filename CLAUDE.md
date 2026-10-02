@@ -13,20 +13,18 @@ the layout/template structure, the OpenGraph image, and QR code aliases.
 
 - Page copy stays in `/content` (Markdown body or front matter), never
   hard-coded in a template. Templates style the rendered Markdown. Fixed UI
-  labels that are identical everywhere they appear ("Read more",
-  "Appointed:", "Board seat sponsored by", "Companies:") are chrome and may
-  live in the template.
-- Repeated structured records belong in YAML, not in Markdown that a template
-  parses apart: board members are the `members:` list in the front matter of
-  `content/the-board.md` (format in `README.md`).
+  labels that read the same on every render are chrome and may live in the
+  template (see each template's header comment).
+- For a new page of repeated records, prefer a YAML list in front matter, as
+  `content/the-board.md` does with `members:` (format in `README.md`).
+  Templates that already slice rendered Markdown (donate, committees, sponsor
+  levels) follow the pattern described in their header comment.
 - All styling lives in `static/css/custom.css` (dark theme; design tokens are the
   `:root` custom properties at the top of that file). Use those tokens rather
   than repeating raw hex values.
 - Images live in `static/images/` (group per-page image sets in a subdirectory).
 - Sponsor data is in `data/sponsors.yaml`, rendered by the
   `layouts/shortcodes/sponsors-by-level.html` shortcode.
-- JSON-LD structured data is one `@graph` per page, built in
-  `layouts/partials/structured-data.html` (Organization + WebSite everywhere,
-  plus a `Person` per board member from `layouts/partials/board-people.html`).
-  Add new entities to that graph rather than emitting a separate
-  `<script type="application/ld+json">` block.
+- JSON-LD is one `@graph` per page, built in
+  `layouts/partials/structured-data.html`. Add new entities to that graph
+  rather than emitting a separate `<script type="application/ld+json">` block.
