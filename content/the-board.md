@@ -41,6 +41,12 @@ Appointed: September 2019
 
 Board seat sponsored by [Open Digital Consulting Co](https://opendigital.cc/)
 
+[Personal Website](https://stuartjmackintosh.com)
+[GitHub](https://github.com/StuartJMackintosh)
+[LinkedIn](https://www.linkedin.com/in/stuartjmackintosh/)
+[Cloudient](https://cloudient.net/)
+[Open Digital Consulting](https://opendigital.cc/)
+
 ### Peter Krawczyk, Co-treasurer
 
 ![Peter Krawczyk photo](images/headshots/peter-krawczyk.jpg)
