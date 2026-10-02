@@ -13,12 +13,18 @@
   the President's badge is coral, others violet, per the design. Bios past the
   first collapse behind a native <details>/<summary> "Read more" disclosure, so
   they work with JavaScript disabled; assets/js/tprf.js only relabels the summary.
+
+  The same parsed cards also feed a JSON-LD schema.org `Person` per member
+  (name, jobTitle, image, sameAs from the profile links), each `memberOf` the
+  site-wide Organization emitted by partials/structured-data.html.
 */ -}}
 {{- $content := .Content -}}
 {{- $intro := replaceRE `(?s)<h2.*$` "" $content -}}
 {{- $membersLabel := replaceRE `(?s)^.*?<h2[^>]*>(.*?)</h2>.*$` "$1" $content -}}
 {{- $membersHtml := replaceRE `(?s)^.*?<h2[^>]*>.*?</h2>` "" $content -}}
 {{- $members := after 1 (split $membersHtml "<h3") -}}
+{{- $orgId := printf "%s#organization" .Site.Home.Permalink -}}
+{{- $people := newScratch -}}
 
 <header class="page-hero board-hero">
   <div class="board-hero__head">
@@ -54,6 +60,17 @@
       {{- else -}}{{- $sc.Add "bios" (slice $p) -}}{{- end -}}
     {{- end -}}
     {{- $bios := $sc.Get "bios" -}}
+    {{- $name := $heading | plainify | htmlUnescape -}}
+    {{- if $role }}{{ $name = replaceRE `^(.*), .*$` "$1" $name }}{{ end -}}
+    {{- $person := dict "@type" "Person" "name" $name "memberOf" (dict "@id" $orgId) -}}
+    {{- with $role }}{{ $person = merge $person (dict "jobTitle" (. | plainify | htmlUnescape)) }}{{ end -}}
+    {{- with replaceRE `(?s)^.*?src="([^"]*)".*$` "$1" $img }}{{ $person = merge $person (dict "image" (absURL .)) }}{{ end -}}
+    {{- with $sc.Get "links" -}}
+      {{- $sameAs := slice -}}
+      {{- range . }}{{ $sameAs = $sameAs | append (replaceRE `^<a href="([^"]*)".*$` "$1" . | htmlUnescape) }}{{ end -}}
+      {{- $person = merge $person (dict "sameAs" $sameAs) -}}
+    {{- end -}}
+    {{- $people.Add "list" (slice $person) -}}
     <article class="board-card">
       <div class="board-card__photo{{ if eq $role "President" }} is-president{{ end }}">
         {{ $img | safeHTML }}
@@ -85,4 +102,7 @@
     {{- end }}
   </div>
 </section>
+{{- with $people.Get "list" }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
+{{- end }}
 {{ end }}
