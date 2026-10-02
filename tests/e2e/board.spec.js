@@ -1,11 +1,13 @@
 const { test, expect } = require('@playwright/test');
 
-// Board member bios collapse behind a native <details>/<summary> so they work
-// with no JS; tprf.js only relabels the summary (review pass 2).
 test.describe('Board page', () => {
-  test('bios are a native <details> disclosure that toggles and relabels', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('/the-board.html');
+  });
 
+  // Bios collapse behind a native <details>/<summary> so they work with no JS;
+  // tprf.js only relabels the summary (review pass 2).
+  test('bios are a native <details> disclosure that toggles and relabels', async ({ page }) => {
     const details = page.locator('.board-card__moredetails').first();
     const summary = details.locator('summary');
 
@@ -22,8 +24,6 @@ test.describe('Board page', () => {
   });
 
   test('JSON-LD has one Person per board card, anchored to the card', async ({ page }) => {
-    await page.goto('/the-board.html');
-
     const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
     expect(blocks).toHaveLength(1);
     const graph = JSON.parse(blocks[0])['@graph'];
@@ -39,8 +39,6 @@ test.describe('Board page', () => {
   });
 
   test('profile and company links match the JSON-LD and name their member', async ({ page }) => {
-    await page.goto('/the-board.html');
-
     const graph = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())['@graph'];
     const people = graph.filter((n) => n['@type'] === 'Person');
     // Guard against a vacuous pass if no member has profile links.
