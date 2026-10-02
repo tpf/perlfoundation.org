@@ -56,10 +56,5 @@ The Perl and Raku Foundation sponsors a community dinner on the Saturday evening
 
 Registration is required so that we can plan numbers. Details for the next dinner will be published here when available.
 
-## About The Perl and Raku Foundation
-
-The Perl and Raku Foundation (TPRF) is dedicated to the advancement of the Perl and Raku programming languages through open discussion, collaboration, design and code. TPRF supports community events such as FOSDEM, where developers can come together in person, and funds grant programmes that benefit Perl, Raku and the wider open source community.
-
-[The Perl and Raku Foundation](https://perlrakufoundation.org)
 
 *Estimated: dates marked this way are from memory and partial records; corrections welcome.
