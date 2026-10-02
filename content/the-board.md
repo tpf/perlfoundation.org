@@ -77,6 +77,7 @@ Appointed: January 2024
 Board seat sponsored by Hart Woods Group, LLC
 
 [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org)
+
 [Personal Website](https://hiruthie.me)
 [Codeberg](https://codeberg.org/GeekRuthie)
 [Facebook](https://www.facebook.com/profile.php?id=61594240817537)
