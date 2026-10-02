@@ -1,5 +1,6 @@
 {{- /* Site-wide JSON-LD: an Organization entity and the WebSite it publishes,
-       emitted on every page. This is the entity signal both the SEO and GEO
+       emitted on every page, plus a Person per board member on the board page
+       (partials/board-people.html). This is the entity signal both the SEO and GEO
        reviewers flagged as missing. Values come from config, not hard-coded
        copy; the logo and URLs resolve against the build's baseURL. */ -}}
 {{- $home := .Site.Home.Permalink -}}
@@ -17,5 +18,7 @@
       "name" .Site.Title
       "url" $home
       "publisher" (dict "@id" $orgId) -}}
-{{- $ld := dict "@context" "https://schema.org" "@graph" (slice $org $site) -}}
+{{- $graph := slice $org $site -}}
+{{- with .Params.members }}{{ $graph = $graph | append (partial "board-people.html" $) }}{{ end -}}
+{{- $ld := dict "@context" "https://schema.org" "@graph" $graph -}}
 <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
