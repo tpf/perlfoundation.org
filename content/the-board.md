@@ -64,7 +64,7 @@ Over the course of her 40-plus year career, Ruth worked in six different
 programming languages on nearly a dozen different operating systems; for the
 last 20 of those, she's been doing most of her coding in Perl. She is a Texan,
 transplanted to the tranquil woods of northeast Georgia with her husband and
-the cutest dog around.  She is now semi-retired from regular work, to spend
+the cutest dog around. She is now semi-retired from regular work to spend
 more time with her family, crafting, and on the needs of the Foundation.
 
 Ruth joined the board in January of 2024, and currently holds the role of
@@ -73,9 +73,14 @@ for the Foundation.
 
 Appointed: January 2024
 
-Board seat sponsored by Trans-Formed Media, LLC
+Board seat sponsored by Hart Woods Group, LLC
 
 [treasurer@perlfoundation.org](mailto:treasurer@perlfoundation.org)
+[Personal Website](https://hiruthie.me)
+[Codeberg](https://codeberg.org/GeekRuthie)
+[Facebook](https://www.facebook.com/profile.php?id=61594240817537)
+[Mastodon](https://hachyderm.io/@geekruthie)
+[MetaCPAN](https://metacpan.org/author/GEEKRUTH)
 
 ### Bruce Gray, Secretary
 
