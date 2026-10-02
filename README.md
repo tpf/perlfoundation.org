@@ -32,9 +32,45 @@ The site is fully self-contained. Templates live under `layouts/`:
   `board`, `committees`, `getinvolved`, `sponsorlevels`, `oursponsors`,
   `donate`, `legal`, `fund`, `events`). Content with no `layout` falls back to
   `single.html`.
-- `layouts/partials/` — shared `header.html`, `footer.html`, `head.html`.
+- `layouts/partials/` — shared `header.html`, `footer.html`, `head.html`, and
+  `structured-data.html` (the page's JSON-LD graph; `board-people.html` adds a
+  schema.org `Person` per board member on the board page).
 - `layouts/shortcodes/` — the sponsor shortcodes used by the sponsor pages.
 - `static/css/custom.css` — all styling (dark theme, design tokens at `:root`).
+
+## Board members
+
+Board members live in the front matter of `content/the-board.md` as a
+`members:` list; the page body is just the intro text above the cards. Each
+entry renders one card on the board page and one schema.org `Person` in the
+page's JSON-LD. Only `name` and `photo` are required; the build fails
+if a member has no `photo`.
+
+```yaml
+members:
+  - name: 'Ruth Holloway'
+    role: 'Co-treasurer'            # badge on the photo; "President" is coral
+    photo: 'images/headshots/ruth-holloway.jpg'
+    appointed: 'January 2024'
+    email: 'treasurer@perlfoundation.org'
+    seat_sponsor:
+      name: 'Hart Woods Group, LLC'
+      url: 'https://example.com/'   # optional; links the sponsor name
+    profiles:                       # the person's own public profiles:
+      - label: 'Mastodon'           # rendered with rel="me", JSON-LD sameAs
+        url: 'https://hachyderm.io/@geekruthie'
+    companies:                      # organizations they work for/own:
+      - label: 'Example Co'         # JSON-LD worksFor
+        url: 'https://example.com/'
+    bio: |
+      First paragraph, always shown.
+
+      Further paragraphs (separated by a blank line) collapse behind
+      "Read more". Markdown is allowed.
+```
+
+Put a URL under `profiles` only if it represents the person themselves
+(personal site, GitHub, Mastodon, …); a company's site goes under `companies`.
 
 # Site structure
 
