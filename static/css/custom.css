@@ -923,6 +923,7 @@ main:focus-visible { outline: none; }
 .board-card__meta { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 12.5px; line-height: 1.5; color: var(--text-4); }
 .board-card__seat a { color: var(--text); text-underline-offset: 3px; }
 .board-card__email a { color: var(--coral); text-underline-offset: 3px; }
+.board-card__links a { color: var(--text); text-underline-offset: 3px; }
 
 /* --------------------------------------------------------------------------
    Committees (layout: committees) — design: CommitteesPage.dc.html

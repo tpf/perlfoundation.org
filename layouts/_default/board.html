@@ -3,7 +3,8 @@
   Board template (design: BoardPage.dc.html). Content is content/the-board.md:
   an intro, then `## Board members`, then one `### Name, Role` per member with a
   headshot image, bio paragraphs, and meta paragraphs ("Appointed: …", a mailto
-  link, "Board seat sponsored by …") in a member-specific order.
+  link, "Board seat sponsored by …", an optional paragraph of public profile
+  links) in a member-specific order.
 
   CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
   `.Content` into member cards and classifies each rendered <p> by its content
@@ -41,7 +42,7 @@
     {{- $img := index (findRE `(?s)<img[^>]*>` $chunk 1) 0 -}}
     {{- $role := "" -}}
     {{- if in $heading ", " -}}{{- $role = replaceRE `(?s)^.*, (.*)$` "$1" $heading -}}{{- end -}}
-    {{- /* Classify each rendered <p> into bio / appointed / email / seat. */ -}}
+    {{- /* Classify each rendered <p> into bio / appointed / email / seat / links. */ -}}
     {{- $sc := newScratch -}}
     {{- range $p := findRE `(?s)<p>.*?</p>` $chunk -}}
       {{- $inner := replaceRE `(?s)^<p>(.*)</p>$` "$1" $p -}}
@@ -49,6 +50,7 @@
       {{- else if in $p "Appointed:" -}}{{- $sc.Set "appointed" $inner -}}
       {{- else if findRE `<p><a href="mailto:` $p 1 -}}{{- $sc.Set "email" $inner -}}
       {{- else if in $p "Board seat sponsored by" -}}{{- $sc.Set "seat" $inner -}}
+      {{- else if findRE `^<p><a href="https?://` $p 1 -}}{{- $sc.Set "links" (findRE `<a [^>]*>.*?</a>` $inner) -}}
       {{- else -}}{{- $sc.Add "bios" (slice $p) -}}{{- end -}}
     {{- end -}}
     {{- $bios := $sc.Get "bios" -}}
@@ -76,6 +78,7 @@
           {{- with $sc.Get "appointed" }}<span class="board-card__appointed">{{ . | safeHTML }}</span>{{ end }}
           {{- with $sc.Get "seat" }}<span class="board-card__seat">{{ . | safeHTML }}</span>{{ end }}
           {{- with $sc.Get "email" }}<span class="board-card__email">{{ . | safeHTML }}</span>{{ end }}
+          {{- with $sc.Get "links" }}<span class="board-card__links">{{ delimit . " · " | safeHTML }}</span>{{ end }}
         </div>
       </div>
     </article>
