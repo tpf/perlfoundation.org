@@ -46,7 +46,8 @@
     {{- $who := printf "%s: " .name -}}
     <article class="board-card" id="{{ $id }}">
       <div class="board-card__photo{{ if eq .role "President" }} is-president{{ end }}">
-        <img src="{{ .photo }}" alt="{{ .name }} photo">
+        {{- /* alt="": the card's heading already names the member. */ -}}
+        <img src="{{ .photo }}" alt="" width="418" height="418" loading="lazy" decoding="async">
         {{- with .role }}<span class="board-card__role">{{ . }}</span>{{ end }}
       </div>
       <div class="board-card__body">

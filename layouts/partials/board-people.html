@@ -1,17 +1,23 @@
 {{- /* Returns a schema.org `Person` per board member in the page's `members:`
        front matter (see content/the-board.md), for structured-data.html to add
        to the site-wide @graph. Each Person's @id is the member's card anchor on
-       the board page; profiles → sameAs, companies → worksFor. */ -}}
+       the board page (also its `url`); description is the bio's first
+       paragraph as plain text; profiles → sameAs, companies → worksFor. */ -}}
 {{- $orgId := printf "%s#organization" site.Home.Permalink -}}
 {{- $people := slice -}}
 {{- range .Params.members -}}
+  {{- $url := printf "%s#%s" $.Permalink (anchorize .name) -}}
   {{- $person := dict
         "@type" "Person"
-        "@id" (printf "%s#%s" $.Permalink (anchorize .name))
+        "@id" $url
+        "url" $url
         "name" .name
         "image" (absURL .photo)
         "memberOf" (dict "@id" $orgId) -}}
   {{- with .role }}{{ $person = merge $person (dict "jobTitle" .) }}{{ end -}}
+  {{- with index (split (trim (.bio | default "") "\n") "\n\n") 0 -}}
+    {{- $person = merge $person (dict "description" ($.RenderString . | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace)) -}}
+  {{- end -}}
   {{- with .profiles -}}
     {{- $sameAs := slice -}}
     {{- range . }}{{ $sameAs = $sameAs | append .url }}{{ end -}}
