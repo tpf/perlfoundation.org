@@ -33,8 +33,14 @@ test.describe('Board page', () => {
     await expect(page.locator('.board-card')).toHaveCount(people.length);
     for (const person of people) {
       expect(person.memberOf['@id']).toBe(orgId);
+      expect(person.url).toBe(person['@id']);
+      // Plain text: no markup, entities or hard line breaks from the Markdown.
+      expect(person.description).toMatch(/^[^<&\n]+$/);
       const anchor = new URL(person['@id']).hash;
-      await expect(page.locator(`article.board-card${anchor}`)).toBeVisible();
+      const card = page.locator(`article.board-card${anchor}`);
+      await expect(card).toBeVisible();
+      // The card heading names the member, so the headshot is decorative.
+      await expect(card.locator('img')).toHaveAttribute('alt', '');
     }
   });
 
