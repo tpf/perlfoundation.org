@@ -34,7 +34,7 @@
 <section class="board-section">
   <h2 class="board-section__label">{{ .Params.members_heading }}</h2>
   <div class="board-grid">
-    {{- range .Params.members }}
+    {{- range $i, $_ := .Params.members }}
     {{- if not .photo -}}
       {{- errorf "board.html: board member %q in %s has no photo — every member entry needs one." .name $page.File.Path -}}
     {{- end -}}
@@ -46,8 +46,10 @@
     {{- $who := printf "%s: " .name -}}
     <article class="board-card" id="{{ $id }}">
       <div class="board-card__photo{{ if eq .role "President" }} is-president{{ end }}">
-        {{- /* alt="": the card's heading already names the member. */ -}}
-        <img src="{{ .photo }}" alt="" width="418" height="418" loading="lazy" decoding="async">
+        {{- /* alt="": the card's heading already names the member. The first
+               photo is likely the LCP image, so it loads eagerly. */ -}}
+        <img src="{{ .photo }}" alt="" width="418" height="418"
+             {{- if eq $i 0 }} fetchpriority="high"{{ else }} loading="lazy" decoding="async"{{ end }}>
         {{- with .role }}<span class="board-card__role">{{ . }}</span>{{ end }}
       </div>
       <div class="board-card__body">
