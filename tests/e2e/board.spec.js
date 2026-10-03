@@ -34,13 +34,34 @@ test.describe('Board page', () => {
     for (const person of people) {
       expect(person.memberOf['@id']).toBe(orgId);
       expect(person.url).toBe(person['@id']);
-      // Plain text: no markup, entities or hard line breaks from the Markdown.
-      expect(person.description).toMatch(/^[^<&\n]+$/);
       const anchor = new URL(person['@id']).hash;
       const card = page.locator(`article.board-card${anchor}`);
       await expect(card).toBeVisible();
+      // A member with a bio gets a plain-text description: no markup, no
+      // leftover HTML entities (a literal "&" is fine).
+      if (await card.locator('.board-card__bio').count()) {
+        expect(person.description).toMatch(/^[^<\n]+$/);
+        expect(person.description).not.toMatch(/&(#\d+|#x[0-9a-f]+|[a-z]+);/i);
+      } else {
+        expect(person.description).toBeUndefined();
+      }
       // The card heading names the member, so the headshot is decorative.
+      await expect(card.getByRole('heading', { level: 3 })).toContainText(person.name);
       await expect(card.locator('img')).toHaveAttribute('alt', '');
+    }
+  });
+
+  test('only the first headshot loads eagerly; all reserve their size', async ({ page }) => {
+    const photos = page.locator('.board-card__photo img');
+    const count = await photos.count();
+    expect(count).toBeGreaterThan(1);
+    await expect(photos.first()).toHaveAttribute('fetchpriority', 'high');
+    await expect(photos.first()).not.toHaveAttribute('loading', 'lazy');
+    for (let i = 0; i < count; i++) {
+      const img = photos.nth(i);
+      await expect(img).toHaveAttribute('width', /^\d+$/);
+      await expect(img).toHaveAttribute('height', /^\d+$/);
+      if (i > 0) await expect(img).toHaveAttribute('loading', 'lazy');
     }
   });
 
