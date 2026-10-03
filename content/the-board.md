@@ -81,7 +81,7 @@ members:
       name: 'Gray & Associates'
     bio: |
       Bruce is a consultant, business analyst, and contract programmer,
-      with a special interest in heath care.
+      with a special interest in health care.
 
       Introduced to Perl in 1995, he became a founding member of Atlanta Perl Mongers,
       and from there joined the wider Perl community.
