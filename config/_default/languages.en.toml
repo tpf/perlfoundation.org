@@ -1,6 +1,6 @@
 disabled = false
-languageCode = "en"
-languageName = "English"
+locale = "en"
+label = "English"
 weight = 1
 title = "The Perl & Raku Foundation"
 
@@ -11,6 +11,3 @@ rtl = false
 dateFormat = "2 January 2006"
 logo = "Perl_Onion_Color.png"
 description = "The Perl Foundation is dedicated to the advancement of the Perl and Raku programming language. We seek to do this through open discussion, collaboration, design, and code."
-
-["params.author"]
-name = "Yet Another Society"

@@ -1,6 +1,7 @@
 ---
 title: 'Trademarks'
 url: '/trademarks.html'
+layout: 'legal'
 ---
 
 The work of The Perl & Raku Foundation includes making sure that Perl & Raku

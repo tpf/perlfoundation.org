@@ -32,7 +32,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.147.2
+      HUGO_VERSION: 0.161.1
     steps:
       - name: Install Hugo CLI
         run: |
@@ -42,19 +42,25 @@ jobs:
         run: sudo snap install dart-sass
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        # --omit=dev installs only runtime deps (Pagefind) and skips devDeps
+        # (Playwright + its browsers), which the Pages build never needs.
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci --omit=dev || true"
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
           hugo --environment pages --minify --baseURL "https://perlfoundation.org/"
+      - name: Index with Pagefind
+        # Pagefind is pinned in package-lock.json and installed with integrity
+        # checks by the "Install Node.js dependencies" step above (npm ci). Run
+        # the locally installed binary rather than fetching it fresh at build
+        # time, so the build is reproducible and not a supply-chain surprise.
+        run: ./node_modules/.bin/pagefind --site public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

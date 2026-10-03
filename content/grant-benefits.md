@@ -1,6 +1,7 @@
 ---
 title: 'Grant Benefits'
 url: '/grant-benefits.html'
+layout: 'fund'
 ---
 
 Funding leading Perl developers and educators enables the

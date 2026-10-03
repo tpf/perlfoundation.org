@@ -1,6 +1,7 @@
 ---
 title: 'Community Advocacy Committee Charter'
 url: '/community-advocacy-committee.html'
+layout: 'legal'
 ---
 ### 1. Purpose
 

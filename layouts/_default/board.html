@@ -1,0 +1,93 @@
+{{ define "main" }}
+{{- /*
+  Board template (design: BoardPage.dc.html). content/the-board.md holds the
+  intro as its Markdown body and the board as a `members:` list in its front
+  matter (name, role, photo, appointed, email, seat_sponsor, profiles,
+  companies, bio). Bios are Markdown, paragraphs separated by a blank line.
+
+  The President's badge is coral, others violet, per the design. Bios past the
+  first paragraph collapse behind a native <details>/<summary> "Read more"
+  disclosure, so they work with JavaScript disabled; assets/js/tprf.js only
+  relabels the summary.
+
+  Each card's id is the anchor of that member's schema.org `Person` @id, built
+  from the same data by partials/board-people.html. Profile links carry
+  rel="me" (identity verification, e.g. Mastodon); link lists are <ul>s whose
+  " · " separators are CSS, and each link has a visually-hidden member name so
+  it still makes sense in a screen reader's links list.
+
+  Fixed UI labels hard-coded here (chrome, not page copy): "Read more",
+  "Appointed:", "Board seat sponsored by", "Companies:".
+*/ -}}
+{{- $page := . -}}
+
+<header class="page-hero board-hero">
+  <div class="board-hero__head">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/about.html" | relURL }}">/about</a> / the-board</nav>
+    <h1 class="display-h1">{{ .Title }}</h1>
+  </div>
+  {{- with .Content }}
+  <div class="board-intro">{{ . }}</div>
+  {{- end }}
+</header>
+
+<section class="board-section">
+  <h2 class="board-section__label">{{ .Params.members_heading }}</h2>
+  <div class="board-grid">
+    {{- range $i, $_ := .Params.members }}
+    {{- if not .photo -}}
+      {{- errorf "board.html: board member %q in %s has no photo — every member entry needs one." .name $page.File.Path -}}
+    {{- end -}}
+    {{- $bios := slice -}}
+    {{- range split (trim (.bio | default "") "\n") "\n\n" -}}
+      {{- $bios = $bios | append ($page.RenderString (dict "display" "block") .) -}}
+    {{- end -}}
+    {{- $id := anchorize .name -}}
+    {{- $who := printf "%s: " .name -}}
+    <article class="board-card" id="{{ $id }}">
+      <div class="board-card__photo{{ if eq .role "President" }} is-president{{ end }}">
+        {{- /* alt="": the card's heading already names the member. The first
+               photo is likely the LCP image, so it loads eagerly. */ -}}
+        <img src="{{ .photo }}" alt="" width="418" height="418"
+             {{- if eq $i 0 }} fetchpriority="high"{{ else }} loading="lazy" decoding="async"{{ end }}>
+        {{- with .role }}<span class="board-card__role">{{ . }}</span>{{ end }}
+      </div>
+      <div class="board-card__body">
+        <h3 class="board-card__name">{{ .name }}{{ with .role }}, {{ . }}{{ end }}</h3>
+        {{- with $bios }}
+        <div class="board-card__bio">
+          {{ index . 0 }}
+          {{- if gt (len .) 1 }}
+          <details class="board-card__moredetails">
+            <summary class="board-toggle">Read more</summary>
+            <div class="board-card__more">
+              {{- range after 1 . }}{{ . }}{{ end }}
+            </div>
+          </details>
+          {{- end }}
+        </div>
+        {{- end }}
+        <div class="board-card__meta">
+          {{- with .appointed }}<span class="board-card__appointed">Appointed: {{ . }}</span>{{ end }}
+          {{- with .seat_sponsor }}<span class="board-card__seat">Board seat sponsored by {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</span>{{ end }}
+          {{- with .email }}<span class="board-card__email"><a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
+          {{- with .profiles }}
+          <ul class="board-card__links" aria-label="{{ $who }}profiles">
+            {{- range . }}<li><a href="{{ .url }}" rel="me"><span class="visually-hidden">{{ $who }}</span>{{ .label }}</a></li>{{ end }}
+          </ul>
+          {{- end }}
+          {{- with .companies }}
+          <div class="board-card__companies">
+            <span id="{{ $id }}-companies">Companies:</span>
+            <ul class="board-card__links" aria-labelledby="{{ $id }}-companies">
+              {{- range . }}<li><a href="{{ .url }}"><span class="visually-hidden">{{ $who }}</span>{{ .label }}</a></li>{{ end }}
+            </ul>
+          </div>
+          {{- end }}
+        </div>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,94 @@
+{{ define "main" }}
+{{- /*
+  Sponsor Levels template (design: SponsorLevelsPage.dc.html). Content is
+  content/how-do-sponsors-benefit.md:
+    ## TPRF and You     -> hero (title + subtitle + intro)
+    ## <Tier>           -> one card each: price line, optional `### lead` + body,
+                           then a bullet list of benefits
+    ## How to donate    -> coral band
+
+  CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
+  `.Content` per section; it derives the price/monthly split and the tier number
+  as chrome and never hard-codes a tier's copy or benefits. Per-tier colour
+  (Diamond light, Platinum violet, the rest dark) is CSS keyed on position,
+  matching the design's theme cycle.
+*/ -}}
+{{- $sections := after 1 (split .Content "<h2") -}}
+{{- /* Guard: this template's positional slicing assumes exactly 8 <h2>
+       sections (1 hero + 6 tiers + 1 "How to donate" band). Fail loudly and
+       point at the content file if that drifts, instead of shipping silently
+       mis-sliced output or hard-panicking on an out-of-range index. */ -}}
+{{- if ne (len $sections) 8 -}}
+  {{- errorf "sponsorlevels.html: expected 8 <h2> sections in %s (1 hero + 6 tiers + 1 donate band), got %d" .File.Path (len $sections) -}}
+{{- end -}}
+{{- $hero := index $sections 0 -}}
+{{- $band := index $sections 7 -}}
+{{- $tiers := first 6 (after 1 $sections) -}}
+
+{{- /* Hero. */ -}}
+{{- $heroSec := printf "<h2%s" $hero -}}
+{{- $heroTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $heroSec -}}
+{{- $heroSub := replaceRE `(?s)^.*?</h2>\s*<p>(.*?)</p>.*$` "$1" $heroSec -}}
+{{- $heroIntro := replaceRE `(?s)^.*?</h2>\s*<p>.*?</p>\s*(<p>.*?</p>).*$` "$1" $heroSec -}}
+<header class="page-hero sponsorlevels-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/our-donors.html" | relURL }}">/sponsors</a> / how-do-sponsors-benefit</nav>
+  <h1 class="display-h1 display-h1--short sponsorlevels-hero__h1">{{ .Title }}</h1>
+  <div class="sponsorlevels-hero__grid">
+    <div>
+      <h2 class="sponsorlevels-hero__k">{{ $heroTitle | safeHTML }}</h2>
+      <p class="sponsorlevels-hero__sub">{{ $heroSub | safeHTML }}</p>
+    </div>
+    <div class="sponsorlevels-hero__intro">{{ $heroIntro | safeHTML }}</div>
+  </div>
+</header>
+
+<section class="sponsorlevels-tiers">
+  <div class="sptier-grid">
+    {{- range $i, $t := $tiers }}
+    {{- $sec := printf "<h2%s" $t -}}
+    {{- $name := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $sec -}}
+    {{- $priceP := replaceRE `(?s)^.*?<p>(.*?)</p>.*$` "$1" $sec -}}
+    {{- $price := $priceP -}}
+    {{- $monthly := "" -}}
+    {{- if in $priceP "(" -}}
+      {{- $price = trim (replaceRE `(?s)\(.*$` "" $priceP) " " -}}
+      {{- $monthly = replaceRE `(?s)^[^(]*(\(.*\)).*$` "$1" $priceP -}}
+    {{- end -}}
+    {{- $lead := "" -}}
+    {{- $leadBody := "" -}}
+    {{- if in $sec "<h3" -}}
+      {{- $lead = replaceRE `(?s)^.*?<h3[^>]*>(.*?)</h3>.*$` "$1" $sec -}}
+      {{- $leadBody = replaceRE `(?s)^.*?</h3>\s*<p>(.*?)</p>.*$` "$1" $sec -}}
+    {{- end -}}
+    {{- $items := replaceRE `(?s)^.*(<ul>.*</ul>).*$` "$1" $sec -}}
+    {{- $theme := cond (eq $i 0) "sptier--light" (cond (eq $i 1) "sptier--violet" "sptier--dark") -}}
+    <article class="sptier {{ $theme }}">
+      <div class="sptier__top">
+        <h2 class="sptier__name">{{ $name | safeHTML }}</h2>
+        <span class="sptier__n">{{ printf "%02d" (add $i 1) }}</span>
+      </div>
+      <div class="sptier__pricebox">
+        <div class="sptier__price">{{ $price | safeHTML }}</div>
+        {{- with $monthly }}<div class="sptier__monthly">{{ . | safeHTML }}</div>{{ end }}
+      </div>
+      {{- with $lead }}
+      <div class="sptier__lead">
+        <h3 class="sptier__lead-h">{{ . | safeHTML }}</h3>
+        <p class="sptier__lead-b">{{ $leadBody | safeHTML }}</p>
+      </div>
+      {{- end }}
+      <div class="sptier__items">{{ $items | safeHTML }}</div>
+    </article>
+    {{- end }}
+  </div>
+</section>
+
+{{- /* Coral "How to donate" band. */ -}}
+{{- $bandSec := printf "<h2%s" $band -}}
+{{- $bandTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $bandSec -}}
+{{- $bandBody := replaceRE `(?s)^.*?</h2>` "" $bandSec -}}
+<section class="sponsorlevels-donate">
+  <h2 class="sponsorlevels-donate__h">{{ $bandTitle | safeHTML }}</h2>
+  <div class="sponsorlevels-donate__body">{{ $bandBody | safeHTML }}</div>
+</section>
+{{ end }}

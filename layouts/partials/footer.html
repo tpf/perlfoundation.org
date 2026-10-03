@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <nav class="site-footer__links" aria-label="Footer">
+    {{- range .Site.Menus.footer }}
+    <a href="{{ .URL }}"{{ with .Params.target }} target="{{ . }}" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+    {{- end }}
+  </nav>
+  <a class="site-footer__github" href="https://github.com/tpf/perlfoundation.org" target="_blank" rel="noopener noreferrer">Edit this site on GitHub ↗</a>
+  <div class="site-footer__legal">© {{ now.Year }} Yet Another Society<br>Yet Another Society (DBA) The Perl And Raku Foundation 440 N Barranca Ave #6055 Covina, CA 91723 UNITED STATES</div>
+</footer>

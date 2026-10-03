@@ -1,4 +1,9 @@
 .hugo_build.lock
 public
+node_modules
+test-results
+playwright-report
+.playwright-mcp
 .DS_Store
 .claude/settings.local.json
+.nono/

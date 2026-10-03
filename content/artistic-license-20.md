@@ -1,6 +1,7 @@
 ---
 title: 'Artistic License 2.0'
 url: '/artistic-license-20.html'
+layout: 'legal'
 ---
 
 Copyright (c) 2000-2006, The Perl Foundation.

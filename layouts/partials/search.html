@@ -1,0 +1,11 @@
+{{- /* Site search overlay. Pagefind's default UI mounts into #search on first
+       open (lazy-loaded by assets/js/tprf.js). The Pagefind index lives at
+       /pagefind/ and is generated after the Hugo build, so search only works
+       in a built site, not under `hugo serve`. */ -}}
+<div class="site-search" id="site-search" aria-hidden="true">
+  <div class="site-search__backdrop" data-search-close></div>
+  <div class="site-search__panel" role="dialog" aria-modal="true" aria-label="Search this site" tabindex="-1">
+    <button type="button" class="site-search__close" aria-label="Close search" data-search-close>&times;</button>
+    <div id="search" class="site-search__ui"></div>
+  </div>
+</div>

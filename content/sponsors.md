@@ -2,6 +2,7 @@
 title: 'Our Sponsors'
 url: '/our-sponsors.html'
 aliases: '/our-donors.html'
+layout: 'oursponsors'
 ---
 
 

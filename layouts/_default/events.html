@@ -1,0 +1,39 @@
+{{ define "main" }}
+{{- /*
+  Events template (design: EventsPage.dc.html). Content is content/events.md,
+  a subtitle paragraph followed by one `## <year>` heading per year, each with a
+  definition list of events (`<date>` term, `[title](href) - <where>` definition).
+
+  CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
+  `.Content` by year and annotates each event's rendered <dd> to separate the
+  title from the location — it never hard-codes an event. The newest year (first
+  in source) is highlighted (coral), matching the design.
+*/ -}}
+{{- $content := .Content -}}
+{{- $chunks := split $content "<h2" -}}
+{{- $subtitle := index $chunks 0 -}}
+{{- $years := after 1 $chunks -}}
+
+<header class="page-hero events-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/about.html" | relURL }}">/about</a> / events</nav>
+  <h1 class="display-h1 display-h1--short">{{ .Title }}</h1>
+  {{- with $subtitle }}
+  <div class="events-hero__sub">{{ . | safeHTML }}</div>
+  {{- end }}
+</header>
+
+{{- range $i, $chunk := $years }}
+{{- $sec := printf "<h2%s" $chunk -}}
+{{- $year := replaceRE `(?s)^.*?<h2[^>]*>(.*?)</h2>.*$` "$1" $sec -}}
+{{- $list := replaceRE `(?s)^.*?</h2>` "" $sec -}}
+{{- /* Split each definition into title + location; plain (unseparated) defs
+       become an all-title row. Order matters: the " - " pass runs first and
+       only touches defs that carry a location. */ -}}
+{{- $list = replaceRE `<dd>(.*?) - (.*?)</dd>` `<dd><span class="ev-title">${1}</span><span class="ev-where">${2}</span></dd>` $list -}}
+{{- $list = replaceRE `<dd>([^<]+)</dd>` `<dd><span class="ev-title">${1}</span></dd>` $list -}}
+<section class="events-year{{ if eq $i 0 }} events-year--now{{ end }}">
+  <h2 class="events-year__n">{{ $year | safeHTML }}</h2>
+  <div class="events-year__list">{{ $list | safeHTML }}</div>
+</section>
+{{- end }}
+{{ end }}
