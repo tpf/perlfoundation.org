@@ -39,8 +39,17 @@ members:
     email: 'treasurer@perlfoundation.org'
     seat_sponsor:
       name: 'Remora, Inc'
+    profiles:
+      - label: 'Personal Website'
+        url: 'https://www.peterkrawczyk.com/'
+      - label: 'GitHub'
+        url: 'https://github.com/petek'
+      - label: 'LinkedIn'
+        url: 'https://www.linkedin.com/in/petek/'
+      - label: 'MetaCPAN'
+        url: 'https://metacpan.org/author/PETEK'
     bio: |
-      Peter Krawczyk is a Senior Software Engineer with ZipRecruiter. He has been
+      Peter Krawczyk is the CTO of Remora. He has been
       active in the Perl community since the late 1990s, including co-organizing
       YAPCs in 2006 and 2008, hackathons and Chicago.pm. In his spare time, he loves
       to play golf and go on road trips.
