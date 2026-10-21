@@ -4,32 +4,28 @@ Guidance for working in this repository.
 
 ## What this is
 
-This is the perlfoundation.org website, a [Hugo](https://gohugo.io/) static
-site using the [blowfish](https://github.com/nunocoracao/blowfish) theme, which
-is vendored as a git submodule under `themes/blowfish`.
+This is the perlfoundation.org website, a [Hugo](https://gohugo.io/) static site
+with its **own standalone layouts** under `layouts/` (no theme, no submodule).
+See `README.md` for setup, the `Makefile` targets (`make serve` / `make build`),
+the layout/template structure, the OpenGraph image, and QR code aliases.
 
-## Common tasks
+## Working rules
 
-A `Makefile` at the repo root provides the convenience targets:
-
-- `make init` — ensures the blowfish theme submodule is checked out. Run this
-  after cloning without `--recurse-submodules`, or if `themes/blowfish` is
-  empty. It is idempotent.
-- `make serve` — runs `hugo serve` (depends on `make init`). When the
-  `tailscale` CLI is available it binds to the tailnet IP so the dev server is
-  reachable from other machines on the tailnet; otherwise it serves on
-  localhost. Hugo picks an open port automatically if the default is in use.
-
-Prefer `make serve` over calling `hugo serve` directly, since it guarantees the
-theme submodule is present first.
-
-## Layout notes
-
-- Pages live in `/content`.
+- Page copy stays in `/content` (Markdown body or front matter), never
+  hard-coded in a template. Templates style the rendered Markdown. Fixed UI
+  labels that read the same on every render are chrome and may live in the
+  template (see each template's header comment).
+- For a new page of repeated records, prefer a YAML list in front matter, as
+  `content/the-board.md` does with `members:` (format in `README.md`).
+  Templates that already slice rendered Markdown (`donate.html`,
+  `committees.html`, `sponsorlevels.html`) follow the pattern described in
+  their header comment.
+- All styling lives in `static/css/custom.css` (dark theme; design tokens are the
+  `:root` custom properties at the top of that file). Use those tokens rather
+  than repeating raw hex values.
 - Images live in `static/images/` (group per-page image sets in a subdirectory).
 - Sponsor data is in `data/sponsors.yaml`, rendered by the
-  `layouts/shortcodes/sponsors-by-level.html` shortcode; sponsor styling lives
-  in `static/css/custom.css`.
-
-See `README.md` for more detail on site structure, the OpenGraph image, and QR
-code aliases.
+  `layouts/shortcodes/sponsors-by-level.html` shortcode.
+- JSON-LD is one `@graph` per page, built in
+  `layouts/partials/structured-data.html`. Add new entities to that graph
+  rather than emitting a separate `<script type="application/ld+json">` block.

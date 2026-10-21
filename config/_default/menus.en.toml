@@ -126,6 +126,7 @@ weight = 2
 parent = "grants"
 name = "Grants Committee"
 url = "/grants-committee1.html"
+identifier = "grants-committee-info"
 weight = 4
 
 [[main]]
@@ -250,6 +251,7 @@ weight = 2
 parent = "charters"
 name = "Grants Committee"
 url = "/grants-committee.html"
+identifier = "grants-committee-charter"
 weight = 4
 
 [[main]]
@@ -263,9 +265,6 @@ parent = "charters"
 name = "Bylaws"
 url = "/bylaws.html"
 weight = 8
-
-[[footer]]
-none = "none"
 
 [[footer]]
 name = "News"

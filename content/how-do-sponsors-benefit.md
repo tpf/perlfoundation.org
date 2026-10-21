@@ -1,6 +1,7 @@
 ---
 title: 'How Do Sponsors Benefit?'
 url: '/how-do-sponsors-benefit.html'
+layout: 'sponsorlevels'
 ---
 
 ## TPRF and You

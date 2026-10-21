@@ -1,6 +1,7 @@
 ---
 title: 'Committees'
 url: '/committees.html'
+layout: 'committees'
 ---
 
 ## Grants
