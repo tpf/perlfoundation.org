@@ -10,8 +10,8 @@ timeout = 20
 # 429 is rate limiting, not a dead link.
 accept = ["200..=299", "429"]
 
-# Check #fragment anchors on our own pages.
-include_fragments = true
+# Check that #fragment anchors exist on the target page.
+include_fragments = "anchor-only"
 
 exclude = [
   # Preconnect hints to bare font hosts, which 404 on their root.
@@ -19,6 +19,7 @@ exclude = [
   # Sites that block or challenge automated clients.
   '^https://(www\.)?linkedin\.com/',
   '^https://(www\.)?(twitter|x)\.com/',
+  '^https://www\.(bluehost|guidestar|rshughes)\.(com|org)/',
   # The Pagefind index is generated after Hugo, and is skipped for this build.
   '/pagefind/',
 ]
