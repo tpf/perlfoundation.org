@@ -18,7 +18,7 @@ In 2020, The Perl Foundation announced closure of the
 Perl 6 Development Fund and launch of the Raku
 Development Fund. Details of the funding raised so far
 and how this has been spent will be published in
-[a public accessible location](https://docs.google.com/spreadsheets/d/1wiTISarw1sPfEUKG5hoE0s8ztz4VBXUxB8iiSULGNeg/edit#gid=0)
+[a public accessible location](https://docs.google.com/spreadsheets/d/1wiTISarw1sPfEUKG5hoE0s8ztz4VBXUxB8iiSULGNeg/edit)
 for the both funds.
 
 ## Description of Fund
