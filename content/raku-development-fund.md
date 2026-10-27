@@ -1,6 +1,8 @@
 ---
 title: 'Raku Development Fund'
 url: '/raku-development-fund.html'
+layout: 'fund'
+application_form: true
 ---
 
 At the start of February 2015, during FOSDEM, Larry
@@ -11,6 +13,7 @@ Perl 6 Development Fund was created to aid key Perl 6
 developers in achieving this goal, and to fund Perl 6
 development beyond the 6.0 language and implementation
 release.
+
 In 2020, The Perl Foundation announced closure of the
 Perl 6 Development Fund and launch of the Raku
 Development Fund. Details of the funding raised so far
@@ -18,7 +21,8 @@ and how this has been spent will be published in
 [a public accessible location](https://docs.google.com/spreadsheets/d/1wiTISarw1sPfEUKG5hoE0s8ztz4VBXUxB8iiSULGNeg/edit#gid=0)
 for the both funds.
 
-Description of Fund
+## Description of Fund
+
 The donations made to this fund will be used for the
 development and improvement of the Raku language
 specification and implementations. Funds will be
@@ -28,16 +32,16 @@ community. The grants will be awarded to the most
 appropriate applicant(s) and managed in association with
 the Raku developers.
 
-Applicant Eligibility
+## Applicant Eligibility
+
 Due to the nature of this fund, and its targeted focus,
 eligibility to apply has two initial requirements:
 
-The applicant must be a contributor to the Raku
-language specification or one of its
-implementations.
-
-The application must be endorsed by one or more
-people in Raku Steering Council.
+- The applicant must be a contributor to the Raku
+  language specification or one of its
+  implementations.
+- The application must be endorsed by one or more
+  people in Raku Steering Council.
 
 ### Approval Process
 
@@ -66,7 +70,8 @@ published in a public version control system. Release
 notes should include an acknowledgement that work was funded by The Perl
 Foundation’s Raku Development Fund.
 
-Reporting
+### Reporting
+
 Successful applicants must provide a monthly report
 publicly at The Perl Foundation News site. Missing two
 reports in a row without prior notice will result in
@@ -121,7 +126,8 @@ If a period of one year has elapsed with no grants in
 progress and no new applications, the remaining funds
 will be transferred to the TPRF general fund.
 
-Application
+## Application
+
 In order to apply for a grant under this fund the
 following Grant Application form must be completed.
 

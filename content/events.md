@@ -1,6 +1,7 @@
 ---
 title: 'Events'
 url: '/events.html'
+layout: 'events'
 ---
 
 Perl and Raku events

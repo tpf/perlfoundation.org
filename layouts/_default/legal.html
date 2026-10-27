@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{- /*
+  Legal / license template (design: LegalPage.dc.html). Covers the license and
+  charter documents (Artistic Licenses, CLA, CPAN guidelines, bylaws, articles,
+  committee charters, …).
+
+  CONTENT RULE: all copy stays in the Markdown source. This template never
+  hard-codes page text — it styles the *rendered* `.Content` with light CSS and
+  a few pattern-gated `replaceRE` transforms. Every special treatment degrades
+  to plain prose when the pattern is absent, so pages that are not license text
+  still render cleanly:
+
+    * Notice callout — the paragraphs before the first heading, shown in the
+      violet mono callout, but ONLY when the document opens with a copyright
+      line (the "copyright and notice" block of a license). Other pages keep
+      those paragraphs in the body.
+    * Section headings — `##`/`###` become the uppercase, top-ruled section
+      headers and fill the sticky "Sections" list (built from the rendered
+      headings, so anchors match Hugo's auto heading ids).
+    * Definition rows — a paragraph that opens with a quoted term
+      (`"Package" means …`) gets the term bolded with a bottom rule.
+    * Numbered clauses — a paragraph that opens with `(1)` / `(a)` / `(i)` gets
+      the marker in a mono gutter (coral for top-level, grey for nested).
+
+  The markdown is never rewritten; the transforms only annotate the HTML Hugo
+  already produced.
+*/ -}}
+{{- $content := .Content -}}
+{{- $hasHeading := findRE `<h[23][ >]` $content 1 -}}
+{{- $notice := "" -}}
+{{- $body := $content -}}
+{{- if and $hasHeading (findRE `(?s)^\s*<p>Copyright` $content 1) -}}
+  {{- $notice = replaceRE `(?s)(<h[23]).*$` "" $content -}}
+  {{- $body = replaceRE `(?s)^.*?(<h[23])` "$1" $content -}}
+{{- end -}}
+
+{{- /* Definition rows: bold the leading quoted term. */ -}}
+{{- $body = replaceRE `<p>(&ldquo;[^<]+?&rdquo;(?: and &ldquo;[^<]+?&rdquo;)?(?: form)?) ` `<p class="legal-def"><strong>${1}</strong> ` $body -}}
+{{- /* Numbered clauses (marker in a mono gutter). Levels are disjoint, so the
+       order of these passes does not matter. */ -}}
+{{- $body = replaceRE `<p>\((\d{1,2})\) ` `<p class="legal-clause legal-clause--top"><span class="legal-num">(${1})</span> ` $body -}}
+{{- $body = replaceRE `<p>\((i{1,3}|iv|v)\) ` `<p class="legal-clause legal-clause--rom"><span class="legal-num">(${1})</span> ` $body -}}
+{{- $body = replaceRE `<p>\(([a-c])\) ` `<p class="legal-clause legal-clause--let"><span class="legal-num">(${1})</span> ` $body -}}
+
+{{- $heads := findRE `(?s)<h[23][^>]*>.*?</h[23]>` $body -}}
+{{- $showToc := gt (len $heads) 1 -}}
+
+<header class="page-hero legal-hero">
+  {{- /* Breadcrumb: "/legal / <slug>" (design). First segment links the
+         section index; the slug is the page's own file name. */ -}}
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ "/legal.html" | relURL }}">/legal</a> / {{ with .File }}{{ .ContentBaseName }}{{ else }}{{ path.Base .RelPermalink | replaceRE "\\.html$" "" }}{{ end }}
+  </nav>
+  <h1 class="display-h1">{{ .Title }}</h1>
+  {{- with $notice }}
+  <div class="legal-notice">{{ . | safeHTML }}</div>
+  {{- end }}
+</header>
+
+<div class="doc-layout{{ if $showToc }} doc-layout--toc{{ end }}">
+  {{- if $showToc }}
+  <aside class="doc-toc legal-toc" aria-label="Sections">
+    <div class="doc-toc__inner">
+      <div class="doc-toc__label">Sections</div>
+      <nav>
+        {{- range $heads }}
+        {{- $id := replaceRE `(?s)^<h[23][^>]*\bid="([^"]*)".*$` "$1" . }}
+        {{- $text := replaceRE `(?s)^<h[23][^>]*>(.*?)</h[23]>$` "$1" . | plainify }}
+        <a href="#{{ $id }}">{{ $text }}</a>
+        {{- end }}
+      </nav>
+    </div>
+  </aside>
+  {{- end }}
+  <article class="legal-doc">{{ $body | safeHTML }}</article>
+</div>
+{{ end }}

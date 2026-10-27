@@ -1,6 +1,7 @@
 ---
 title: 'Conflict of Interest Policy'
 url: '/conflict-of-interest-policy.html'
+layout: 'legal'
 ---
 
 The purpose of this policy is to protect The Perl

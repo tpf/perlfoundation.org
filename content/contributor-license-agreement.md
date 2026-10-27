@@ -1,6 +1,7 @@
 ---
 title: 'Contributor License Agreement'
 url: '/contributor-license-agreement.html'
+layout: 'legal'
 ---
 
 This non-exclusive license is designed to serve the Perl

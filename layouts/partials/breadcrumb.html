@@ -1,0 +1,22 @@
+{{- /* Mono breadcrumb "~ / section" (design: HomePage/ContentPage hero).
+       "~" links home; the section segment is the page's parent in the main
+       menu, falling back to the page slug when the page isn't a menu child. */ -}}
+{{- $cur := .RelPermalink -}}
+{{- $groups := where .Site.Menus.main "HasChildren" true -}}
+{{- $section := "" -}}
+{{- range $groups -}}
+  {{- $g := . -}}
+  {{- range .Children -}}
+    {{- if eq (.URL | relURL) $cur -}}{{ $section = $g.Identifier }}{{- end -}}
+    {{- range .Children -}}
+      {{- if eq (.URL | relURL) $cur -}}{{ $section = $g.Identifier }}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $section -}}
+  {{- with .File }}{{ $section = .ContentBaseName }}{{ end -}}
+  {{- if not $section }}{{ $section = path.Base .RelPermalink | replaceRE "\\.html$" "" }}{{ end -}}
+{{- end -}}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ "/" | relURL }}">~</a> / {{ $section }}
+</nav>

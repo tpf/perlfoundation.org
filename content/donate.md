@@ -1,6 +1,7 @@
 ---
 title: 'Donate'
 url: '/donate.html'
+layout: 'donate'
 ---
 
 ## Quick Donations

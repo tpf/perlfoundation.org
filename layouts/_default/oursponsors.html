@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{- /*
+  Our Sponsors template (design: OurSponsorsPage.dc.html). Content is
+  content/sponsors.md: prose + the sponsors-by-level / in-kind-sponsor
+  shortcodes, in three `## ` sections (Financial, Conference, Sponsors in kind)
+  plus a closing prose block. The `---` rules that separate the tiers in the
+  Markdown render as <hr> and are hidden by CSS (they are structural, not copy).
+
+  CONTENT RULE: all copy stays in Markdown/shortcodes. This template only slices
+  the *rendered* `.Content` into sections and tier blocks and lets CSS supply the
+  tile chrome (white logo plates, gold/silver accent underline, hairline grid).
+  Tier-label colour is keyed off the label's own word — chrome, not new copy.
+*/ -}}
+{{- $secs := after 1 (split .Content "<h2") -}}
+
+<header class="page-hero oursponsors-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb">/sponsors / our-sponsors</nav>
+  <h1 class="display-h1">{{ .Title }}</h1>
+</header>
+
+{{- /* 1 — Financial sponsors: intro, then Gold | Silver, then Bronze. */ -}}
+{{- $f := printf "<h2%s" (index $secs 0) -}}
+{{- $fTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $f -}}
+{{- $fRest := replaceRE `(?s)^.*?</h2>` "" $f -}}
+{{- $fParts := split $fRest "<h3" -}}
+{{- $fIntro := replaceRE `(?s)<hr\s*/?>` "" (index $fParts 0) -}}
+<section class="ospon-section">
+  <div class="ospon-head">
+    <h2 class="ospon-head__h">{{ $fTitle | safeHTML }}</h2>
+    <div class="ospon-head__intro">{{ $fIntro | safeHTML }}</div>
+  </div>
+  <div class="ospon-tiers">
+    {{- range after 1 $fParts }}
+    {{- $tier := printf "<h3%s" . -}}
+    {{- $label := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $tier -}}
+    {{- $logos := replaceRE `(?s)<hr\s*/?>` "" (replaceRE `(?s)^<h3[^>]*>.*?</h3>` "" $tier) -}}
+    {{- $key := lower $label -}}
+    {{- $mod := cond (in $key "gold") "ospon-tier--gold" (cond (in $key "silver") "ospon-tier--silver" "ospon-tier--bronze") -}}
+    <div class="ospon-tier {{ $mod }}">
+      <h3 class="ospon-tier__label">{{ $label | safeHTML }}</h3>
+      <div class="ospon-tier__logos">{{ $logos | safeHTML }}</div>
+    </div>
+    {{- end }}
+  </div>
+</section>
+
+{{- /* 2 — Conference sponsors: intro beside the logos. */ -}}
+{{- $c := printf "<h2%s" (index $secs 1) -}}
+{{- $cTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $c -}}
+{{- $cRest := replaceRE `(?s)<hr\s*/?>` "" (replaceRE `(?s)^.*?</h2>` "" $c) -}}
+{{- $cIntro := replaceRE `(?s)^\s*(<p>.*?</p>).*$` "$1" $cRest -}}
+{{- $cLogos := replaceRE `(?s)^\s*<p>.*?</p>` "" $cRest -}}
+<section class="ospon-section ospon-section--conf">
+  <div class="ospon-head ospon-head--conf">
+    <h2 class="ospon-head__h">{{ $cTitle | safeHTML }}</h2>
+    <div class="ospon-head__intro">{{ $cIntro | safeHTML }}</div>
+  </div>
+  <div class="ospon-tier__logos ospon-conf-logos">{{ $cLogos | safeHTML }}</div>
+</section>
+
+{{- /* 3 — Sponsors in kind: intro, "2026", the in-kind grid. */ -}}
+{{- $k := printf "<h2%s" (index $secs 2) -}}
+{{- $kTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $k -}}
+{{- $kRest := replaceRE `(?s)^.*?</h2>` "" $k -}}
+{{- $kParts := split $kRest "<hr" -}}
+{{- $kBody := index $kParts 0 -}}
+{{- $kIntro := replaceRE `(?s)^\s*(<p>.*?</p>).*$` "$1" $kBody -}}
+{{- $kRestBody := replaceRE `(?s)^\s*<p>.*?</p>` "" $kBody -}}
+<section class="ospon-section">
+  <div class="ospon-head">
+    <h2 class="ospon-head__h">{{ $kTitle | safeHTML }}</h2>
+    <div class="ospon-head__intro">{{ $kIntro | safeHTML }}</div>
+  </div>
+  <div class="ospon-inkind">{{ $kRestBody | safeHTML }}</div>
+</section>
+
+{{- /* Closing prose (after the final rule). */ -}}
+{{- $closing := replaceRE `(?s)^[^>]*>` "" (index (after 1 $kParts) 0) -}}
+<section class="ospon-closing">{{ $closing | safeHTML }}</section>
+{{ end }}

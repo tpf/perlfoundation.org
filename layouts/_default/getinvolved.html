@@ -1,0 +1,70 @@
+{{ define "main" }}
+{{- /*
+  Get Involved template (design: GetInvolvedPage.dc.html). Content is
+  content/get-involved.md:
+    ## Want to get involved?        -> hero right column (title + intro)
+    ### Join the Conversation       -> violet band (Slack)
+    ### Connect with the Community  -> tile grid, then an intro + "other ways" list
+
+  CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
+  `.Content`; for each "Connect with the Community" item it turns the *whole*
+  rendered <li> into a single clickable tile — href taken from the item's own
+  link, label from the item's own text (anchor tags unwrapped so the tile isn't
+  a nested link). The ↗ / → arrow is derived from whether that href is external,
+  it is chrome, not new copy.
+*/ -}}
+{{- $parts := split .Content "<h3" -}}
+
+{{- /* A — hero: the lone <h2> section (title + intro paragraph). */ -}}
+{{- $a := index $parts 0 -}}
+{{- $aTitle := replaceRE `(?s)^.*?<h2[^>]*>(.*?)</h2>.*$` "$1" $a -}}
+{{- $aIntro := replaceRE `(?s)^.*?</h2>` "" $a -}}
+<header class="page-hero getinvolved-hero">
+  <div class="getinvolved-hero__l">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/about.html" | relURL }}">/about</a> / get-involved</nav>
+    <h1 class="display-h1 display-h1--short">{{ .Title }}</h1>
+  </div>
+  <div class="getinvolved-hero__r">
+    <h2 class="getinvolved-hero__q">{{ $aTitle | safeHTML }}</h2>
+    <div class="getinvolved-hero__intro">{{ $aIntro | safeHTML }}</div>
+  </div>
+</header>
+
+{{- /* B — violet band: "Join the Conversation". */ -}}
+{{- $b := printf "<h3%s" (index $parts 1) -}}
+{{- $bTitle := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $b -}}
+{{- $bBody := replaceRE `(?s)^.*?</h3>` "" $b -}}
+<section class="getinvolved-band">
+  <h2 class="getinvolved-band__h">{{ $bTitle | safeHTML }}</h2>
+  <div class="getinvolved-band__body">{{ $bBody | safeHTML }}</div>
+</section>
+
+{{- /* C/D — "Connect with the Community": tile grid, then "other ways" list. */ -}}
+{{- $c := printf "<h3%s" (index $parts 2) -}}
+{{- $cTitle := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $c -}}
+{{- $cRest := replaceRE `(?s)^.*?</h3>` "" $c -}}
+{{- $communityUl := index (split $cRest "<p>") 0 -}}
+{{- $dRaw := replaceRE `(?s)^.*?(<p>)` "$1" $cRest -}}
+{{- $dIntro := replaceRE `(?s)^(<p>.*?</p>).*$` "$1" $dRaw -}}
+{{- $dList := replaceRE `(?s)^<p>.*?</p>` "" $dRaw -}}
+<section class="getinvolved-connect">
+  <h2 class="getinvolved-connect__h">{{ $cTitle | safeHTML }}</h2>
+  <div class="gi-tiles">
+    {{- range findRE `(?s)<li>.*?</li>` $communityUl }}
+    {{- $href := replaceRE `(?s)^.*?<a href="([^"]*)".*$` "$1" . -}}
+    {{- $inner := replaceRE `(?s)^<li>(.*)</li>$` "$1" . -}}
+    {{- $label := replaceRE `(?s)<a [^>]*>(.*?)</a>` "$1" $inner -}}
+    {{- $external := and (hasPrefix $href "http") (not (in $href "perlfoundation.org")) -}}
+    <a class="gi-tile" href="{{ $href | safeURL }}">
+      <span class="gi-tile__arrow">{{ if $external }}&#8599;{{ else }}&#8594;{{ end }}</span>
+      <span class="gi-tile__label">{{ $label | safeHTML }}</span>
+    </a>
+    {{- end }}
+  </div>
+</section>
+
+<section class="getinvolved-more">
+  <div class="getinvolved-more__intro">{{ $dIntro | safeHTML }}</div>
+  <div class="gi-plus-list">{{ $dList | safeHTML }}</div>
+</section>
+{{ end }}

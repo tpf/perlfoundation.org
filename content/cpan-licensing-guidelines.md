@@ -1,6 +1,7 @@
 ---
 title: 'CPAN Licensing Guidelines'
 url: '/cpan-licensing-guidelines.html'
+layout: 'legal'
 ---
 
 This page provides some guidelines for including copyright

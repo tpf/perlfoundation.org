@@ -1,11 +1,13 @@
 ---
 title: 'Community Project Support'
 url: '/project-support.html'
+layout: 'fund'
 ---
 
 ## TPRF administrative support for Community Projects.
 
-Introduction
+### Introduction
+
 The board is here to help our Perl and Raku
 communities. Fund management is a complex task that
 requires a significant amount of knowledge and overhead.
@@ -87,13 +89,11 @@ change.
 Termination of the fund may happen for the following
 reasons.
 
-The project fails to keep and maintains an approved
-Code of Conduct. This will be determined by
-board.
-
-No financial activity for a 2 year period.
-
-Active officers vote to disband the fund.
+- The project fails to keep and maintains an approved
+  Code of Conduct. This will be determined by
+  board.
+- No financial activity for a 2 year period.
+- Active officers vote to disband the fund.
 
 When the fund is closed, all money will then be
 transferred to the general board fund for use by the
@@ -116,46 +116,36 @@ For the Foundation to support a project, we require the
 project to present a petition to the board specifying
 the following details.
 
-How will your group be identified?
-
-2 (3 is preferred) or more principal officers for
-the group. (Who can direct funds?)
-
-A charter for the group which includes:
-
-Intended use cases for the fund (grants?
-hardware? services? workshops?)
-
-Criteria and guidance for applications, along
-with likely acceptance criteria
-
-Directions on how to contact the officers and
-apply for funds
-
-How much funds do you have now?
-
-How much funds do you expect to receive
-yearly?
+- How will your group be identified?
+- 2 (3 is preferred) or more principal officers for
+  the group. (Who can direct funds?)
+- A charter for the group which includes:
+  - Intended use cases for the fund (grants?
+    hardware? services? workshops?)
+  - Criteria and guidance for applications, along
+    with likely acceptance criteria
+  - Directions on how to contact the officers and
+    apply for funds
+- How much funds do you have now?
+- How much funds do you expect to receive
+  yearly?
 
 The project must specify or adopt a Code of Conduct
 (“COC”) acceptable to the TPRF board. Criteria for
 acceptance of this Code will include (but are not
 limited to):
 
-The code of conduct includes protection for the
-members ( both established and future members)
-of your group.
-
-Scope of enforcement (what forums/spaces are
-covered by this code?)
-
-We will consider any possible history of
-enforcement (or lack thereof).
-
-This COC must not be any less permissive than
-the Foundation’s COC, and in the event the
-Foundation’s COC becomes less permissive, the
-project’s COC must be updated as well.
+- The code of conduct includes protection for the
+  members ( both established and future members)
+  of your group.
+- Scope of enforcement (what forums/spaces are
+  covered by this code?)
+- We will consider any possible history of
+  enforcement (or lack thereof).
+- This COC must not be any less permissive than
+  the Foundation’s COC, and in the event the
+  Foundation’s COC becomes less permissive, the
+  project’s COC must be updated as well.
 
 ### What happens after you are approved
 

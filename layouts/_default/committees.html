@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{- /*
+  Committees template (design: CommitteesPage.dc.html). Content is
+  content/committees.md: `## Grants` + list, `### Current Grant Managers` +
+  list, `## Volunteers and Community Liaisons` + list.
+
+  CONTENT RULE: all copy stays in Markdown. This template slices the *rendered*
+  `.Content` into the two column sections and the managers sub-block, and lets
+  CSS supply the `01`/`02` counters and tile styling — it hard-codes no name.
+  The design lays Grants (with its Grant-Managers sub-block) in the left column
+  and Volunteers in the right.
+*/ -}}
+{{- $sections := after 1 (split .Content "<h2") -}}
+
+<header class="page-hero committees-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ "/about.html" | relURL }}">/about</a> / committees</nav>
+  <h1 class="display-h1 display-h1--short">{{ .Title }}</h1>
+</header>
+
+<div class="committees-grid">
+  {{- /* Left column: Grants + Current Grant Managers. */ -}}
+  {{- $grants := printf "<h2%s" (index $sections 0) -}}
+  {{- $gTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $grants -}}
+  {{- $gParts := split $grants "<h3" -}}
+  {{- $gList := replaceRE `(?s)^.*?</h2>` "" (index $gParts 0) -}}
+  {{- $mgr := printf "<h3%s" (index $gParts 1) -}}
+  {{- $mgrTitle := replaceRE `(?s)^<h3[^>]*>(.*?)</h3>.*$` "$1" $mgr -}}
+  {{- $mgrList := replaceRE `(?s)^.*?</h3>` "" $mgr -}}
+  <section class="committee-col committee-col--first">
+    <h2 class="committee-col__h">{{ $gTitle | safeHTML }}</h2>
+    <div class="committee-list committee-list--num">{{ $gList | safeHTML }}</div>
+    <h3 class="committee-managers__h">{{ $mgrTitle | safeHTML }}</h3>
+    <div class="committee-managers">{{ $mgrList | safeHTML }}</div>
+  </section>
+
+  {{- /* Right column: Volunteers and Community Liaisons. */ -}}
+  {{- $vol := printf "<h2%s" (index $sections 1) -}}
+  {{- $vTitle := replaceRE `(?s)^<h2[^>]*>(.*?)</h2>.*$` "$1" $vol -}}
+  {{- $vList := replaceRE `(?s)^.*?</h2>` "" $vol -}}
+  <section class="committee-col">
+    <h2 class="committee-col__h">{{ $vTitle | safeHTML }}</h2>
+    <div class="committee-list committee-list--num">{{ $vList | safeHTML }}</div>
+  </section>
+</div>
+{{ end }}
