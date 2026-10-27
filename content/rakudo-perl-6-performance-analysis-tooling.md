@@ -64,7 +64,7 @@ Another task I want to complete as part of this grant is to have much more end-u
     - Again, allowing to expand routines to see their callers
     - Expose a lot more information about deopts - which types are involved, for example
     - Explain in clear terms what OSR and Deopt mean
-  - ○ GC explorer
+  - GC explorer
     - Figure out a good way to present information from multi-threaded programs here
     - Expose time-of-collection info to profiler
     - Show the time and duration of collections, how much data was kept, promoted to the old generation, or deleted, and whether the collection was a minor or major one
