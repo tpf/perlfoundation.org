@@ -57,7 +57,7 @@ Worthington, \$12,000 - Grant Manager: Matthias Bloch - Reports:
 - - Grant Manager: Nicolas R.
   - Reports: [#1](https://news.perlfoundation.org/post/rakucourse1)
 - [Rakudo Perl 6 Performance Analysis
-  Tooling](rakudo-perl-6-performance-analysis-tooling.html) by
+  Tooling](https://web.archive.org/web/20251014041826/https://www.perlfoundation.org/rakudo-perl-6-performance-analysis-tooling.html) by
   Timo Paulssen, \$7,500
   - Grant Manager: Alan Haggai Alavi
   - Reports:
@@ -136,7 +136,7 @@ Previous:
   YAML::PP](complete-yamlpp.html) by
   Tina Müller, \$2,500
   - Grant Manager: Mark A Jensen
-  - Reports: [#1](complete-yamlpp-report-1.html) \| [#2](complete-yamlpp-report-2.html) \| [#3](complete-yamlpp-report-3.html) \| [#4](complete-yamlpp-report-4.html) \| [#5](complete-yamlpp-report-5.html) \|
+  - Reports: [#1](https://web.archive.org/web/20250906030858/https://www.perlfoundation.org/complete-yamlpp-report-1.html) \| [#2](https://web.archive.org/web/20251014032132/https://www.perlfoundation.org/complete-yamlpp-report-2.html) \| [#3](https://web.archive.org/web/20250804123400/https://www.perlfoundation.org/complete-yamlpp-report-3.html) \| [#4](https://web.archive.org/web/20251014040548/https://www.perlfoundation.org/complete-yamlpp-report-4.html) \| [#5](https://web.archive.org/web/20250804131019/https://www.perlfoundation.org/complete-yamlpp-report-5.html) \|
     [#6](complete-yamlpp-report-6.html)
 - [Test2 Manual](test2-manual.html) by Chad \"Exodist\" Granum,
   \$2,000

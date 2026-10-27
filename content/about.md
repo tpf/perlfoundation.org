@@ -25,7 +25,7 @@ The Foundation also supports the efforts of numerous grass-roots Perl-based grou
 We also carry the legal responsibility for key assets and projects in the Perl and Raku ecosystem, including:
 
 - [Perl 5](http://www.perl.org/get.html)
-- [Raku](http://dev.perl.org/perl6/)
+- [Raku](https://raku.org/)
 - [perl.org](http://www.perl.org/)
 - [Perl Mongers](http://www.pm.org/)
 - [PerlMonks](http://www.perlmonks.org/)
