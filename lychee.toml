@@ -1,0 +1,25 @@
+# lychee link checker config, used by `make linkcheck` and
+# .github/workflows/linkcheck.yml. Both build the site with --baseURL / into a
+# scratch directory and pass it as --root-dir, so root-relative links are
+# checked against the built files rather than the live site.
+
+# Retry transient failures before reporting a link as broken.
+max_retries = 3
+timeout = 20
+
+# 429 is rate limiting, not a dead link.
+accept = ["200..=299", "429"]
+
+# Check that #fragment anchors exist on the target page.
+include_fragments = "anchor-only"
+
+exclude = [
+  # Preconnect hints to bare font hosts, which 404 on their root.
+  '^https://fonts\.(googleapis|gstatic)\.com/?$',
+  # Sites that block or challenge automated clients.
+  '^https://(www\.)?linkedin\.com/',
+  '^https://(www\.)?(twitter|x)\.com/',
+  '^https://www\.(bluehost|guidestar|rshughes)\.(com|org)/',
+  # The Pagefind index is generated after Hugo, and is skipped for this build.
+  '/pagefind/',
+]

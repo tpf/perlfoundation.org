@@ -45,6 +45,17 @@ ifeq ($(SEARCH),1)
 	./node_modules/.bin/pagefind --site public
 endif
 
+# Scratch build for the link checker. --baseURL / keeps internal links
+# root-relative so lychee resolves them against these files (--root-dir).
+LINKCHECK_DIR ?= $(CURDIR)/.linkcheck
+
+.PHONY: linkcheck
+## linkcheck: build the site and check every link for 404s (needs lychee installed)
+linkcheck:
+	@command -v lychee >/dev/null 2>&1 || { echo "lychee not found; see https://lychee.cli.rs/installation/"; exit 1; }
+	$(HUGO) --gc --minify --baseURL / --destination "$(LINKCHECK_DIR)"
+	lychee --config lychee.toml --root-dir "$(LINKCHECK_DIR)" "$(LINKCHECK_DIR)"
+
 .PHONY: node_modules
 ## node_modules: install pinned Node deps (Pagefind + Playwright) via npm ci
 node_modules:
