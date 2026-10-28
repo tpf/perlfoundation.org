@@ -110,8 +110,8 @@ license agreement and trademark policies.
 - [Articles of Incorporation](articles.html)
 - [Bylaws](bylaws.html)
 - First Meeting of
-  Incorporator: [first-incorporator.html](http://www.perlfoundation.org/attachment/legal/first-incorporator.html)
+  Incorporator: [first-incorporator.html](first-incorporator.html)
 - First Meeting of Board of
-  Directors: [first-board.html](http://www.perlfoundation.org/attachment/legal/first-board.html)
+  Directors: [first-board.html](first-board.html)
 - [Conflict of Interest
   Policy](conflict-of-interest-policy.html)

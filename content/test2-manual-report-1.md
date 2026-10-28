@@ -17,7 +17,7 @@ This
 is the first report for this new grant. During the last
 weeks he worked in an initial Test2 tutorial, that was
 incorporated into his YAPC presentation available at
-https://test-more.github.io/Test2-Manual/#tutorial.
+https://test-more.github.io/Test2-Manual/.
 Accordingly with his report, this is just the beginning on
 how to write tests. Soon he will also start the sections
 for Test Tool authors.

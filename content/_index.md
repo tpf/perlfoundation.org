@@ -33,7 +33,7 @@ Connect with fellow Perl and Raku developers in the [TPRF Slack workspace](https
 
 ## Community Happens Face-to-Face
 
-The Perl and Raku Conference is the annual North American gathering where developers share code, solve problems together, and build the relationships that keep open source thriving. In 2025, we also supported the [London Perl Workshop](https://www.londonperlworkshop.com/) and the [Perl Toolchain Summit](https://perltoolchainsummit.org/pts2025/), where maintainers collaborate on the infrastructure that powers CPAN and the tools that thousands depend on.
+The Perl and Raku Conference is the annual North American gathering where developers share code, solve problems together, and build the relationships that keep open source thriving. In 2025, we also supported the [London Perl Workshop](https://www.londonperlandrakuworkshop.com/) and the [Perl Toolchain Summit](https://perltoolchainsummit.org/pts2025/), where maintainers collaborate on the infrastructure that powers CPAN and the tools that thousands depend on.
 
 [See upcoming events](/events.html) and find your people.
 
