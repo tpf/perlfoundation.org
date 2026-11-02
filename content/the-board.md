@@ -116,6 +116,13 @@ members:
     email: 'todd@perlfoundation.org'
     seat_sponsor:
       name: 'WebPros'
+    profiles:
+      - label: 'GitHub'
+        url: 'https://github.com/toddr'
+      - label: 'LinkedIn'
+        url: 'https://www.linkedin.com/in/toddrinaldo/'
+      - label: 'MetaCPAN'
+        url: 'https://metacpan.org/author/TODDR'
     bio: |
       Todd has been programming for 40 years and coding Perl since his first Perl
       programming class in 1995. He's been a resident of Houston, TX most of his
