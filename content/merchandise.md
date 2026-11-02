@@ -10,9 +10,6 @@ Support the Perl and Raku communities by getting official merchandise from our c
 
 ## Official Stores
 
-### The Perl Store
-Visit [The Perl Store](https://the-perl-store.creator-spring.com/) for t-shirts, mugs, stickers, and other Perl-branded merchandise.
-
 ### FreeWear - Perl and Raku
 [FreeWear](https://www.freewear.org/PerlandRaku) offers Perl and Raku merchandise with proceeds supporting the Foundation. Browse their collection of apparel and accessories.
 
