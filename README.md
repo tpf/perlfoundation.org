@@ -20,6 +20,10 @@ A `Makefile` provides convenience targets:
   tailnet; otherwise it serves on localhost. Hugo picks an open port
   automatically if the default is in use.
 - `make build` — builds the static site into `public/`.
+- `make linkcheck` — builds the site and checks every link with
+  [lychee](https://lychee.cli.rs/) (install it first). A weekly CI run
+  (`.github/workflows/linkcheck.yml`) opens a "Broken links report" issue when
+  outside links break; exclusions live in `lychee.toml`.
 
 ## Layouts
 

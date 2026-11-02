@@ -18,7 +18,7 @@ In
 Core Maintenance Fund and launch of the Perl Core
 Development Fund. Details of the funding raised so far and
 how this has been spent will be published in
-[a public accessible location](https://docs.google.com/spreadsheets/d/1BVas4wi-q0uHc59BBW5A6T0fBQtkpqvDzoDOMoTxFRQ/edit#gid=0)
+[a public accessible location](https://docs.google.com/spreadsheets/d/1BVas4wi-q0uHc59BBW5A6T0fBQtkpqvDzoDOMoTxFRQ/edit)
 for the both funds.
 
 ## Description of Fund
