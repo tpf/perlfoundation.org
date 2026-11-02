@@ -47,6 +47,8 @@ As well as our financial sponsors and donors, the Foundation is supported by man
 
 {{% in-kind-grid %}}
 
+{{< in-kind-sponsor name="Aikido" url="https://www.aikido.dev/" image="aikido.svg" description="CPAN security supported by Aikido." >}}
+
 {{< in-kind-sponsor name="Anonymous" description="Gift of circa 100 books to generate donations at FOSDEM." >}}
 
 {{< in-kind-sponsor name="Fastmail" url="https://www.fastmail.com/" image="FM-Logo-RGB.png" description="Providing email hosting services to the foundation at no cost." >}}
