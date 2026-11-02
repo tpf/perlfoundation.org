@@ -20,6 +20,7 @@ exclude = [
   '^https://(www\.)?linkedin\.com/',
   '^https://(www\.)?(twitter|x)\.com/',
   '^https://www\.(bluehost|guidestar|rshughes)\.(com|org)/',
+  '^https://join\.slack\.com/',
   # The Pagefind index is generated after Hugo, and is skipped for this build.
   '/pagefind/',
 ]
