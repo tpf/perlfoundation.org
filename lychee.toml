@@ -10,6 +10,9 @@ timeout = 20
 # 429 is rate limiting, not a dead link.
 accept = ["200..=299", "429"]
 
+# A slow host is not a dead link: report timeouts but do not fail on them.
+accept_timeouts = true
+
 # Check that #fragment anchors exist on the target page.
 include_fragments = "anchor-only"
 
